@@ -1,0 +1,6 @@
+role b1sa.beaconsOne.roles::beacons
+{
+schema b1sa.beaconsOne.data:BEACONSONE.hdbschema: SELECT, INSERT, UPDATE, DELETE, EXECUTE;
+
+
+}

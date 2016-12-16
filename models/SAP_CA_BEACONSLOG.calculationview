@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_BEACONSLOG" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="SAP_CA_BEACONSLOG"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="T_IOT_9EB9BB5F7BD3BD4A437F" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="BEACONSONE" columnObjectName="T_IOT_9EB9BB5F7BD3BD4A437F"/>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BeaconsLog">
+    <viewAttributes>
+      <viewAttribute id="C_BEACON_ID"/>
+      <viewAttribute id="C_TIMESTAMP"/>
+      <viewAttribute id="C_USER_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#T_IOT_9EB9BB5F7BD3BD4A437F">
+      <mapping xsi:type="Calculation:AttributeMapping" target="C_BEACON_ID" source="C_BEACON_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="C_TIMESTAMP" source="C_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="C_USER_ID" source="C_USER_ID"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="BeaconsLog">
+  <attributes>
+    <attribute id="BeaconId" order="1" displayAttribute="false" attributeHierarchyActive="false" key="true">
+      <descriptions defaultDescription="BeaconId"/>
+      <keyMapping columnObjectName="BeaconsLog" columnName="C_BEACON_ID"/>
+    </attribute>
+    <attribute id="UserId" order="2" displayAttribute="false" attributeHierarchyActive="false" key="true">
+      <descriptions defaultDescription="UserId"/>
+      <keyMapping columnObjectName="BeaconsLog" columnName="C_USER_ID"/>
+    </attribute>
+    <attribute id="Date" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date"/>
+      <keyMapping columnObjectName="BeaconsLog" columnName="C_TIMESTAMP"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BeaconsLog" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="263" y="202"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

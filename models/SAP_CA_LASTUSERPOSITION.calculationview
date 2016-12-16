@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_LASTUSERPOSITION" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" scriptParametersCaseSensitive="true" enforceSqlExecution="false">
+<descriptions defaultDescription="SAP_CA_LASTUSERPOSITION"/>
+<localVariables/>
+<variableMappings/>
+<dataSources/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+    <viewAttributes>
+      <viewAttribute id="UserId" datatype="NVARCHAR" length="20"/>
+      <viewAttribute id="BeaconId" datatype="NVARCHAR" length="20"/>
+      <viewAttribute id="Date" datatype="TIMESTAMP"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <definition>/********* Begin Procedure Script ************/ 
+BEGIN 
+    /*Retrieve the last location of each user*/
+    var_out = 
+        SELECT &quot;UserId&quot;,&quot;BeaconId&quot;,&quot;Date&quot;
+        FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot; s1
+        WHERE &quot;Date&quot; = (
+                SELECT MAX(&quot;Date&quot;) 
+                FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot; s2 
+                WHERE s1.&quot;UserId&quot; = s2.&quot;UserId&quot;
+            );
+END;
+/********* End Procedure Script ************/</definition>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Script_View">
+  <attributes>
+    <attribute id="UserId" key="true" order="1">
+      <descriptions defaultDescription="UserId"/>
+      <keyMapping columnObjectName="Script_View" columnName="UserId"/>
+    </attribute>
+    <attribute id="BeaconId" key="true" order="2">
+      <descriptions defaultDescription="BeaconId"/>
+      <keyMapping columnObjectName="Script_View" columnName="BeaconId"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Date" order="3" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Date"/>
+      <measureMapping columnObjectName="Script_View" columnName="Date"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

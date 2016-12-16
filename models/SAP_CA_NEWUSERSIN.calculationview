@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_NEWUSERSIN" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" scriptParametersCaseSensitive="true" enforceSqlExecution="false">
+<descriptions defaultDescription="SAP_CA_NEWUSERSIN"/>
+<localVariables/>
+<variableMappings/>
+<dataSources/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:SqlScriptView" id="Script_View">
+    <viewAttributes>
+      <viewAttribute id="UserId" datatype="NVARCHAR" length="20"/>
+      <viewAttribute id="Date" datatype="TIMESTAMP"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <definition>/********* Begin Procedure Script ************/ 
+BEGIN 
+    /** Return the new users that arrived in shop, and time of the arrival, 
+        that are not mapped on the  USERENTRANCE table **/
+
+   var_out = select t1.&quot;UserId&quot; as &quot;UserId&quot;, min(t1.&quot;Date&quot;) as &quot;Date&quot;
+            FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot;  t1
+            left outer join &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_USERENTRANCE&quot; t2
+            on t2.&quot;UserId&quot; = t1.&quot;UserId&quot;
+            where t1.&quot;BeaconId&quot; = 'b01' --To be replaced as parameter
+            and t1.&quot;Date&quot; &lt;= current_timestamp
+            and t1.&quot;Date&quot; &gt; ADD_SECONDS(current_timestamp, -90000 ) --Function do not accept Input Param :'(
+            and t2.&quot;UserId&quot; is null
+            group by t1.&quot;UserId&quot;;
+ 
+
+  
+END; /********* End Procedure Script ************/ </definition>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Script_View">
+  <attributes>
+    <attribute id="UserId" key="true" order="1">
+      <descriptions defaultDescription="UserId"/>
+      <keyMapping columnObjectName="Script_View" columnName="UserId"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Date" order="2" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Date"/>
+      <measureMapping columnObjectName="Script_View" columnName="Date"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

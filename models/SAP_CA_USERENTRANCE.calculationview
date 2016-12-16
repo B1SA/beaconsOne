@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_USERENTRANCE" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="SAP_CA_USERENTRANCE"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="b1sa.beaconsOne.data::USERSENTRANCE" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::USERSENTRANCE"/>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="b1sa.beaconsOne.data::USERSENTRANCE">
+  <attributes>
+    <attribute id="UserId" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UserId"/>
+      <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::USERSENTRANCE" columnName="UserId"/>
+    </attribute>
+    <attribute id="Date" key="true" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date"/>
+      <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::USERSENTRANCE" columnName="Date"/>
+    </attribute>
+    <attribute id="RecWelcOffer" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RecWelcOffer"/>
+      <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::USERSENTRANCE" columnName="RecWelcOffer"/>
+    </attribute>
+    <attribute id="LeftShop" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LeftShop"/>
+      <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::USERSENTRANCE" columnName="LeftShop"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario> 

@@ -1,0 +1,10 @@
+//Users inside the Shop table
+table.schemaName = "BEACONSONE";
+table.tableType = COLUMNSTORE;
+table.columns = [
+        {name = "UserId";    sqlType = NVARCHAR; nullable = false; length = 20;},
+        {name = "Date"; sqlType = TIMESTAMP; nullable = false;},
+        {name = "RecWelcOffer"; sqlType = INTEGER;  nullable = false;},
+        {name = "LeftShop"; sqlType = INTEGER; nullable = false;}
+     ]; 
+table.primaryKey.pkcolumns = ["UserId", "Date"];

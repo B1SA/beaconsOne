@@ -1,0 +1,7 @@
+/* To be used as entry point for the Beacons Data */
+
+service {
+    "BEACONSONE"."b1sa.beaconsOne.data::BEACONSLOG" as "Beacons"
+    update forbidden
+    delete forbidden;
+}
