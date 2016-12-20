@@ -1,11 +1,14 @@
 /** Send Welcome Offer for each new user that have not 
     received it yet via Apple Push Notification (APN) **/
+    
+    
 var output = {};
 $.response.contentType = "application/json";
 
 $.import("b1sa.beaconsOne.lib", "constants");
 $.import("b1sa.beaconsOne.lib", "users");
 $.import("b1sa.beaconsOne.lib", "B1XAFLogic");
+$.import("b1sa.beaconsOne.lib", "APN");
 
 try {
 	//Initate SQL connection
@@ -43,6 +46,10 @@ try {
 		}
 	}
 
+	
+	//Send APN 
+	$.b1sa.beaconsOne.lib.APN.send(toWelcUsers);
+	
 	//connection.commit();
 	connection.close();
 	output.APN = toWelcUsers;
