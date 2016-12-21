@@ -1,0 +1,8 @@
+PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures::setUserWelcOffer" (
+                                                    in  userId  NVARCHAR(20),
+                                                    in  date    timestamp)
+LANGUAGE SQLSCRIPT AS
+BEGIN
+    update "BEACONSONE"."b1sa.beaconsOne.data::USERSENTRANCE" set "RecWelcOffer" = 1 
+    where "UserId" = :userId and "Date" = :date;
+END

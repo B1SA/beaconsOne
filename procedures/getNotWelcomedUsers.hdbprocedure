@@ -14,4 +14,4 @@ BEGIN
         and     "Date" <= current_timestamp
         and     "Date" > ADD_SECONDS(current_timestamp, - :interval);
         
-END;
+END; 

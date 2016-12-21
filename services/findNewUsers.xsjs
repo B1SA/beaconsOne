@@ -1,5 +1,5 @@
+/** To be called via XSJOB **/
 /** Populates newUser table with new records **/
-
 var output = {};
 $.response.contentType = "application/json";
 $.import("b1sa.beaconsOne.lib", "constants");
@@ -21,7 +21,6 @@ try {
 	output.EntBeacon = $.b1sa.beaconsOne.lib.constants.getEntranceBeacon();
 
 	//Call Procedures to retrieve new users on friendly format
-	
 	var newUsers = $.b1sa.beaconsOne.lib.users.formatData(
 	                                getNewUsers(
 	                                        output.EntBeacon, 

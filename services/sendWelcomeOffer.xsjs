@@ -1,6 +1,6 @@
+/** To be called via XSJOB **/
 /** Send Welcome Offer for each new user that have not 
-    received it yet via Apple Push Notification (APN) **/
-    
+received it yet via Apple Push Notification (APN) **/
     
 var output = {};
 $.response.contentType = "application/json";
@@ -13,8 +13,12 @@ $.import("b1sa.beaconsOne.lib", "APN");
 try {
 	//Initate SQL connection
 	var connection = $.hdb.getConnection();
+	//List of Users to receive a Welcome Offer
 	var getNotWelcUser = connection.loadProcedure("BEACONSONE",
 		"b1sa.beaconsOne.procedures::getNotWelcomedUsers");
+	//Procedure to update User status
+	var setUserWelcOffer = connection.loadProcedure("BEACONSONE",
+		"b1sa.beaconsOne.procedures::setUserWelcOffer");
 	
 	//Get Constant Values
 	output.Interval = $.b1sa.beaconsOne.lib.constants.getUserInterval();
@@ -44,13 +48,14 @@ try {
 		} catch (e) {
 			toWelcUsers[i].welcOffer = recom.body.asString();
 		}
+		//Update user status (ReceivedWelcomeOffer = true)
+		setUserWelcOffer(toWelcUsers[i].UserId,toWelcUsers[i].Date);
 	}
-
 	
 	//Send APN 
 	$.b1sa.beaconsOne.lib.APN.send(toWelcUsers);
 	
-	//connection.commit();
+	connection.commit();
 	connection.close();
 	output.APN = toWelcUsers;
 
