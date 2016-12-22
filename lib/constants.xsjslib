@@ -3,14 +3,16 @@
 */
 
 //Environment Constants
-var b1Host = "52.67.35.51"; // Currently AWS (Alexa system) to be replaced by B1 CDS
+var host = "52.67.35.51"; // Currently AWS (Alexa system) to be replaced by B1 CDS
+var hanaUser = "SYSTEM";
+var hanaPass = "manager";
 //Credential Constants
 var b1User = "manager";
 var b1Pass = "1234";
 var b1Comp = "SBODEMOUS";
 
 //Application Constants
-var entraceBeaconId = "b01";
+var entraceBeaconId = "55606";
 var logInterval = 600;   // in seconds. Time to check log and refresh control tables
 var userInterval = 906000;  // Refresh interval to provide user location
 
@@ -27,9 +29,18 @@ function getB1Company(){
     return b1Comp;
 }
 
-function getB1Host(){
-    return b1Host;
+function getHost(){
+    return host;
 }
+
+function getHanaUser(){
+    return hanaUser;
+}
+
+function getHanaPass(){
+    return hanaPass;
+}
+
 
 function getEntranceBeacon(){
     return entraceBeaconId;

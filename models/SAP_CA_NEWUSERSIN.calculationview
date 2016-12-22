@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_NEWUSERSIN" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" calculationScenarioType="SCRIPT_BASED" scriptParametersCaseSensitive="true" enforceSqlExecution="false">
 <descriptions defaultDescription="SAP_CA_NEWUSERSIN"/>
-<localVariables/>
+<localVariables>
+  <variable id="ENTRANCEBEACON" parameter="true">
+    <descriptions defaultDescription="ENTRANCEBEACON"/>
+    <variableProperties datatype="NVARCHAR" length="20" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection multiLine="false"/>
+      <defaultRange/>
+    </variableProperties>
+  </variable>
+
+  <variable id="INTERVAL" parameter="true">
+    <descriptions defaultDescription="INTERVAL"/>
+    <variableProperties datatype="INTEGER" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection multiLine="false"/>
+      <defaultRange/>
+    </variableProperties>
+  </variable>
+</localVariables>
 <variableMappings/>
 <dataSources/>
 <calculationViews>
@@ -11,6 +29,8 @@
       <viewAttribute id="Date" datatype="TIMESTAMP"/>
     </viewAttributes>
     <calculatedViewAttributes/>
+    <localVariable>#ENTRANCEBEACON</localVariable>
+    <localVariable>#INTERVAL</localVariable>
     <definition>/********* Begin Procedure Script ************/ 
 BEGIN 
     /** Return the new users that arrived in shop, and time of the arrival, 
@@ -20,9 +40,9 @@ BEGIN
             FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot;  t1
             left outer join &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_USERENTRANCE&quot; t2
             on t2.&quot;UserId&quot; = t1.&quot;UserId&quot;
-            where t1.&quot;BeaconId&quot; = 'b01' --To be replaced as parameter
+            where t1.&quot;BeaconId&quot; = :ENTRANCEBEACON --To be replaced as parameter
             and t1.&quot;Date&quot; &lt;= current_timestamp
-            and t1.&quot;Date&quot; &gt; ADD_SECONDS(current_timestamp, -90000 ) --Function do not accept Input Param :'(
+            and t1.&quot;Date&quot; &gt; ADD_SECONDS(current_timestamp, -:INTERVAL ) --Function do not accept Input Param :'(
             and t2.&quot;UserId&quot; is null
             group by t1.&quot;UserId&quot;;
  
