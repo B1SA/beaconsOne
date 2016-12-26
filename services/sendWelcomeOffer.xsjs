@@ -61,7 +61,7 @@ try {
 
 	//Build the response
 	$.response.status = $.net.http.OK;
-	$.response.setBody(JSON.stringify(output));
+	$.response.setBody(JSON.stringify(toWelcUsers));
 } catch (e) {
 	$.trace.warning("call B1 Xapp Framework  Exception: " + e.message);
 	$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
