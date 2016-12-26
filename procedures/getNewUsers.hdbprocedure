@@ -8,7 +8,7 @@ PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures::getNewUsers" (
    READS SQL DATA AS
 BEGIN
     
-    users = SELECT "UserId", "Date"
+    users = SELECT DISTINCT "UserId", "Date"
             FROM     "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_NEWUSERSIN"
 	                (placeholder."$$INTERVAL$$"=>:interval,
 	                 placeholder."$$ENTRANCEBEACON$$" => :entranceBeacon);
