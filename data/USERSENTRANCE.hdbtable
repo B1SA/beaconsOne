@@ -8,3 +8,6 @@ table.columns = [
         {name = "LeftShop"; sqlType = INTEGER; nullable = false;}
      ]; 
 table.primaryKey.pkcolumns = ["UserId", "Date"];
+table.indexes =  [
+	{name = "WELCOFFE"; unique = false; indexColumns = ["RecWelcOffer"];},
+	{name = "LEFTSHOP"; unique = false; indexColumns = ["LeftShop"];}];

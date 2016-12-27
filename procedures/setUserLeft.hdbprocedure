@@ -1,0 +1,10 @@
+PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures::setUserLeft" (
+                                                    in  userId  NVARCHAR(20),
+                                                    in  date    TIMESTAMP)
+LANGUAGE SQLSCRIPT AS
+BEGIN
+    update "BEACONSONE"."b1sa.beaconsOne.data::USERSENTRANCE" 
+    set "LeftShop" = 1 
+    where "UserId" = :userId
+    and "Date" = :date;
+END; 

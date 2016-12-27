@@ -16,7 +16,7 @@
 BEGIN 
     /*Retrieve the last location of each user*/
     var_out = 
-        SELECT &quot;UserId&quot;,&quot;BeaconId&quot;,&quot;Date&quot;
+        SELECT DISTINCT &quot;UserId&quot;,&quot;BeaconId&quot;,&quot;Date&quot;
         FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot; s1
         WHERE &quot;Date&quot; = (
                 SELECT MAX(&quot;Date&quot;) 

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="2.3" id="SAP_CA_NOTACTIVEUSERS" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" calculationScenarioType="TREE_BASED" dataCategory="DIMENSION" dimensionType="STANDARD" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation">
+  <descriptions defaultDescription="Users that left the shop"/>
+  <localVariables>
+    <variable id="INTERVAL" parameter="true">
+      <descriptions defaultDescription="INTERVAL"/>
+      <variableProperties datatype="INTEGER" mandatory="false">
+        <valueDomain type="empty"/>
+        <selection type="SingleValue"/>
+      </variableProperties>
+    </variable>
+  </localVariables>
+  <variableMappings/>
+  <informationModelLayout relativeWidthScenario="36"/>
+  <dataSources>
+    <DataSource id="SAP_CA_LASTUSERPOSITION" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/b1sa.beaconsOne.models/calculationviews/SAP_CA_LASTUSERPOSITION</resourceUri>
+    </DataSource>
+    <DataSource id="SAP_CA_USERENTRANCE" type="CALCULATION_VIEW">
+      <viewAttributes allViewAttributes="true"/>
+      <resourceUri>/b1sa.beaconsOne.models/calculationviews/SAP_CA_USERENTRANCE</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:ProjectionView" id="LastUserPosition" filterExpressionLanguage="SQL">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UserId"/>
+        <viewAttribute id="Date"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#SAP_CA_LASTUSERPOSITION">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+      </input>
+      <filter>&quot;Date&quot; &lt; ADD_SECONDS(current_timestamp, (($$INTERVAL$$)*-1))</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:ProjectionView" id="UserInShop" filterExpressionLanguage="COLUMN_ENGINE">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UserId"/>
+        <viewAttribute id="Date"/>
+        <viewAttribute id="LeftShop"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#SAP_CA_USERENTRANCE">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LeftShop" source="LeftShop"/>
+      </input>
+      <filter>&quot;LeftShop&quot;!=1</filter>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+      <descriptions/>
+      <viewAttributes>
+        <viewAttribute id="UserId"/>
+        <viewAttribute id="Date"/>
+        <viewAttribute id="LastDate"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="#LastUserPosition">
+        <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="LastDate" source="Date"/>
+      </input>
+      <input node="#UserInShop">
+        <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+      </input>
+      <joinAttribute name="UserId"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Join_1">
+    <descriptions/>
+    <attributes>
+      <attribute id="UserId" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="UserId"/>
+        <keyMapping columnObjectName="Join_1" columnName="UserId"/>
+      </attribute>
+      <attribute id="Date" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="Date"/>
+        <keyMapping columnObjectName="Join_1" columnName="Date"/>
+      </attribute>
+      <attribute id="LastDate" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="LastDate"/>
+        <keyMapping columnObjectName="Join_1" columnName="LastDate"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures/>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="99" y="87"/>
+        <rectangleSize/>
+      </shape>
+      <shape expanded="true" modelObjectName="LastUserPosition" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="22" y="261"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="false" modelObjectName="UserInShop" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="176" y="261"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="99" y="165"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

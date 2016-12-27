@@ -70,7 +70,7 @@ try {
 	//Add sent offers to the output
 	output.APN = APN;
 
-	//connection.commit();
+	connection.commit();
 	connection.close();
 
 	//Build the response
