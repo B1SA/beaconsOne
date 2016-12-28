@@ -31,7 +31,10 @@ try {
 	//Add sent offers to the output
 	output.UsersLeft = notActiveUsers;
 
-	connection.commit();
+	if ($.b1sa.beaconsOne.lib.constants.shouldCommit()){
+	    connection.commit();    
+	}
+	
 	connection.close();
 
 	//Build the response

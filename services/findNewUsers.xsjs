@@ -31,7 +31,11 @@ try {
 		newUsers[i].status = setUserEntrance(newUsers[i].UserId,newUsers[i].Date);
 		newUsers[i].status = newUsers[i].status.EX_MESSAGE;
 	}
-	connection.commit();
+	
+	if ($.b1sa.beaconsOne.lib.constants.shouldCommit()){
+	    connection.commit();    
+	}
+	
 	connection.close();
 
 	output.NewUsers = newUsers;
