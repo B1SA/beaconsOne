@@ -1,5 +1,5 @@
 PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures::getUsersPosition"(
-		IN beaconId INTEGER, 
+		IN beaconId NVARCHAR(25), 
 		IN interval INTEGER, 
 		OUT users "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_LASTUSERPOSITION"
 	)
@@ -8,22 +8,19 @@ PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures::getUsersPosition"(
 	READS SQL DATA
 AS 
 BEGIN
-	IF (:beaconId > 0) THEN
-		users = SELECT "UserId", "BeaconId", "Date"
+
+	IF (:beaconId is null ) THEN
+        users = SELECT "UserId", "BeaconId", "Date"
 				FROM "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_LASTUSERPOSITION"
 				WHERE "Date" <= current_timestamp
-					AND "Date" > ADD_SECONDS(
-							current_timestamp, 
-							- (:interval)
-						)
-					AND "BeaconId" = :beaconId;
+				AND "Date" > ADD_SECONDS(current_timestamp, - (:interval));		
+				
 	ELSE
-		users = SELECT "UserId", "BeaconId", "Date"
+	    -- Specifi Beacon
+        users = SELECT "UserId", "BeaconId", "Date"
 				FROM "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_LASTUSERPOSITION"
 				WHERE "Date" <= current_timestamp
-					AND "Date" > ADD_SECONDS(
-							current_timestamp, 
-							- (:interval)
-						);
+				AND "Date" > ADD_SECONDS(current_timestamp, - (:interval))
+				AND "BeaconId" = :beaconId;
 	END IF;
 END;

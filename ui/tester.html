@@ -73,6 +73,11 @@
             <a type="button" class="btn btn-info btn-lg" id="getUR">Get User Recom</a>
           </p>
         </div>
+	    <div class="col-md-4 text-center">
+          <p class="text-center">
+            <a type="button" class="btn btn-info btn-lg" id="GetUE">Get Users Entrance</a>
+          </p>
+        </div>
         <div class="col-md-4 text-center">
           <p class="text-center">
             <a type="button" class="btn btn-info btn-lg" id="findUL">Get Users Left</a>
@@ -161,6 +166,10 @@ $(document).ready(function(){
 	
 	$("#findUL").click(function(){
 		makeCall("../services/findUsersLeft.xsjs");
+	});
+	
+	$("#GetUE").click(function(){	
+		makeCall("../services/getUsersPosition.xsjs?entrance=1");
 	});
 
 	$('#resulModal').on('hidden.bs.modal', function () {
