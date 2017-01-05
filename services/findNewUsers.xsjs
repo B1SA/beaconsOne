@@ -28,8 +28,16 @@ try {
 	
 	//Insert new users on NewUsersTable 
 	for (var i = 0; i < newUsers.length; i++) {
-		newUsers[i].status = setUserEntrance(newUsers[i].UserId,newUsers[i].Date);
-		newUsers[i].status = newUsers[i].status.EX_MESSAGE;
+		var err = setUserEntrance(
+		            newUsers[i].UserId,
+		            newUsers[i].Date,
+		            output.Interval)
+		
+		if (err.INSERERROR){
+		    //Error, entry already exists
+		    //Delete from new users array
+		    newUsers.splice(i,1);
+		}
 	}
 	
 	if ($.b1sa.beaconsOne.lib.constants.shouldCommit()){

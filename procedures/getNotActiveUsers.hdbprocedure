@@ -9,5 +9,5 @@ PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures::getNotActiveUsers" (
 BEGIN
     users = SELECT "UserId", "Date", "LastDate"
     FROM "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_NOTACTIVEUSERS"
-	(placeholder."$$INTERVAL$$"=>- :interval);
+	(placeholder."$$INTERVAL$$"=> :interval);
 END; 

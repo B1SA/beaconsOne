@@ -1,24 +1,31 @@
 PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures::setUserEntrance" (
                                             in  userId          NVARCHAR(20),
                                             in  entrDate    TIMESTAMP,
-                                            out ex_message      NVARCHAR(255))
+                                            in  interval    INTEGER,
+                                            out inserError  INTEGER)
 LANGUAGE SQLSCRIPT AS
 BEGIN
 
     declare recordExists    integer;
     
     recordExists = 0;
+    inserError = 0;
     
+    
+    /**f this user was here in between the date or and the past (-interval)
+    t is not a new user **/
     select  count ("UserId") into recordExists 
-    from    "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_USERENTRANCE"
-    where   "UserId" = :userId
-    and     "Date" = :entrDate;
+    from "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_USERENTRANCE"
+    where "UserId" = :userId
+    and "Date" <= :entrDate
+    and "Date" > ADD_SECONDS(:entrDate, -:interval );
+    
     
     if (:recordExists = 0) then
         insert into "BEACONSONE"."b1sa.beaconsOne.data::USERSENTRANCE" 
         values (:userId, :entrDate, 0, 0);
-        
-        ex_message := 'User "' || :userId || '" inserted successfully'; 
+    else 
+        inserError = 1; 
     end if;
     
 

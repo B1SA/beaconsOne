@@ -9,8 +9,10 @@ var b1Comp = "SBODEMOUS";
 
 //Application Constants
 var entraceBeaconId = "55606";
-var logInterval = 600;   // in seconds. Time to check log and refresh control tables
-var userInterval = 906000;  // Interval (in sec) to identify New users, User whos left, last position etc..
+var logInterval = 300;   // in seconds. Time to check log and refresh control tables
+// Interval (in sec) to identify New users, User whos left, last position etc..
+var userInterval = 300; // One Week 
+
 
 //Debug Constants
 var doCommit = true; //commit data to user tables

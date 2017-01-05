@@ -8,7 +8,7 @@ function callB1XAF(path, method, body, sessionID, routeID) {
 			routeID + ")");
 
 		//B1SL.xshttpdest
-		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1XAFl");
+		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1XAF");
 		var client = new $.net.http.Client();
 
 		var req = new $.web.WebRequest(method, path);

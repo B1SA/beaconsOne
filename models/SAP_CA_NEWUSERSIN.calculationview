@@ -36,9 +36,9 @@ BEGIN
     /** Return the new users that arrived in shop, and time of the arrival, 
         that are not mapped on the  USERENTRANCE table **/
 
-   var_out = select t1.&quot;UserId&quot; as &quot;UserId&quot;, min(t1.&quot;Date&quot;) as &quot;Date&quot;
+   var_out = select t1.&quot;UserId&quot; as &quot;UserId&quot;, max(t1.&quot;Date&quot;) as &quot;Date&quot;
             FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot;  t1
-            left outer join &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_USERENTRANCE&quot; t2
+            left outer join &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_ACTIVEUSERS&quot; t2
             on t2.&quot;UserId&quot; = t1.&quot;UserId&quot;
             where t1.&quot;BeaconId&quot; = :ENTRANCEBEACON --To be replaced as parameter
             and t1.&quot;Date&quot; &lt;= current_timestamp
@@ -46,7 +46,7 @@ BEGIN
             and t2.&quot;UserId&quot; is null
             group by t1.&quot;UserId&quot;;
  
-
+ 
   
 END; /********* End Procedure Script ************/ </definition>
   </calculationView>

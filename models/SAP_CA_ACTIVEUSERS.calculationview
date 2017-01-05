@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_ACTIVEUSERS" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="SAP_CA_USERENTRANCE"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAP_CA_USERENTRANCE" type="CALCULATION_VIEW">
+    <viewAttributes allViewAttributes="true"/>
+    <resourceUri>/b1sa.beaconsOne.models/calculationviews/SAP_CA_USERENTRANCE</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ActiveUsers" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+      <viewAttribute id="Date"/>
+      <viewAttribute id="LeftShop"/>
+      <viewAttribute id="RecWelcOffer"/>
+      <viewAttribute id="UserId"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#SAP_CA_USERENTRANCE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LeftShop" source="LeftShop"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RecWelcOffer" source="RecWelcOffer"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+    </input>
+    <filter>&quot;LeftShop&quot;!=1</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="ActiveUsers">
+  <attributes>
+    <attribute id="UserId" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UserId"/>
+      <keyMapping columnObjectName="ActiveUsers" columnName="UserId"/>
+    </attribute>
+    <attribute id="Date" key="true" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date"/>
+      <keyMapping columnObjectName="ActiveUsers" columnName="Date"/>
+    </attribute>
+    <attribute id="RecWelcOffer" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RecWelcOffer"/>
+      <keyMapping columnObjectName="ActiveUsers" columnName="RecWelcOffer"/>
+    </attribute>
+    <attribute id="LeftShop" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LeftShop"/>
+      <keyMapping columnObjectName="ActiveUsers" columnName="LeftShop"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="ActiveUsers" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="37" y="304"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
