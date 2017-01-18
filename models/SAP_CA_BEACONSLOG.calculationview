@@ -4,9 +4,9 @@
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="T_IOT_9EB9BB5F7BD3BD4A437F" type="DATA_BASE_TABLE">
+  <DataSource id="T_IOT_28D67462AE6A989DB33B" type="DATA_BASE_TABLE">
     <viewAttributes allViewAttributes="true"/>
-    <columnObject schemaName="BEACONSONE" columnObjectName="T_IOT_9EB9BB5F7BD3BD4A437F"/>
+    <columnObject schemaName="BEACONSONE" columnObjectName="T_IOT_28D67462AE6A989DB33B"/>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -17,7 +17,7 @@
       <viewAttribute id="C_USER_ID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="#T_IOT_9EB9BB5F7BD3BD4A437F">
+    <input node="#T_IOT_28D67462AE6A989DB33B">
       <mapping xsi:type="Calculation:AttributeMapping" target="C_BEACON_ID" source="C_BEACON_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="C_TIMESTAMP" source="C_TIMESTAMP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="C_USER_ID" source="C_USER_ID"/>
