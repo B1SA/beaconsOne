@@ -1,0 +1,9 @@
+{
+    "description": "Find Users that left the shop",
+    "action": "b1sa.beaconsOne.services:findUsersLeft.xsjs::run",
+    "schedules": [
+       {
+          "xscron": "* * * * * * */15"
+       }
+    ]
+}

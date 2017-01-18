@@ -1,5 +1,5 @@
 /*
-    This library provide generic functions and hardcoded constants
+    This library provide hardcoded constants
 */
 
 //Credential Constants
@@ -9,13 +9,11 @@ var b1Comp = "SBODEMOUS";
 
 //Application Constants
 var entraceBeaconId = "55606";
-var logInterval = 300;   // in seconds. Time to check log and refresh control tables
-// Interval (in sec) to identify New users, User whos left, last position etc..
 var userInterval = 300; // One Week 
-
 
 //Debug Constants
 var doCommit = true; //commit data to user tables
+var jobsActive = true; //Services are running 
 
 
 
@@ -40,6 +38,12 @@ function getUserInterval(){
     return userInterval;
 }
 
+// Commit DB changes
 function shouldCommit(){
     return doCommit;
+}
+
+// Prepare service outputs according to XSJOB prerequisites
+function jobsActivaded(){
+    return jobsActive;
 }

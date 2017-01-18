@@ -1,0 +1,9 @@
+{
+    "description": "Find new users that arrived in shop",
+    "action": "b1sa.beaconsOne.services:sendWelcomeOffer.xsjs::run",
+    "schedules": [
+       {
+          "xscron": "* * * * * * */15"
+       }
+    ]
+}

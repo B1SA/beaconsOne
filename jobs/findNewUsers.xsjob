@@ -1,0 +1,12 @@
+{
+    "description": "Send welcome offer to new users",
+    "action": "b1sa.beaconsOne.services:findNewUsers.xsjs::run",
+    "schedules": [
+       {
+            "xscron": "* * * * * * */15",
+            "parameter": {
+                 "job": 1
+             }          
+       }
+    ]
+}
