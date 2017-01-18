@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_USERDURATION" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="CA_USERDURATION"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAP_CA_BEACONSLOG" type="CALCULATION_VIEW">
+    <viewAttributes allViewAttributes="true"/>
+    <resourceUri>/b1sa.beaconsOne.models/calculationviews/SAP_CA_BEACONSLOG</resourceUri>
+  </DataSource>
+  <DataSource id="Projection_2$$$$SAP_CA_BEACONSLOG$$" type="CALCULATION_VIEW">
+    <viewAttributes allViewAttributes="true"/>
+    <resourceUri>/b1sa.beaconsOne.models/calculationviews/SAP_CA_BEACONSLOG</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="UserId"/>
+      <viewAttribute id="BeaconId"/>
+      <viewAttribute id="BeaconId_1"/>
+      <viewAttribute id="Date"/>
+      <viewAttribute id="Date_1"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+    </input>
+    <input node="#Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId_1" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date_1" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+    </input>
+    <joinAttribute name="UserId"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="UserId"/>
+      <viewAttribute id="BeaconId"/>
+      <viewAttribute id="Date"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#SAP_CA_BEACONSLOG">
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="UserId"/>
+      <viewAttribute id="BeaconId"/>
+      <viewAttribute id="Date"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#Projection_2$$$$SAP_CA_BEACONSLOG$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="UserId" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UserId"/>
+      <keyMapping columnObjectName="Join_1" columnName="UserId"/>
+    </attribute>
+    <attribute id="BeaconId" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BeaconId"/>
+      <keyMapping columnObjectName="Join_1" columnName="BeaconId"/>
+    </attribute>
+    <attribute id="BeaconId_1" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BeaconId_1"/>
+      <keyMapping columnObjectName="Join_1" columnName="BeaconId_1"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Date" order="4" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Date"/>
+      <measureMapping columnObjectName="Join_1" columnName="Date"/>
+    </measure>
+    <measure id="Date_1" order="5" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Date_1"/>
+      <measureMapping columnObjectName="Join_1" columnName="Date_1"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+    <measure id="CC_1" hidden="false" order="6" aggregationType="sum" measureType="simple" datatype="INTEGER">
+      <descriptions defaultDescription="DIF_SECONDS"/>
+      <formula>secondsbetween(&quot;Date&quot;,&quot;Date_1&quot;)</formula>
+    </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="86" y="210"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="81" y="425"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="277" y="438"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
