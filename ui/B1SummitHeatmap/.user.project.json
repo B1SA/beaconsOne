@@ -1,0 +1,401 @@
+{
+  "run": [
+    {
+      "filePath": "/webapp/svg/B1SummitHeatmap.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 6311601,
+        "displayName": "Run B1SummitHeatmap.html",
+        "lastRunTimeStamp": 1484814817948
+      }
+    },
+    {
+      "filePath": "/webapp/svg/store_svg_root.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 6851169,
+        "displayName": "Run store_svg_root.html",
+        "lastRunTimeStamp": 1484813610717
+      }
+    },
+    {
+      "filePath": "/webapp/svg/store_svg.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 1229018,
+        "displayName": "Run store_svg.html",
+        "lastRunTimeStamp": 1484813335671
+      }
+    },
+    {
+      "filePath": "/webapp/svg/store_svg_loaded.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 4412669,
+        "displayName": "Run store_svg_loaded.html",
+        "lastRunTimeStamp": 1482133061099
+      }
+    },
+    {
+      "filePath": "/webapp/svg/store_svg_plugin.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 6711747,
+        "displayName": "Run store_svg_plugin.html",
+        "lastRunTimeStamp": 1482126697364
+      }
+    },
+    {
+      "filePath": "/webapp/svg/test.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 2774807,
+        "displayName": "Run test.html",
+        "lastRunTimeStamp": 1481873004838
+      }
+    },
+    {
+      "filePath": "/webapp/heatmapjs/examples/svg-area-heatmap/svg.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 5263436,
+        "displayName": "Run svg.html 1",
+        "lastRunTimeStamp": 1481789711735
+      }
+    },
+    {
+      "filePath": "/webapp/heatmapjs/examples/unblurred-datapoints/unblurred.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 5994064,
+        "displayName": "Run unblurred.html 1",
+        "lastRunTimeStamp": 1481779960980
+      }
+    },
+    {
+      "filePath": "/webapp/heatmapjs/examples/mousemove-heatmap/mousemove-heatmap.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 1678723,
+        "displayName": "Run mousemove-heatmap.html",
+        "lastRunTimeStamp": 1481779823432
+      }
+    },
+    {
+      "filePath": "/webapp/examples/googlemaps-heatmap/googlemap.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 2461418,
+        "displayName": "Run googlemap.html",
+        "lastRunTimeStamp": 1481700303587
+      }
+    },
+    {
+      "filePath": "/webapp/examples/leaflet-heatmap/leaflet.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 3032744,
+        "displayName": "Run leaflet.html",
+        "lastRunTimeStamp": 1481699733171
+      }
+    },
+    {
+      "filePath": "/webapp/examples/unblurred-datapoints/unblurred.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 5696600,
+        "displayName": "Run unblurred.html",
+        "lastRunTimeStamp": 1481698250006
+      }
+    },
+    {
+      "filePath": "/webapp/index.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 9508432,
+        "displayName": "Run index.html",
+        "lastRunTimeStamp": 1481697150176
+      }
+    },
+    {
+      "filePath": "/webapp/examples/unblurred-datapoints/index.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 2568071,
+        "displayName": "Run index.html 5",
+        "lastRunTimeStamp": 1481697139983
+      }
+    },
+    {
+      "filePath": "/webapp/examples/svg-area-heatmap/svg.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 3536952,
+        "displayName": "Run svg.html",
+        "lastRunTimeStamp": 1481697089413
+      }
+    },
+    {
+      "filePath": "/webapp/examples/raindrops/raindrops.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 3346732,
+        "displayName": "Run raindrops.html",
+        "lastRunTimeStamp": 1481696721802
+      }
+    },
+    {
+      "filePath": "/webapp/Component.js",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "urlParametersNotNeeded": false,
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "fiorirunner",
+        "id": 198269,
+        "displayName": "Run Component.js",
+        "lastRunTimeStamp": 1481694081590
+      }
+    },
+    {
+      "filePath": "/webapp/examples/svg-area-heatmap/index.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 1480100,
+        "displayName": "Run index.html 1",
+        "lastRunTimeStamp": 1481693962635
+      }
+    },
+    {
+      "filePath": "/webapp/examples/heatmap-legend/index.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 9049103,
+        "displayName": "Run index.html 4",
+        "lastRunTimeStamp": 1481692577456
+      }
+    },
+    {
+      "filePath": "/webapp/examples/mousemove-heatmap/index.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 5556397,
+        "displayName": "Run index.html 3",
+        "lastRunTimeStamp": 1481692521960
+      }
+    },
+    {
+      "filePath": "/webapp/examples/raindrops/index.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 8169566,
+        "displayName": "Run index.html 2",
+        "lastRunTimeStamp": 1481692395207
+      }
+    },
+    {
+      "filePath": "/webapp/SvgHeatmap.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "backendSystem": [],
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 6753098,
+        "displayName": "Run SvgHeatmap.html",
+        "lastRunTimeStamp": 1481691820132
+      }
+    }
+  ]
+}

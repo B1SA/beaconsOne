@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>SME Summit 2017-Digital Retail Solution Demo</title>
+
+		<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_bluecrystal"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"B1SummitHeatmap": ""}'>
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<script>
+		/**
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "B1SummitHeatmap"
+					})
+				}).placeAt("content");
+			});
+		**/
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.App ({
+					pages: [
+						new sap.m.Page({
+							title: "Heatmap of Customers in Store", 
+							enableScrolling : false,
+							content: [ new sap.ui.core.ComponentContainer({
+								height : "100%", name : "B1SummitHeatmap"
+							})]
+						})
+					]
+				}).placeAt("content");
+			});
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	</body>
+
+</html>
