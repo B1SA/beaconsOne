@@ -9,41 +9,49 @@ var b1Comp = "SBODEMOUS";
 
 //Application Constants
 var entraceBeaconId = "55606";
-var userInterval = 300; // One Week 
+
+//Interval for a user to be considered Active
+var userInterval = 300; // 5 minutes
+
+//Interval near a beacon in order to a user receive an Item Recommendation
+var recomInterval= 120; // 2 minutes
 
 //Debug Constants
 var doCommit = true; //commit data to user tables
 var jobsActive = true; //Services are running 
 
+/******** Constant retrival functions ********/
 
-
-
-function getB1User(){
-    return b1User;
+function getB1User() {
+	return b1User;
 }
 
-function getB1Password(){
-    return b1Pass;
+function getB1Password() {
+	return b1Pass;
 }
 
-function getB1Company(){
-    return b1Comp;
+function getB1Company() {
+	return b1Comp;
 }
 
-function getEntranceBeacon(){
-    return entraceBeaconId;
+function getEntranceBeacon() {
+	return entraceBeaconId;
 }
 
-function getUserInterval(){
-    return userInterval;
+function getUserInterval() {
+	return userInterval;
+}
+
+function getRecomIntervall() {
+	return recomInterval;
 }
 
 // Commit DB changes
-function shouldCommit(){
-    return doCommit;
+function shouldCommit() {
+	return doCommit;
 }
 
 // Prepare service outputs according to XSJOB prerequisites
-function jobsActivaded(){
-    return jobsActive;
+function jobsActivaded() {
+	return jobsActive;
 }

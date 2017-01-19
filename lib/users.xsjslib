@@ -1,4 +1,4 @@
-//Auxiliar functions to user daat manipulation
+//Auxiliar functions to user data manipulation
 
 
 function formatData(json){

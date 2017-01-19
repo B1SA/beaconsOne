@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_ACTIVEUSERDURATION" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="SAP_CA_ACTIVEUSERDURATION"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAP_CA_USERDURATION" type="CALCULATION_VIEW">
+    <viewAttributes allViewAttributes="true"/>
+    <resourceUri>/b1sa.beaconsOne.models/calculationviews/SAP_CA_USERDURATION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Duration" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+      <viewAttribute id="BeaconIdFrom"/>
+      <viewAttribute id="BeaconIdTo"/>
+      <viewAttribute id="Duration" aggregationType="sum"/>
+      <viewAttribute id="DateFrom" aggregationType="min"/>
+      <viewAttribute id="DateTo" aggregationType="min"/>
+      <viewAttribute id="UserId"/>
+    
+      <viewAttribute id="EntranceDate"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#SAP_CA_USERDURATION">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconIdFrom" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconIdTo" source="BeaconId_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Duration" source="CC_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DateFrom" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DateTo" source="Date_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="EntranceDate" source="EntranceDate"/>
+    </input>
+    <filter>&quot;Duration&quot;&gt;=0</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Duration">
+  <attributes>
+    <attribute id="BeaconIdFrom" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BeaconIdFrom"/>
+      <keyMapping columnObjectName="Duration" columnName="BeaconIdFrom"/>
+    </attribute>
+    <attribute id="BeaconIdTo" key="true" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BeaconIdTo"/>
+      <keyMapping columnObjectName="Duration" columnName="BeaconIdTo"/>
+    </attribute>
+    <attribute id="UserId" key="true" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UserId"/>
+      <keyMapping columnObjectName="Duration" columnName="UserId"/>
+    </attribute>
+    <attribute id="EntranceDate" order="7" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EntranceDate"/>
+      <keyMapping columnObjectName="Duration" columnName="EntranceDate"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Duration" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Duration"/>
+      <measureMapping columnObjectName="Duration" columnName="Duration"/>
+    </measure>
+    <measure id="DateFrom" order="4" aggregationType="min" measureType="simple" key="true">
+      <descriptions defaultDescription="DateFrom"/>
+      <measureMapping columnObjectName="Duration" columnName="DateFrom"/>
+    </measure>
+    <measure id="DateTo" order="5" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="DateTo"/>
+      <measureMapping columnObjectName="Duration" columnName="DateTo"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Duration" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="22" y="245"/>
+      <rectangleSize height="30" width="140"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>
