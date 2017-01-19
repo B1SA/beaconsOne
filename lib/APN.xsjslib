@@ -1,5 +1,10 @@
 /*Library to send Apple Push Notifications*/
 
-function send(json){
+function sendWelcomeOffer(json){
     
 }
+
+function sendItemRecom(json){
+    
+}
+    

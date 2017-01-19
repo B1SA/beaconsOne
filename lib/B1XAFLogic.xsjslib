@@ -111,23 +111,18 @@ function SaleRecommend(cardCode, sessionID, routeID) {
 		"pervasive/IMCC/srv/pa/service/sale_recommend" +
 		"?cardcode=" + cardCode;
 
-	// return dummyRecom(cardCode); //Remove when service is available
-
 	return callB1XAF(path, $.net.http.GET, null, sessionID, routeID);
 }
 
-function SaleRelated(body, sessionID, routeID) {
+function ItemRecommend(body, sessionID, routeID) {
+	//Temporary
+	body.CardCode = 'C20000';
+	body.ItemCode = 'I00005';
+	
 	var path = B1XAddress +
 		"pervasive/IMCC/srv/pa/service/sale_related" +
 		"?cardcode=" + body.CardCode +
 		"&itemcode=" + body.ItemCode;
 
-	//   return dummyRecom(body.CardCode); //Remove when service is available
-
-	return callB1XAF(path, $.net.http.GET, null, sessionID, routeID);
-}
-
-function Environment(sessionID, routeID) {
-	var path = B1XAddress + "platform/env";
 	return callB1XAF(path, $.net.http.GET, null, sessionID, routeID);
 }

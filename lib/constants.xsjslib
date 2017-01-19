@@ -14,7 +14,7 @@ var entraceBeaconId = "55606";
 var userInterval = 300; // 5 minutes
 
 //Interval near a beacon in order to a user receive an Item Recommendation
-var recomInterval= 120; // 2 minutes
+var recomInterval= 10; // 2 minutes
 
 //Debug Constants
 var doCommit = true; //commit data to user tables

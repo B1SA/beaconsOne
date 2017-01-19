@@ -12,4 +12,4 @@ BEGIN
             FROM     "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_NEWUSERSIN"
 	                (placeholder."$$INTERVAL$$"=>:interval,
 	                 placeholder."$$ENTRANCEBEACON$$" => :entranceBeacon);
-END; 
+END;  

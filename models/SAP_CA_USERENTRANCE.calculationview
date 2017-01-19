@@ -28,6 +28,11 @@
       <descriptions defaultDescription="LeftShop"/>
       <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::USERSENTRANCE" columnName="LeftShop"/>
     </attribute>
+  
+    <attribute id="RecItemRecom" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RecItemRecom"/>
+      <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::USERSENTRANCE" columnName="RecItemRecom"/>
+    </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures/>
@@ -41,4 +46,4 @@
     </shape>
   </shapes>
 </layout>
-</Calculation:scenario> 
+</Calculation:scenario>

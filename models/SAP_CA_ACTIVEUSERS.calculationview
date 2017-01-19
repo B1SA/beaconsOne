@@ -16,6 +16,8 @@
       <viewAttribute id="LeftShop"/>
       <viewAttribute id="RecWelcOffer"/>
       <viewAttribute id="UserId"/>
+    
+      <viewAttribute id="RecItemRecom"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="#SAP_CA_USERENTRANCE">
@@ -23,6 +25,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="LeftShop" source="LeftShop"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="RecWelcOffer" source="RecWelcOffer"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="RecItemRecom" source="RecItemRecom"/>
     </input>
     <filter>&quot;LeftShop&quot;!=1</filter>
   </calculationView>
@@ -44,6 +48,11 @@
     <attribute id="LeftShop" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="LeftShop"/>
       <keyMapping columnObjectName="ActiveUsers" columnName="LeftShop"/>
+    </attribute>
+  
+    <attribute id="RecItemRecom" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RecItemRecom"/>
+      <keyMapping columnObjectName="ActiveUsers" columnName="RecItemRecom"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>

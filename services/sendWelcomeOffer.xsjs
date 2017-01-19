@@ -24,12 +24,8 @@ function run() {
 		var setUserWelcOffer = connection.loadProcedure("BEACONSONE",
 			"b1sa.beaconsOne.procedures::setUserWelcOffer");
 
-		//Get Constant Values
-		output.Interval = $.b1sa.beaconsOne.lib.constants.getUserInterval();
-
 		//Call Procedures to retrieve users to welcome on friendly format
-		var toWelcUsers = $.b1sa.beaconsOne.lib.users.formatData(
-			getNotWelcUser(output.Interval));
+		var toWelcUsers = $.b1sa.beaconsOne.lib.users.formatData(getNotWelcUser());
 
 		//Connects to the B1 Xapp Framework
 		var b1XappCon = $.b1sa.beaconsOne.lib.B1XAFLogic.loginCookies();
@@ -69,7 +65,7 @@ function run() {
 		}
 
 		//Send APN 
-		$.b1sa.beaconsOne.lib.APN.send(APN);
+		$.b1sa.beaconsOne.lib.APN.sendWelcomeOffer(APN);
 
 		//Add sent offers to the output
 		output.APN = APN;

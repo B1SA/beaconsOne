@@ -23,7 +23,7 @@ BEGIN
     
     if (:recordExists = 0) then
         insert into "BEACONSONE"."b1sa.beaconsOne.data::USERSENTRANCE" 
-        values (:userId, :entrDate, 0, 0);
+        values (:userId, :entrDate, 0, 0,0);
     else 
         inserError = 1; 
     end if;
