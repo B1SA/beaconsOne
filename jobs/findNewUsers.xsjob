@@ -3,10 +3,7 @@
     "action": "b1sa.beaconsOne.services:findNewUsers.xsjs::run",
     "schedules": [
        {
-            "xscron": "* * * * * * */15",
-            "parameter": {
-                 "job": 1
-             }          
+            "xscron": "* * * * * * */15"        
        }
     ]
 }

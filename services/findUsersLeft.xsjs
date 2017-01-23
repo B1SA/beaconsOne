@@ -2,48 +2,61 @@
 /** Find not Active users in the shop and set them as Left on the Entrance Tab;e **/
 
 var output = {};
-$.response.contentType = "application/json";
+var job = 0;
+
 $.import("b1sa.beaconsOne.lib", "constants");
 $.import("b1sa.beaconsOne.lib", "users");
 
-try {
-	//Initate SQL connection
-	var connection = $.hdb.getConnection();
-	//List of Users to receive a Welcome Offer
-	var getNotActiveUsers = connection.loadProcedure("BEACONSONE",
-		"b1sa.beaconsOne.procedures::getNotActiveUsers");
-	//Procedure to update User status
-	var setUserLeft = connection.loadProcedure("BEACONSONE",
-		"b1sa.beaconsOne.procedures::setUserLeft");
+function run() {
+	try {
+		job = $.b1sa.beaconsOne.lib.constants.jobsActivaded();
 
-	//Get Constant Values
-	output.Interval = $.b1sa.beaconsOne.lib.constants.getUserInterval();
+		//Initate SQL connection
+		var connection = $.hdb.getConnection();
+		//List of Users to receive a Welcome Offer
+		var getNotActiveUsers = connection.loadProcedure("BEACONSONE",
+			"b1sa.beaconsOne.procedures::getNotActiveUsers");
+		//Procedure to update User status
+		var setUserLeft = connection.loadProcedure("BEACONSONE",
+			"b1sa.beaconsOne.procedures::setUserLeft");
 
-	//Call Procedures to retrieve not active users
-	var notActiveUsers = $.b1sa.beaconsOne.lib.users.formatData(
-                        		getNotActiveUsers(output.Interval));
+		//Get Constant Values
+		output.Interval = $.b1sa.beaconsOne.lib.constants.getUserInterval();
 
-	//Set each user as left
-	for (var i = 0; i < notActiveUsers.length; i++) {
-		setUserLeft(notActiveUsers[i].UserId,notActiveUsers[i].Date);
+		//Call Procedures to retrieve not active users
+		var notActiveUsers = $.b1sa.beaconsOne.lib.users.formatData(
+			getNotActiveUsers(output.Interval));
+
+		//Set each user as left
+		for (var i = 0; i < notActiveUsers.length; i++) {
+			setUserLeft(notActiveUsers[i].UserId, notActiveUsers[i].Date);
+		}
+
+		//Add sent offers to the output
+		output.UsersLeft = notActiveUsers;
+
+		if ($.b1sa.beaconsOne.lib.constants.shouldCommit()) {
+			connection.commit();
+		}
+
+		connection.close();
+
+		//Build the response
+		if (job != true) {
+			$.response.contentType = "application/json";
+			$.response.status = $.net.http.OK;
+			$.response.setBody(JSON.stringify(output));
+		}
+	} catch (e) {
+		if (job != true) {
+			$.response.contentType = "application/json";
+			$.trace.warning("call B1 Xapp Framework  Exception: " + e.message);
+			$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
+			$.response.setBody(JSON.stringify({
+				"error": e.message
+			}));
+		}
 	}
-	
-	//Add sent offers to the output
-	output.UsersLeft = notActiveUsers;
-
-	if ($.b1sa.beaconsOne.lib.constants.shouldCommit()){
-	    connection.commit();    
-	}
-	
-	connection.close();
-
-	//Build the response
-	$.response.status = $.net.http.OK;
-	$.response.setBody(JSON.stringify(output));
-} catch (e) {
-	$.trace.warning("call B1 Xapp Framework  Exception: " + e.message);
-	$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
-	$.response.setBody(JSON.stringify({
-		"error": e.message
-	}));
 }
+
+run();

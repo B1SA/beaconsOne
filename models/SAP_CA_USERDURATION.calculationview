@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_USERDURATION" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_USERDURATIONBETA" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="CUBE" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
 <descriptions defaultDescription="CA_USERDURATION"/>
 <localVariables/>
 <variableMappings/>
@@ -8,9 +8,13 @@
     <viewAttributes allViewAttributes="true"/>
     <resourceUri>/b1sa.beaconsOne.models/calculationviews/SAP_CA_BEACONSLOG</resourceUri>
   </DataSource>
-  <DataSource id="Projection_2$$$$SAP_CA_BEACONSLOG$$" type="CALCULATION_VIEW">
+  <DataSource id="Logs2$$$$SAP_CA_BEACONSLOG$$" type="CALCULATION_VIEW">
     <viewAttributes allViewAttributes="true"/>
     <resourceUri>/b1sa.beaconsOne.models/calculationviews/SAP_CA_BEACONSLOG</resourceUri>
+  </DataSource>
+  <DataSource id="SAP_CA_ACTIVEUSERS" type="CALCULATION_VIEW">
+    <viewAttributes allViewAttributes="true"/>
+    <resourceUri>/b1sa.beaconsOne.models/calculationviews/SAP_CA_ACTIVEUSERS</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -21,21 +25,61 @@
       <viewAttribute id="BeaconId_1"/>
       <viewAttribute id="Date"/>
       <viewAttribute id="Date_1"/>
+      <viewAttribute id="EntranceDate"/>
+      <viewAttribute id="JOIN$UserId$UserId" hidden="true"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="#Projection_1">
+    <input node="#LogAfterEntrance2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId_1" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date_1" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EntranceDate" source="EntranceDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$UserId$UserId" source="UserId"/>
+    </input>
+    <input node="#LogAfterEntrance">
       <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId" source="BeaconId"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$UserId$UserId" source="UserId"/>
     </input>
-    <input node="#Projection_2">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId_1" source="BeaconId"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="Date_1" source="Date"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
-    </input>
-    <joinAttribute name="UserId"/>
+    <joinAttribute name="JOIN$UserId$UserId"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+  <calculationView xsi:type="Calculation:ProjectionView" id="LogAfterEntrance2" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+      <viewAttribute id="BeaconId"/>
+      <viewAttribute id="Date"/>
+      <viewAttribute id="UserId"/>
+      <viewAttribute id="EntranceDate"/>
+      <viewAttribute id="RecItemRecom"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#LogForActiveUsers2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EntranceDate" source="EntranceDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RecItemRecom" source="RecItemRecom"/>
+    </input>
+    <filter>&quot;Date&quot;&gt;=&quot;EntranceDate&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="LogAfterEntrance" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+      <viewAttribute id="UserId"/>
+      <viewAttribute id="BeaconId"/>
+      <viewAttribute id="Date"/>
+      <viewAttribute id="EntranceDate"/>
+      <viewAttribute id="RecItemRecom"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#LogForActiveUsers">
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EntranceDate" source="EntranceDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RecItemRecom" source="RecItemRecom"/>
+    </input>
+    <filter>&quot;Date&quot;&gt;=&quot;EntranceDate&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Logs">
     <viewAttributes>
       <viewAttribute id="UserId"/>
       <viewAttribute id="BeaconId"/>
@@ -48,18 +92,78 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
     </input>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+  <calculationView xsi:type="Calculation:ProjectionView" id="Logs2">
     <viewAttributes>
-      <viewAttribute id="UserId"/>
       <viewAttribute id="BeaconId"/>
       <viewAttribute id="Date"/>
-    </viewAttributes>
+    
+      <viewAttribute id="UserId"/></viewAttributes>
     <calculatedViewAttributes/>
-    <input node="#Projection_2$$$$SAP_CA_BEACONSLOG$$">
+    <input node="#Logs2$$$$SAP_CA_BEACONSLOG$$">
       <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId" source="BeaconId"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
     </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="LogForActiveUsers2" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="BeaconId"/>
+      <viewAttribute id="Date"/>
+      <viewAttribute id="UserId"/>
+      <viewAttribute id="EntranceDate"/>
+      <viewAttribute id="RecItemRecom"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#Logs2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+    </input>
+    <input node="#ActiveUsersNoRec">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EntranceDate" source="EntranceDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RecItemRecom" source="RecItemRecom"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+    </input>
+    <joinAttribute name="UserId"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ActiveUsersNoRec" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+    
+      <viewAttribute id="EntranceDate"/>
+      <viewAttribute id="RecItemRecom"/>
+    
+      <viewAttribute id="UserId"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#SAP_CA_ACTIVEUSERS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="EntranceDate" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RecItemRecom" source="RecItemRecom"/>
+    </input>
+    <filter>&quot;RecItemRecom&quot;!=1</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="LogForActiveUsers" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="UserId"/>
+      <viewAttribute id="BeaconId"/>
+      <viewAttribute id="Date"/>
+      <viewAttribute id="EntranceDate"/>
+      <viewAttribute id="RecItemRecom"/>
+      <viewAttribute id="JOIN$UserId$UserId" hidden="true"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="#ActiveUsersNoRec">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EntranceDate" source="EntranceDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RecItemRecom" source="RecItemRecom"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$UserId$UserId" source="UserId"/>
+    </input>
+    <input node="#Logs">
+      <mapping xsi:type="Calculation:AttributeMapping" target="UserId" source="UserId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BeaconId" source="BeaconId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date" source="Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$UserId$UserId" source="UserId"/>
+    </input>
+    <joinAttribute name="JOIN$UserId$UserId"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_1">
@@ -75,6 +179,11 @@
     <attribute id="BeaconId_1" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="BeaconId_1"/>
       <keyMapping columnObjectName="Join_1" columnName="BeaconId_1"/>
+    </attribute>
+  
+    <attribute id="EntranceDate" order="7" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EntranceDate"/>
+      <keyMapping columnObjectName="Join_1" columnName="EntranceDate"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -107,14 +216,36 @@
       <upperLeftCorner x="86" y="210"/>
       <rectangleSize height="30" width="140"/>
     </shape>
-    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectName="LogAfterEntrance2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="236" y="129"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="LogAfterEntrance" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="85" y="113"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Logs" modelObjectNameSpace="CalculationView">
       <upperLeftCorner x="81" y="425"/>
       <rectangleSize height="30" width="140"/>
     </shape>
-    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectName="Logs2" modelObjectNameSpace="CalculationView">
       <upperLeftCorner x="277" y="438"/>
       <rectangleSize height="30" width="140"/>
     </shape>
-  </shapes>
+  
+    <shape expanded="true" modelObjectName="LogForActiveUsers2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="27" y="252"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="ActiveUsersNoRec" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="191" y="444"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="LogForActiveUsers" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="436" y="436"/>
+      <rectangleSize height="30" width="140"/>
+    </shape></shapes>
 </layout>
 </Calculation:scenario>

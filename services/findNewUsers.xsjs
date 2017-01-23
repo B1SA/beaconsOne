@@ -1,4 +1,4 @@
-/** To be called via XSJOB **/
+ /** To be called via XSJOB **/
 /** Populates newUser table with new records **/
 
 var output = {};

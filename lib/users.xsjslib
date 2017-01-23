@@ -10,3 +10,14 @@ function formatData(json){
     }
    return newUsers;
 }
+
+function getUserCardCode(userId){
+    return 'C20000';
+}
+
+
+function getBeaconItem(beaconId){
+    
+    return 'I00005';
+    
+}
