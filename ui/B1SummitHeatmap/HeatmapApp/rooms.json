@@ -442,9 +442,9 @@
 	},
 	{
 		"roomId":"UL77",
-		"name":"HD9715 - HF1753",
-		"image":"computer_shelf.jpeg",
-		"HTMLdescrip":"<p>This section of shelving holds computers.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
+		"name":"Chocolate(BeaconId: 56126) A00001 - A00003",
+		"image":"chocolate_shelf.jpg",
+		"HTMLdescrip":"<p>This section of shelving holds chocolate.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
 		"reservable":false,
 		"systemLoc":"Book Shelves",
 		"floor":"upper_level"
@@ -550,9 +550,9 @@
 	},
 	{
 		"roomId":"UL89",
-		"name":"JN3582 - JX1391",
-		"image":"printers_shelf.jpg",
-		"HTMLdescrip":"<p>This section of shelving holds HP Printers.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
+		"name":"Cheese(BeaconId: 56127) A00004 - A00007",
+		"image":"cheese_shelf.jpg",
+		"HTMLdescrip":"<p>This section of shelving holds cheeses.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
 		"reservable":false,
 		"systemLoc":"Book Shelves",
 		"floor":"upper_level"
@@ -658,8 +658,8 @@
 	},
 	{
 		"roomId":"UL101",
-		"name":"A00001 - A00003",
-		"image":"printers_shelf.jpg",
+		"name":"Wines(BeaconId: 56128) \nA00008 - A00011",
+		"image":"wine_shelf.jpg",
 		"HTMLdescrip":"<p>This section of shelving holds IBM Printers.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
 		"reservable":false,
 		"systemLoc":"Printer Shelves",
@@ -672,6 +672,15 @@
 		"HTMLdescrip":"<p>This section of shelving holds IBM Printers.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
 		"reservable":false,
 		"systemLoc":"Book Shelves",
+		"floor":"upper_level"
+	},
+	{
+		"roomId":"UL103",
+		"name":"Entrance",
+		"image":"entrance_gate.jpg",
+		"HTMLdescrip":"<p>Entrance.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
+		"reservable":false,
+		"systemLoc":"Printer Shelves",
 		"floor":"upper_level"
 	}
 ]}
