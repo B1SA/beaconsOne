@@ -1,0 +1,27 @@
+#heatmapContainerWrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /*background:rgba(0,0,0,.1);*/
+}
+
+#heatmapContainer {
+    position: absolute;
+    left: 0px; 
+    top: 0px;
+    z-index: -1;
+    
+}
+
+#svgHeatmapContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+}
+
+/**It doens't work for overlay of svg and heatmap**/
+.heatmap-convas {
+    z-index: -1;
+}

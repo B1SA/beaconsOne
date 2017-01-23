@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="utf-8" />
+	<title>SAP SMB Summit 2017-OEC Computer Digital Store Solution</title>
+	
+	<link rel="stylesheet" media="only screen and (max-width: 400px)" type="text/css" href="./css/mobile.css" />
+	<link rel="stylesheet" media="only screen and (min-width: 401px)" type="text/css" href="./css/svg_store_style.css" />
+	<link rel="stylesheet" type="text/css" href="./css/heatmap.css" />
+	
+	<meta name="viewport" content="width=320">
+	<!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="ie_style.css" />
+	<![endif]-->
+
+	<!--script type="text/javascript" src="modernizr.custom.js"></script-->
+	<script src="/sap/ui5/1/resources/jquery-1.7.1.js"></script>
+	<!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script-->
+	
+	<!--Loading 3rd party javascript lib for heatmap-->
+	<script src="../heatmapjs/lib/heatmap.js"></script>
+	<script src="./javascript/B1SummitHeatmap.js"></script>
+	<script src="./javascript/floor_plan.js"></script>
+</head>
+<body>
+
+<div id="content_wrapper">
+<!--heatmap container canvas as the whole window, this will overlay the svg-->
+<!--div id="heatmapContainer"-->
+<header id="head">
+	<div id="innerhead">
+		<!--a href="http://www.sap.com/index.html"><img alt="SAP Home" src="sap-logo.png"/></a-->
+		<a href="http://www.sap.com/product/enterprise-management/business-one.html"><img alt="SAP Business One Home" src="./images/sap-b1-logo2.png"/></a>
+		
+		<div id="Floor_select">
+			<a href="lower_level.html">Lower Level</a><span class="floor_divider"> | </span>
+			<b>Main Level</b><span class="floor_divider"> | </span>
+			<a href="index.html">Uper Level</a>
+			
+		</div>
+	
+	</div>
+</header>
+
+<section id="right_header">
+	<div id="total_customer_no">
+		<p>Total No. of customers in store:</p>
+		<b>46</b>
+	</div>
+</section>
+
+<div id="heatmapContainerWrapper">
+	<div id="heatmapContainer">
+	<section id="map_section"><div id="empty"></div>
+		
+	    
+		<svg id="svg_map" width="900" height="510" viewBox="0 0 900 510" xmlns="http://www.w3.org/2000/svg" version="1.1">
+			<g id="ul_outline" stroke = "#000" stroke-width = "1" fill = "none">
+				<path d="M280, 310 L10, 310 L10, 10 L125, 10 L125, 25 L590, 25 L590, 10 L875, 10 
+				M875,10 S890,10 890,25 L890, 370 
+				M890, 370 S890,390 870,390 L870, 435 
+				M870, 435 S870,455 850,455 L610, 455 L610, 465 
+				M280, 310 S500,310 555, 490 
+				M555, 490 S610,520 610, 465" />
+			</g>
+			
+				<text x="773" y="62">Staff Rm.</text>
+				<text x="615" y="42">MR1</text>
+				<text x="655" y="42">MR2</text>
+				<text x="640" y="430">Checkout Counters</text>
+				<text x="795" y="412">Cust. Srv.</text>
+				<text x="542" y="405">202</text>
+	            <text x="35" y="210">Game Zone</text>
+			
+			<g id="upper_stairwell" class="utilroom">
+				<path d="M555,490 S610,520 610,465 L610,380 L590,380 L532,438 S545,460 555,490" />
+				<text x="555" y="455">Stairs</text>
+			</g>
+			
+			<g id="vr_expr_area" class="room2 active">
+				<circle cx="555" cy="400" r="35"/>
+			</g>
+			
+			<g id="upper_elevator" class="utilroom">
+				<rect x="610" y="385" width="25" height="25" />
+				<path d="M618,405 L618,390 L614,396 M618,390 L622,396" />
+				<path d="M627,390 L627,405 L623,399 M627,405 L631,399" />
+			</g>
+			
+			<g id="checkout_counters" class="location active">
+				<path d="M635,380 L790,380 L790,455 L610,455 L610,410 L635,410 L635,380" />
+			</g>
+			
+			<!--Customer Service-->
+			<g id="customer_service" class="location active">
+				<path d="M870, 435 S870,455 850,455 L790,455 L790,360 L870,360 L870,435"/>
+			</g>
+			
+			<!--MR01-->
+			<g id="mr01" class="room active">
+				<rect x="610" y="10" width="40" height="52" />
+			</g>
+			<!--MR02-->
+			<g id="mr02" class="room active">
+				<rect x="650" y="10" width="40" height="52" />
+			</g>
+			
+			<g id="womens2">
+				<rect style="fill:#AAAAAA; stroke:#000; stroke-width: 1;" x="690" y="10" width="40" height="62" />
+				<g transform="translate(695,25) scale(.25, .25)">
+					<path d="M107.969,123.645c8.156,0,14.773-6.594,14.773-14.75V14.871c0-8.156-6.617-14.758-14.773-14.758H13.945
+						c-8.148,0-14.758,6.602-14.758,14.758v94.023c0,8.156,6.609,14.75,14.758,14.75H107.969z"/>
+					<path style="fill:#FFFFFF;" d="M13.945,2.613c-6.758,0-12.25,5.5-12.25,12.258v94.023c0,6.766,5.492,12.258,12.25,12.258h94.023
+						c6.766,0,12.258-5.492,12.258-12.258V14.871c0-6.758-5.492-12.258-12.258-12.258H13.945z"/>
+					<path d="M68.383,29.848c5.797,0,9.953,4.773,10.828,7.375l7.109,23.375c1.414,5.016-4.984,7.109-6.5,2.211l-6.398-21.445h-3.688
+						L80.461,79.48H70.25v29.758c0,5.078-7.648,5.055-7.648,0v-29.93h-3.867v29.859c0,5.148-7.664,5.148-7.664,0V79.48H40.828
+						l10.594-38.117h-3.5l-6.398,21.508c-1.516,4.672-7.984,2.773-6.492-2.273l7.094-23.375c0.75-2.664,4.133-7.375,9.969-7.375H68.383z"/>
+					<path d="M60.68,28.09c4.547,0,8.273-3.711,8.273-8.273c0-4.594-3.727-8.305-8.273-8.305c-4.602,0-8.281,3.711-8.281,8.305
+						C52.398,24.379,56.078,28.09,60.68,28.09z"/>
+				</g>
+			</g>
+			
+			<g id="mens2">
+				<rect style="fill:#AAAAAA; stroke:#000; stroke-width: 1;" x="730" y="10" width="40" height="62" />
+				<g transform="translate(735,25) scale(.25, .25)">
+					<path d="M107.969,122.949c8.156,0,14.773-6.617,14.773-14.742V14.168c0-8.156-6.617-14.758-14.773-14.758H13.945
+						c-8.148,0-14.758,6.602-14.758,14.758v94.039c0,8.125,6.609,14.742,14.758,14.742H107.969z"/>
+					<path style="fill:#FFFFFF;" d="M13.945,1.91c-6.758,0-12.25,5.5-12.25,12.258v94.039c0,6.734,5.492,12.227,12.25,12.227h94.023
+						c6.766,0,12.258-5.492,12.258-12.227V14.168c0-6.758-5.492-12.258-12.258-12.258H13.945z"/>
+					<path d="M60.727,27.41c4.555,0,8.273-3.688,8.273-8.273c0-4.57-3.719-8.281-8.273-8.281c-4.57,0-8.281,3.711-8.281,8.281
+						C52.445,23.723,56.156,27.41,60.727,27.41z"/>
+					<path d="M49.484,107.762c0,2.562,2.086,4.664,4.648,4.664s4.648-2.102,4.648-4.664V68.793h3.898v38.969
+						c0,2.562,2.062,4.664,4.625,4.664s4.648-2.102,4.648-4.664l0.039-67.18h3.859v24.766c0,4.992,6.484,4.992,6.461,0V40.035
+						c0-5.492-4.25-10.867-10.688-10.867l-21.992-0.039c-5.859,0-10.578,4.812-10.578,10.758v25.461c0,4.938,6.531,4.938,6.531,0V40.582
+						h3.93L49.484,107.762z"/>
+				</g>
+			</g>
+			
+			<g id="upper_utility1" class="utilroom">
+				<polygon points="770,10 845,10 845,42 770,42 770,10" />
+			</g>
+			
+			<!--Staff Rm.-->
+			<g id="staff_room" class="room active">
+				<rect x="770" y="42" width="75" height="30" />
+			</g>
+			
+			<g id="breakroom" class="utilroom">
+				<polygon points="10,10 125,10 125,100 10,100 10,10" />
+				<text x="29" y="60">Warehouse</text>
+			</g>
+			  <!--
+				<rect id="UL68" x="20" y="115" width="8" height="80" class="inactive" />
+				<rect id="UL69" x="33" y="115" width="8" height="80" class="inactive" />
+				<rect id="UL70" x="46" y="115" width="8" height="80" class="inactive" />
+				<rect id="UL71" x="59" y="115" width="8" height="80" class="inactive" />
+				<rect id="UL72" x="72" y="115" width="8" height="80" class="inactive" />
+				<rect id="UL73" x="85" y="115" width="8" height="80" class="inactive" />
+				<rect id="UL74" x="98" y="115" width="8" height="80" class="inactive" />
+				<rect id="UL75" x="111" y="115" width="8" height="80" class="inactive" />
+				<rect id="UL76" x="124" y="115" width="8" height="80" class="inactive" />
+				-->
+				<!--store_svg: UL77,80,83,86,89,92,95,98,101-->
+				<rect id="UL77" x="152" y="80" width="8" height="200" class="location active" />
+				<!--rect id="UL78" x="165" y="80" width="8" height="115" class="location active" />
+				<rect id="UL79" x="178" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL80" x="191" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL81" x="204" y="80" width="8" height="115" class="location active" />
+				<rect id="UL82" x="217" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL83" x="230" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL84" x="243" y="80" width="8" height="115" class="location active" />
+				<rect id="UL85" x="256" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL86" x="269" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL87" x="282" y="80" width="8" height="115" class="location active" />
+				<rect id="UL88" x="295" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL89" x="308" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL90" x="321" y="80" width="8" height="115" class="location active" />
+				<rect id="UL91" x="334" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL92" x="347" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL93" x="360" y="80" width="8" height="115" class="location active" />
+				<rect id="UL94" x="373" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL95" x="386" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL96" x="399" y="80" width="8" height="115" class="location active" />
+				<rect id="UL97" x="412" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL98" x="425" y="80" width="8" height="115" class="location active" /-->
+				<!--rect id="UL99" x="438" y="80" width="8" height="115" class="location active" />
+				<rect id="UL100" x="451" y="80" width="8" height="115" class="location active" /-->
+				<rect id="UL101" x="464" y="80" width="8" height="200" class="location active" />
+				<!--rect id="UL102" x="477" y="80" width="8" height="115" class="location active" /-->
+				
+			    <!--
+				<rect id="UL67" x="20" y="215" width="8" height="65" class="inactive" />
+				<rect id="UL66" x="33" y="215" width="8" height="65" class="inactive" />
+				<rect id="UL65" x="46" y="215" width="8" height="65" class="inactive" />
+				<rect id="UL64" x="59" y="215" width="8" height="65" class="inactive" />
+				<rect id="UL63" x="72" y="215" width="8" height="65" class="inactive" />
+				<rect id="UL62" x="85" y="215" width="8" height="65" class="inactive" />
+				<rect id="UL61" x="98" y="215" width="8" height="65" class="inactive" />
+				-->
+				<!--Left bottom area-->
+				<!--svg: UL60,57,54,51,48,45,42,39,36-->
+				<!--rect id="UL60" x="152" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL59" x="165" y="215" width="8" height="65" class="location active" />
+				<rect id="UL58" x="178" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL57" x="191" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL56" x="204" y="215" width="8" height="65" class="location active" />
+				<rect id="UL55" x="217" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL54" x="230" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL53" x="243" y="215" width="8" height="65" class="location active" />
+				<rect id="UL52" x="256" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL51" x="269" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL50" x="282" y="215" width="8" height="65" class="location active" />
+				<rect id="UL49" x="295" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL48" x="308" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL47" x="321" y="215" width="8" height="65" class="location active" />
+				<rect id="UL46" x="334" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL45" x="347" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL44" x="360" y="215" width="8" height="65" class="location active" />
+				<rect id="UL43" x="373" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL42" x="386" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL41" x="399" y="215" width="8" height="65" class="location active" />
+				<rect id="UL40" x="412" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL39" x="425" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL38" x="438" y="215" width="8" height="65" class="location active" />
+				<rect id="UL37" x="451" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL36" x="464" y="215" width="8" height="65" class="location active" /-->
+				<!--rect id="UL35" x="477" y="215" width="8" height="65" class="location active" /-->
+			
+			
+			<g id="DS109" class="location active">
+				<rect x="620" y="90" width="85" height="8" />
+				<rect x="750" y="90" width="75" height="8" />
+			</g>	
+			<!--g id="DG77" class="location active">
+				<rect x="620" y="105" width="85" height="8" />
+				<rect x="750" y="105" width="75" height="8" />
+			</g-->	
+			<g id="DA959" class="location active">
+				<rect x="620" y="120" width="85" height="8" />
+				<rect x="750" y="120" width="75" height="8" />
+			</g>	
+			<!--g id="D810" class="location active">
+				<rect x="620" y="135" width="85" height="8" />
+				<rect x="750" y="135" width="75" height="8" />
+			</g-->	
+			<g id="D20" class="location active">
+				<rect x="620" y="150" width="85" height="8" />
+				<rect x="750" y="150" width="75" height="8" />
+			</g>	
+			<!--g id="BX5037" class="location active">
+				<rect x="620" y="165" width="85" height="8" />
+				<rect x="750" y="165" width="75" height="8" />
+			</g-->	
+			<g id="BX1753" class="location active">
+				<rect x="620" y="180" width="85" height="8" />
+				<rect x="750" y="180" width="75" height="8" />
+			</g>	
+			<!--g id="BV3427" class="location active">
+				<rect x="620" y="210" width="85" height="8" />
+				<rect x="750" y="210" width="75" height="8" />
+			</g-->	
+			<g id="BS2650" class="location active">
+				<rect x="620" y="225" width="85" height="8" />
+				<rect x="750" y="225" width="75" height="8" />
+			</g>	
+			<!--g id="BR1360" class="location active">
+				<rect x="620" y="240" width="85" height="8" />
+				<rect x="750" y="240" width="75" height="8" />
+			</g-->	
+			<g id="BQ5205" class="location active">
+				<rect x="620" y="255" width="85" height="8" />
+				<rect x="750" y="255" width="75" height="8" />
+			</g>	
+			<!--g id="BL65" class="location active">
+				<rect x="620" y="270" width="85" height="8" />
+				<rect x="750" y="270" width="75" height="8" />
+			</g-->	
+			<g id="BF637" class="location active">
+				<rect x="620" y="285" width="85" height="8" />
+				<rect x="750" y="285" width="75" height="8" />
+			</g>	
+			<!--g id="BC108" class="location active">
+				<rect x="620" y="300" width="85" height="8" />
+				<rect x="750" y="300" width="75" height="8" />
+			</g-->	
+			<g id="B821" class="location active">
+				<rect x="620" y="315" width="85" height="8" />
+				<rect x="750" y="315" width="75" height="8" />
+			</g>	
+			<!--g id="AC1" class="location active">
+				<rect x="620" y="330" width="85" height="8" />
+				<rect x="750" y="330" width="75" height="8" />
+			</g-->	
+				
+			<rect x="620" y="345" width="85" height="8" class="inactive" />
+			<rect x="750" y="345" width="75" height="8" class="inactive" />
+			
+			
+			<g id="atlas" class="location active">
+				<rect x="838" y="315" width="40" height="30" />
+			</g>
+			
+			<text x="300" y="59">Printer Display Area</text>
+			<text x="430" y="330">VR Experiencing Area</text>
+			<text x="545" y="90" transform="rotate(90 545,90)">Computer Exper. Area</text>
+			<text x="852" y="155" transform="rotate(90 852,155)">Open Seating</text>
+			
+		</svg>
+		
+	
+	</section>
+	</div>
+	</div>	
+	
+<section id="room_info" class="a">
+	<br>
+	Hover over or select a colored area for details about individual shelfs and locations in the store.
+	<br>
+</section>
+
+<footer><div id="foot"></div>
+	<a href="http://www.sap.com/product/enterprise-management/business-one.html">OEC Computers</a> | <a href="http://www.sap.com/">Digital Retail</a> | <a href="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=2001+Main+Street,+Buffalo,+NY&amp;sll=42.92521,-78.853662&amp;sspn=0.009035,0.013947&amp;ie=UTF8&amp;hq=&amp;hnear=2001+Main+St,+Buffalo,+Erie,+New+York+14208&amp;ll=42.925273,-78.853662&amp;spn=0.009427,0.013947&amp;z=16&amp;iwloc=A">2001 Main Street Buffalo, NY 14208-1098</a> | Phone: 716-879-8412 | <a href="service@oec.com">service@oec.com</a>
+</footer>
+
+<script>
+		if (!Modernizr.svg) {
+		document.getElementById('map_section').innerHTML += '<img src="upper_level.png"/>';
+		document.getElementById('svg_map').style.display = 'none';
+		document.getElementById('right_header').style.display = 'none';
+		document.getElementById('room_info').style.display = 'none';
+		document.getElementById('head').style.width = '910px';
+		}
+</script>
+
+<!--/div-->
+	</div>
+    <!--/div-->
+</body>
+</html>

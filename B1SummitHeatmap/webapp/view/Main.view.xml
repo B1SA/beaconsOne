@@ -1,0 +1,90 @@
+<mvc:View xmlns="sap.m" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" height="100%" controllerName="B1SummitHeatmap.controller.Main">
+	<layout:FixFlex id="chartFixFlex" minFlexSize="250">
+		<!--Below is the setting panel -->
+		<layout:fixContent>
+			<!--TileContainer editable="false" allowAdd="true" id="__container0"><tiles-->
+			<StandardTile title="Total No. of Customers in Store" info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer" number="{/TotalCustomersNo}" numberUnit="Customers" infoState="Success" id="__tile00"/>
+			<!--/tiles></TileContainer-->
+		</layout:fixContent>
+		<!--TileContainer editable="false" allowAdd="true" id="__container1"><tiles><StandardTile title="Norm Thompson. Arrived at 9:15 am. Viewed Items" info="Info" icon="sap-icon://customer"
+								activeIcon="sap-icon://customer" number="37610.34" numberUnit="USD" infoState="Success" id="__tile0"/><StandardTile title="Micro Chips. Arrived at 9:20 am." info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer"
+								number="18373.89" numberUnit="USD" infoState="Success" id="__tile1"/><StandardTile title="Maxi. Arrived at 9:23 am." info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer" number="2348.43"
+								numberUnit="USD" infoState="Success" id="__tile2"/><StandardTile title="Earth. Arrived at 9:26 am" info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer" number="18373.89"
+								numberUnit="USD" infoState="Success" id="__tile4"/><StandardTile title="Unknown User" info="Info" icon="sap-icon://customer" activeIcon="sap-icon://customer" number="2348.43" numberUnit="USD"
+								infoState="Success" id="__tile5"/></tiles></TileContainer-->
+		<layout:fixContent>
+			<Panel id="settingsPanel" class="panelStyle" expandable="true" expanded="false" headerText="Settings" width="auto">
+				<content>
+					<HBox class="settingsHBox" alignItems="Stretch">
+						<VBox class="settingsBox">
+							<Label text="{/dataset/name}" design="Bold" class="settingsLabel"/>
+							<RadioButtonGroup id="datasetRadioGroup" buttons="{path: '/dataset/values'}">
+								<buttons>
+									<RadioButton class="settingsRadio" text="{name}" select="onDatasetSelected"/>
+								</buttons>
+							</RadioButtonGroup>
+						</VBox>
+						<VBox class="settingsBox">
+							<Label text="{/color/name}" design="Bold" class="settingsLabel"/>
+							<RadioButtonGroup id="colorRadioGroup" buttons="{path: '/color/values'}">
+								<buttons>
+									<RadioButton class="settingsRadio" text="{name}" select="onColorSelected"/>
+								</buttons>
+							</RadioButtonGroup>
+						</VBox>
+						<VBox class="settingsBox">
+							<Label text="{/dataLabel/name}" design="Bold" class="settingsLabel"/>
+							<Switch class="settingsSwitch" state="{/dataLabel/defaultState}" change="onDataLabelChanged">
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</Switch>
+							<Label text="{/axisTitle/name}" design="Bold" class="settingsLabel"/>
+							<Switch class="settingsSwitch" state="{/axisTitle/defaultState}" change="onAxisTitleChanged">
+								<layoutData>
+									<FlexItemData growFactor="1"/>
+								</layoutData>
+							</Switch>
+						</VBox>
+						<VBox class="settingsBox" alignItems="Start">
+							<Label text="{/interval/name}" design="Bold" class="settingsLabel"/>
+							<HBox alignItems="Center">
+								<Input width="auto" id="__input1" class="settingsInputs" type="Number" parseError="onParseError" change="onIntervalChange" value="{/interval/defaultValue}"/>
+								<Label text="seconds" design="Bold" class="settingsLabel"/>
+							</HBox>
+						</VBox>
+						<!--VBox class='settingsBox'>
+							<Label text = '{/axisTitle/name}' design="Bold" class='settingsLabel'></Label>
+							<Switch class='settingsSwitch' state="{/axisTitle/defaultState}" change='onAxisTitleChanged'>
+								<layoutData>
+									<FlexItemData growFactor="1" />
+								</layoutData>
+							</Switch>
+						</VBox-->
+					</HBox>
+				</content>
+			</Panel>
+		</layout:fixContent>
+		<layout:flexContent>
+			<viz:Popover id="idPopOver" actionItems="[{1:'Action#1'},{2:'Action#2'}]"/>
+			<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%" vizType="heatmap" selectData="onHeatmapSelected">
+				<viz:dataset>
+					<viz.data:FlattenedDataset data="{/Store}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition name="Shelf" value="{Shelf}"/>
+							<viz.data:DimensionDefinition name="Section" value="{Section}"/>
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="NO. of customers nearby" value="{NearbyCustomerCount}"/>
+						</viz.data:measures>
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem uid="color" type="Measure" values="NO. of customers nearby"/>
+					<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Section"/>
+					<viz.feeds:FeedItem uid="categoryAxis2" type="Dimension" values="Shelf"/>
+				</viz:feeds>
+			</viz:VizFrame>
+		</layout:flexContent>
+	</layout:FixFlex>
+</mvc:View>
