@@ -1,4 +1,4 @@
-description = "B1 Xapp Framework http connection";
+description = "B1 Xapp Framework http  Local connection";
 host = "localhost";
 port = 8000;
 authType = basic;

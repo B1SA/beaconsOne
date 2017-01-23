@@ -1,211 +1,227 @@
 <html>
-  
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Beacons One Tester</title>
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-    rel="stylesheet" type="text/css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  </head>
-  
-  <body class="">
+</head>
+
+<body class="">
     <div class="navbar navbar-default navbar-static-top">
-      <style>
-        .body {
-            padding-top: 70px
-        }
-      </style>
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="http://scn.sap.com/community/business-one-sdk"
-          draggable="true">SAP Business One</a>
+        <style>
+            .body {
+                padding-top: 70px
+            }
+        </style>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://scn.sap.com/community/business-one-sdk" draggable="true">SAP Business One</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li draggable="true">
+                        <a href="#" data-toggle="modal" data-target="#information">+ Info</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li draggable="true">
-              <a href="#" data-toggle="modal" data-target="#information">+ Info</a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
     <div class="container text-center">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="jumbotron" draggable="true">
-            <h2>Beacons One</h2>
-            <img src="http://i.imgur.com/6hw2YWc.png" class="img-responsive center-block" alt="Responsive image">
-             <p>Test here the Beacons One prototype</p>
-          </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron" draggable="true">
+                    <h2>Beacons One</h2>
+                    <img src="http://i.imgur.com/6hw2YWc.png" class="img-responsive center-block" alt="Responsive image">
+                    <p>Test here the Beacons One prototype</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <div class="container" id="inputOptions">
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <p class="text-center">
-            <a type="button" class="btn btn-info btn-lg" id="FindNU">Find New Users</a>
-          </p>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <p class="text-center">
+                    <a type="button" class="btn btn-info btn-lg" id="FindNU">Find New Users</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="text-center">
+                    <a type="button" class="btn btn-info btn-lg" id="GetUP">Get Users Positions</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="text-center">
+                    <a type="button" class="btn btn-info btn-lg" id="SendWO">Send Welcome Offer (APN)</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="text-center">
+                    <a type="button" class="btn btn-info btn-lg" id="getUR">Get User Recom</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="text-center">
+                    <a type="button" class="btn btn-info btn-lg" id="GetUE">Get Users Entrance</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="text-center">
+                    <a type="button" class="btn btn-info btn-lg" id="findUL">Get Users Left</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="text-center">
+                    <a type="button" class="btn btn-info btn-lg" id="CreateO">Create Order</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="text-center">
+                    <a type="button" class="btn btn-info btn-lg" id="SendIR">Send Item Rec</a>
+                </p>
+            </div>
         </div>
-		<div class="col-md-4 text-center">
-          <p class="text-center">
-            <a type="button" class="btn btn-info btn-lg" id="GetUP">Get Users Positions</a>
-          </p>
-        </div>
-		<div class="col-md-4 text-center">
-          <p class="text-center">
-            <a type="button" class="btn btn-info btn-lg" id="SendWO">Send Welcome Offer (APN)</a>
-          </p>
-        </div>
-        <div class="col-md-4 text-center">
-          <p class="text-center">
-            <a type="button" class="btn btn-info btn-lg" id="getUR">Get User Recom</a>
-          </p>
-        </div>
-	    <div class="col-md-4 text-center">
-          <p class="text-center">
-            <a type="button" class="btn btn-info btn-lg" id="GetUE">Get Users Entrance</a>
-          </p>
-        </div>
-        <div class="col-md-4 text-center">
-          <p class="text-center">
-            <a type="button" class="btn btn-info btn-lg" id="findUL">Get Users Left</a>
-          </p>
-        </div>
-      </div>
     </div>
-    
+
+
+
     <div class="modal fade" id="information" draggable="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <p>Thank you for using this sample I hope you found that usefull</p>
-            <p>You can find a lot of good information on the following sources:</p>
-            <h4>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Thank you for using this sample I hope you found that usefull</p>
+                    <p>You can find a lot of good information on the following sources:</p>
+                    <h4>
               <a href="http://scn.sap.com/community/business-one-sdk">SAP
                             Business One SDK page on SCN</a>
             </h4>
-            <h4>
+                    <h4>
               <a href="http://scn.sap.com/docs/DOC-43522">SAP Business One
                             on HANA Landing</a>
             </h4>
-            <h4>
+                    <h4>
               <a href="https://twitter.com/Ralphive/lists/b1-solution-architects">Follow us on twitter
                             B1 SA List</a>
             </h4>
-            <p>Sincerily</p>
-            <p></p>
-            <p>SAP Business One Solution Architect Team :)</p>
-          </div>
+                    <p>Sincerily</p>
+                    <p></p>
+                    <p>SAP Business One Solution Architect Team :)</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <div class="fade modal" id="resulModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel" contenteditable="true">Call Result</h4>
-          </div>
-          <div class="modal-body">
-            <div class="tabbable">
-              <ul class="nav nav-tabs">
-                <li class="active">
-                  <a href="#pane1" data-toggle="tab">Result</a>
-                </li>
-                <li>
-                  <a href="#pane2" data-toggle="tab">JSON</a>
-                </li>
-              </ul>
-              <div class="tab-content">
-                <div id="pane1" class="tab-pane active">
-              		<p id="resultMess"></p>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel" contenteditable="true">Call Result</h4>
                 </div>
-                <div id="pane2" class="tab-pane">
-                  <h4>JSON Return content</h4>
-                  <pre id="jsonResult"></pre>
+                <div class="modal-body">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#pane1" data-toggle="tab">Result</a>
+                            </li>
+                            <li>
+                                <a href="#pane2" data-toggle="tab">JSON</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="pane1" class="tab-pane active">
+                                <p id="resultMess"></p>
+                            </div>
+                            <div id="pane2" class="tab-pane">
+                                <h4>JSON Return content</h4>
+                                <pre id="jsonResult"></pre>
+                            </div>
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    <!-- /.tabbable -->
                 </div>
-              </div>
-              <!-- /.tab-content -->
             </div>
-            <!-- /.tabbable -->
-          </div>
         </div>
-      </div>
     </div>
-<script type="text/javascript">
-$(document).ready(function(){  
+    <script type="text/javascript">
+        $(document).ready(function() {
 
 
 
-	$("#FindNU").click(function(){
-		makeCall("../services/findNewUsers.xsjs");
-	});
+            $("#FindNU").click(function() {
+                makeCall("../services/findNewUsers.xsjs");
+            });
 
-	$("#GetUP").click(function(){	
-		makeCall("../services/getUsersPosition.xsjs");
-	});
+            $("#GetUP").click(function() {
+                makeCall("../services/getUsersPosition.xsjs");
+            });
 
-	$("#SendWO").click(function(){
-		makeCall("../services/sendWelcomeOffer.xsjs");
-	});
-	
-	$("#getUR").click(function(){
-		makeCall("../services/getUserRecom.xsjs");
-	});
-	
-	$("#findUL").click(function(){
-		makeCall("../services/findUsersLeft.xsjs");
-	});
-	
-	$("#GetUE").click(function(){	
-		makeCall("../services/getUsersPosition.xsjs?entrance=1");
-	});
+            $("#SendWO").click(function() {
+                makeCall("../services/sendWelcomeOffer.xsjs");
+            });
 
-	$('#resulModal').on('hidden.bs.modal', function () {
-		
-    $('#jsonResult').empty();
-	});
-});
+            $("#getUR").click(function() {
+                makeCall("../services/getUserRecom.xsjs");
+            });
 
-function makeCall(urlAddress){
-	$.ajax({
-		url: urlAddress,
-		type: "GET",
-		dataType : "json", 
-		success: function( json, xhr ) {
-			displayJSON(json, xhr);
-		},
-		error: function( xhr, status, errorThrown ) {
-			console.log( "Error: " + errorThrown );
-			console.log( "Status: " + status );
-			alert(errorThrown);
-		},
-	});
-}
+            $("#findUL").click(function() {
+                makeCall("../services/findUsersLeft.xsjs");
+            });
 
-function displayJSON(json, xhr){
+            $("#GetUE").click(function() {
+                makeCall("../services/getUsersPosition.xsjs?entrance=1");
+            });
+
+            $("#CreateO").click(function() {
+                makeCall("../services/createOrder.xsjs");
+            });
+
+            $("#SendIR").click(function() {
+                makeCall("../services/sendItemRec.xsjs");
+            });
+
+            $('#resulModal').on('hidden.bs.modal', function() {
+
+                $('#jsonResult').empty();
+            });
+        });
+
+        function makeCall(urlAddress) {
+            $.ajax({
+                url: urlAddress,
+                type: "GET",
+                dataType: "json",
+                success: function(json, xhr) {
+                    displayJSON(json, xhr);
+                },
+                error: function(xhr, status, errorThrown) {
+                    console.log("Error: " + errorThrown);
+                    console.log("Status: " + status);
+                    alert(errorThrown);
+                },
+            });
+        }
+
+        function displayJSON(json, xhr) {
 
 
-	$("#resultMess").text("Status: "+xhr);
-	
+            $("#resultMess").text("Status: " + xhr);
 
-	$("#jsonResult").append("<myjson>"+
-			JSON.stringify(json, null, 4)) + "</myjson>";	
-	$('#resulModal').modal('show');
-}
 
-</script>
-  </body>
+            $("#jsonResult").append("<myjson>" +
+                JSON.stringify(json, null, 4)) + "</myjson>";
+            $('#resulModal').modal('show');
+        }
+    </script>
+</body>
 
 </html>
