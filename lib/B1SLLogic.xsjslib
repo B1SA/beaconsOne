@@ -5,7 +5,7 @@ function callServiceLayer(path, method, body, sessionID, routeID) {
         $.trace.debug("callServiceLayer (path: " + path + ", method: " + method + ", body: " + body + ", sessionID: " + sessionID + ", routeID: " + routeID + ")");
 
         //B1SL.xshttpdest
-        var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1SLl");
+        var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1SL");
         var client = new $.net.http.Client();
 
         var header = "";
