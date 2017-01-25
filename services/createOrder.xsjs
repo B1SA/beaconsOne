@@ -1,18 +1,13 @@
 /** Create a Sales Order using Service Layer **/
-
 $.import("b1sa.beaconsOne.lib", "constants");
 $.import("b1sa.beaconsOne.lib", "B1SLLogic");
-$.import("b1Assistant.lib", "B1SLLogic");
 
 var output = {};
-var job;
 
 function run(body) {
 	try {
 		// SL credentials
 		var loginInfo = {};
-		job = $.b1sa.beaconsOne.lib.constants.jobsActivaded();
-
 		loginInfo.UserName = $.b1sa.beaconsOne.lib.constants.getB1User();
 		loginInfo.Password = $.b1sa.beaconsOne.lib.constants.getB1Password();
 		loginInfo.CompanyDB = $.b1sa.beaconsOne.lib.constants.getB1Company();
@@ -33,9 +28,16 @@ function run(body) {
 			}
 		}
 
+
+        var d = new Date();
+        var DocDueDate = d.getFullYear() 
+                                + '-' + ('0' + (d.getMonth()+1)).slice(-2) + '-' 
+                                + ('0' +  d.getDate()).slice(-2); 
+                                
+		body.DocDueDate = DocDueDate;
 		output.RecOder = body;
 
-		response = $.b1Assistant.lib.B1SLLogic.PostOrder(JSON.stringify(body), SESSIONID, NODEID);
+		response = $.b1sa.beaconsOne.lib.B1SLLogic.PostOrder(JSON.stringify(body), SESSIONID, NODEID);
 
 		// Handle Results
 		for (var i in response.headers) {
@@ -51,12 +53,10 @@ function run(body) {
 		output.DocEntry = body.DocEntry;
 		output.DocTotal = body.DocTotal;
 		output.DocCurrency = body.DocCurrency;
-
-		if (job = 24) {
-			$.response.contentType = "application/json";
-			$.response.status = $.net.http.OK;
-			$.response.setBody(JSON.stringify(output));
-		}
+			
+		$.response.contentType = "application/json";
+		$.response.status = $.net.http.OK;
+		$.response.setBody(JSON.stringify(output));
 
 	} catch (e) {
 
@@ -75,7 +75,7 @@ if (reqBody === undefined || reqBody === null) {
 	/** Only for Testing **/
 	reqBody = {
 		"CardCode": 'C20000',
-		"DocDueDate": "2017-01-24",
+		"DocDueDate": "2017-01-90",
 		"Comments": "Test Order is ON"
 	};
 	var lines = [];

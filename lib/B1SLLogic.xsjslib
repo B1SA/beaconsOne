@@ -62,10 +62,10 @@ function callServiceLayer(path, method, body, sessionID, routeID) {
 				myBody = response.body.asString();
 			}
 
-		$.trace.debug("callServiceLayer response status: " + $.response.status);
+		$.trace.debug("call Service Layer Done! - " + JSON.stringify(response.body));
 		return response;
 	} catch (e) {
-		$.trace.error("Call Service Layer Exception: " + e.message);
+		$.trace.error("Call Service Layer Exception: " +  JSON.stringify(e.message));
 
 		if (job != true) {
 			$.response.contentType = "application/json";
