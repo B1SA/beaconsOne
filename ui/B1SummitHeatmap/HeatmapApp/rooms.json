@@ -442,9 +442,9 @@
 	},
 	{
 		"roomId":"UL77",
-		"name":"Chocolate(BeaconId: 56126) A00001 - A00003",
+		"name":"Chocolate(BeaconId: 56126) <p>A00001 - A00003</p>",
 		"image":"chocolate_shelf.jpg",
-		"HTMLdescrip":"<p>This section of shelving holds chocolate.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
+		"HTMLdescrip":"<p>This section of shelving holds chocolate.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p><table id=\"tbLitems\" style=\"width:100%\"><tr><th>ItemCode</th><th>In Stock</th> </tr><tr><td>A00001</td><td>20</td></tr><tr><td>A00002</td><td>198</td></tr><tr><td>A00003</td><td>78</td></tr></table>",
 		"reservable":false,
 		"systemLoc":"Book Shelves",
 		"floor":"upper_level"
@@ -550,9 +550,9 @@
 	},
 	{
 		"roomId":"UL89",
-		"name":"Cheese(BeaconId: 56127) A00004 - A00007",
+		"name":"Cheese(BeaconId: 56127) <p>A00004 - A00007</p>",
 		"image":"cheese_shelf.jpg",
-		"HTMLdescrip":"<p>This section of shelving holds cheeses.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
+		"HTMLdescrip":"<p>This section of shelving holds cheeses.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p><table id=\"tbLitems\" style=\"width:100%\"><tr><th>ItemCode</th><th>In Stock</th> </tr><tr><td>A00004</td><td>19</td></tr><tr><td>A00005</td><td>138</td></tr><tr><td>A00006</td><td>56</td></tr></table>",
 		"reservable":false,
 		"systemLoc":"Book Shelves",
 		"floor":"upper_level"
@@ -658,9 +658,9 @@
 	},
 	{
 		"roomId":"UL101",
-		"name":"Wines(BeaconId: 56128) \nA00008 - A00011",
+		"name":"Wines(BeaconId: 56128) <p>A00008 - A00011</p>",
 		"image":"wine_shelf.jpg",
-		"HTMLdescrip":"<p>This section of shelving holds IBM Printers.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p>",
+		"HTMLdescrip":"<p>This section of shelving holds IBM Printers.</p><p>Click here to <a href='www.sap.com'>search the catalog</a>.</p><table id=\"tbLitems\" style=\"width:100%\"><tr><th>ItemCode</th><th>In Stock</th> </tr><tr><td>A00007</td><td>27</td></tr><tr><td>A00008</td><td>198</td></tr><tr><td>A00009</td><td>38</td></tr></table>",
 		"reservable":false,
 		"systemLoc":"Printer Shelves",
 		"floor":"upper_level"

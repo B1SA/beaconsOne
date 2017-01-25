@@ -7,7 +7,7 @@ var beaconList = [
 		"XPosition": 205,
 		"MaxPointsCount": 5,
 		"image": "chocolate_shelf.jpg",
-		"ShelfTitle": "Chocolate(BeaconId: 56126) A00001 - A00003",
+		"ShelfTitle": "Chocolate(BeaconId: 56126) <p>A00001 - A00003</p>",
 		"area": {
 			"x1": 190,
 			"y1": 186,
@@ -18,6 +18,7 @@ var beaconList = [
 	{
 		"beaconId": "56127",
 		"shelfId": "UL89",
+		"ShelfTitle": "Cheese(BeaconId: 56127) <p>A00004 - A00007</p>",
 		"XPosition": 380,
 		"MaxPointsCount": 5,
 		"image": "cheese_shelf.jpg",
@@ -31,6 +32,7 @@ var beaconList = [
 	{
 		"beaconId": "56128",
 		"shelfId": "UL101",
+		"ShelfTitle": "Wines(BeaconId: 56128) <p>A00008 - A00011</p>",
 		"XPosition": 510,
 		"MaxPointsCount": 5,
 		"image": "wine_shelf.jpg",
@@ -44,6 +46,7 @@ var beaconList = [
     {
 		"beaconId": "55606",
 		"shelfId": "UL103",
+		"ShelfTitle": "Entrance(BeaconId: 55606)",
 		"XPosition": 895,
 		"MaxPointsCount": 5,
 		"image": "entrance_gate.jpg",
@@ -62,8 +65,34 @@ function randomY() {
 	return 200 + Math.random() * 160;
 }
 
-function createHeatmap() {
+function getOffset(el) {
+  el = el.getBoundingClientRect();
+  return {
+    left: el.left + window.scrollX,
+    top: el.top + window.scrollY
+  };
+}
 
+function getOffset2( el ) {
+    var _x = 0;
+    var _y = 0;
+    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+        _x += el.offsetLeft - el.scrollLeft;
+        _y += el.offsetTop - el.scrollTop;
+        el = el.offsetParent;
+    }
+    return { top: _y, left: _x };
+}
+
+function createHeatmap() {
+    //var ul77 = $("#UL77");
+    var ul77 = document.getElementById('UL77');
+    var rect = ul77.getBoundingClientRect();
+    //console.log("UL77-left: "+ul77.position.left +"\nUL77-top: "+ul77.position.top);
+    console.log("top: " ,rect.top, "right:", rect.right, "bottom: ", rect.bottom, "left: ", rect.left);
+    console.log(JSON.stringify(getOffset(ul77)));
+    console.log(JSON.stringify(getOffset2(ul77)));
+    
 	heatmap = h337.create({
 		container: document.getElementById('heatmapContainer'),
 		//container: document.getElementById('content_wrapper'),
@@ -118,15 +147,20 @@ function createHeatmap() {
 			var beacon = beaconList[bi];
 			if ((beacon.area.x1 <= x && x <= beacon.area.x2) && (beacon.area.y1 <= y && y <= beacon.area.y2)) {
 				var html = '<img src="images/' + beacon.image + '" /><h4></h4>'; 
-				html += '<h4>Customers: ';
+				html += '<h4>'+beacon.ShelfTitle+'</h4>';
+				html += '<h4>';
 
 				for (var i in userList) {
-					if (userList[i].BeaconID === beacon.beaconId && userList[i].users.length > 0) {
+					if (userList[i].BeaconID === beacon.beaconId && userList[i].users.length >= 0) {
 						console.log("Users in beacon(" + beacon.beaconId + "): " + JSON.stringify(userList[i].users));
-						html += userList[i].users.length + '</h4>';
+						html += userList[i].users.length + ' Customers:</h4>';
+						if(userList[i].users.length > 0)
+						    html += '<table id=\"tblCustomers\"><tr><th>Customer Code</th><th>Recommendation</th></tr>';
 						for (var j in userList[i].users) {
-							html += '<p>' + userList[i].users[j].UserId + '</p>';
+							html += '<tr><td>' + userList[i].users[j].UserId + '</td><td>' +'</td></tr>';
 						}
+						if(userList[i].users.length > 0)
+						    html += '</table>';
 						break;
 					}
 				}

@@ -143,7 +143,7 @@ svg {
     background: #fff;
     float: left;
     margin-top: 10px;
-    z-index: 2;
+    /*z-index: 2;*/
 }
 
 .room {
@@ -225,4 +225,17 @@ text {
     stroke: none;
     fill: #333333;
     cursor: default;
+}
+
+table{ 
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+}
+th, td {
+    padding: 4px;
 }
