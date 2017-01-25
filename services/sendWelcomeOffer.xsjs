@@ -77,22 +77,22 @@ function run() {
 		connection.close();
 
 		//Build the response
+        $.trace.debug("Send Welcome offer Done! " + JSON.stringify(output));
 		if (job != true) {
-
 			$.response.contentType = "application/json";
 			$.response.status = $.net.http.OK;
 			$.response.setBody(JSON.stringify(output));
 		}
 	} catch (e) {
+		$.trace.error("Send Welcome offer Exception: " + e.message);
 		if (job != true) {
-
 			$.response.contentType = "application/json";
-			$.trace.warning("call B1 Xapp Framework  Exception: " + e.message);
 			$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 			$.response.setBody(JSON.stringify({
 				"error": e.message
 			}));
 		}
+		
 	}
 }
 run();

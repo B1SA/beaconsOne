@@ -1,9 +1,11 @@
 $.import("b1sa.beaconsOne.lib", "constants");
-
+var job;
 var B1XAddress = "/sap/sbo/";
 
 function callB1XAF(path, method, body, sessionID, routeID) {
 	try {
+		job = $.b1sa.beaconsOne.lib.constants.jobsActivaded();
+
 		$.trace.debug("callB1XAF (path: " + path + ", method: " + method + ", body: " + body + ", sessionID: " + sessionID + ", routeID: " +
 			routeID + ")");
 
@@ -62,11 +64,14 @@ function callB1XAF(path, method, body, sessionID, routeID) {
 		return response;
 	} catch (e) {
 		response = null;
-		$.trace.warning("call B1 Xapp Framework  Exception: " + e.message);
-		$.response.contentType = "application/json";
-		$.response.setBody(JSON.stringify({
-			"error": e.message
-		}));
+		$.trace.error("Call B1 Xapp Exception: " + e.message);
+
+		if (job != true) {
+			$.response.contentType = "application/json";
+			$.response.setBody(JSON.stringify({
+				"error": e.message
+			}));
+		}
 		return false;
 	}
 }
@@ -118,7 +123,7 @@ function ItemRecommend(body, sessionID, routeID) {
 	//Temporary
 	body.CardCode = 'C20000';
 	body.ItemCode = 'I00005';
-	
+
 	var path = B1XAddress +
 		"pervasive/IMCC/srv/pa/service/sale_related" +
 		"?cardcode=" + body.CardCode +
