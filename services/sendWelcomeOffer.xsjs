@@ -84,7 +84,7 @@ function run() {
 			$.response.setBody(JSON.stringify(output));
 		}
 	} catch (e) {
-		$.trace.error("Send Welcome offer Exception: " + e.message);
+		$.trace.error("Send Welcome offer Exception: " + JSON.stringify(e.message));
 		if (job != true) {
 			$.response.contentType = "application/json";
 			$.response.status = $.net.http.INTERNAL_SERVER_ERROR;

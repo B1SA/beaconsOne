@@ -60,11 +60,11 @@ function callB1XAF(path, method, body, sessionID, routeID) {
 			}
 		}
 
-		$.trace.debug("call B1 Xapp Framework  response status: " + $.response.status);
+		$.trace.debug("call B1 Xapp Framework Done! - " + JSON.stringify(response));
 		return response;
 	} catch (e) {
 		response = null;
-		$.trace.error("Call B1 Xapp Exception: " + e.message);
+		$.trace.error("Call B1 Xapp Exception: " + JSON.stringify(e.message));
 
 		if (job != true) {
 			$.response.contentType = "application/json";
