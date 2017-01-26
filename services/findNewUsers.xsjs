@@ -4,7 +4,7 @@
 var output = {};
 var job = 0;
 $.import("b1sa.beaconsOne.lib", "constants");
-$.import("b1sa.beaconsOne.lib", "users");
+$.import("b1sa.beaconsOne.lib", "aux");
 
 function run() {
 	try {
@@ -21,7 +21,7 @@ function run() {
 		output.EntBeacon = $.b1sa.beaconsOne.lib.constants.getEntranceBeacon();
 
 		//Call Procedures to retrieve new users on friendly format
-		var newUsers = $.b1sa.beaconsOne.lib.users.formatData(
+		var newUsers = $.b1sa.beaconsOne.lib.aux.formatData(
 			getNewUsers(
 				output.EntBeacon,
 				output.Interval));
@@ -55,7 +55,7 @@ function run() {
 			$.response.setBody(JSON.stringify(output));
 		}
 	} catch (e) {
-		$.trace.error("Find New Users Exception: " + e.message);
+		$.trace.error("Find New Users Exception: " + JSON.stringify(e.message));
 		if (job != true) {
             $.response.contentType = "application/json";
 			$.response.status = $.net.http.INTERNAL_SERVER_ERROR;

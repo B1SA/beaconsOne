@@ -2,10 +2,12 @@
     This library provide hardcoded constants
 */
 
-//Credential Constants
+//B1 Constants
 var b1User = "manager";
 var b1Pass = "1234";
 var b1Comp = "SBODEMOUS";
+
+var picProperty = 1; // Item property to retrieve the Item img URL
 
 //Application Constants
 var entraceBeaconId = "55606";
@@ -44,6 +46,10 @@ function getUserInterval() {
 
 function getRecomIntervall() {
 	return recomInterval;
+}
+
+function getPicProperty(){
+    return picProperty;
 }
 
 // Commit DB changes

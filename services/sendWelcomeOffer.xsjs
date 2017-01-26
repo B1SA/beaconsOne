@@ -6,7 +6,7 @@ var output = {};
 var job = 0;
 
 $.import("b1sa.beaconsOne.lib", "constants");
-$.import("b1sa.beaconsOne.lib", "users");
+$.import("b1sa.beaconsOne.lib", "aux");
 $.import("b1sa.beaconsOne.lib", "B1XAFLogic");
 $.import("b1sa.beaconsOne.lib", "APN");
 
@@ -25,7 +25,7 @@ function run() {
 			"b1sa.beaconsOne.procedures::setUserWelcOffer");
 
 		//Call Procedures to retrieve users to welcome on friendly format
-		var toWelcUsers = $.b1sa.beaconsOne.lib.users.formatData(getNotWelcUser());
+		var toWelcUsers = $.b1sa.beaconsOne.lib.aux.formatData(getNotWelcUser());
 
 		//Connects to the B1 Xapp Framework
 		var b1XappCon = $.b1sa.beaconsOne.lib.B1XAFLogic.loginCookies();
@@ -58,6 +58,10 @@ function run() {
 				welcOffer.Offer = recom.body.asString();
 			}
 
+			//Get the Item Picture for each Recommendaed Item
+			var test = 	$.b1sa.beaconsOne.lib.aux.formatOfferWithPics(welcOffer.Offer.resultSet);
+			//welcOffer.Offer = test
+			
 			//Update user status (ReceivedWelcomeOffer = true)
 			setUserWelcOffer(welcOffer.UserId, welcOffer.Date);
 

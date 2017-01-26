@@ -7,7 +7,7 @@
  **/
 
 $.import("b1sa.beaconsOne.lib", "constants");
-$.import("b1sa.beaconsOne.lib", "users");
+$.import("b1sa.beaconsOne.lib", "aux");
 
 try {
 	var beaconId;
@@ -36,7 +36,7 @@ try {
 	results.interval = $.b1sa.beaconsOne.lib.constants.getUserInterval();
 
 	//Retrieve Info
-	results.users = $.b1sa.beaconsOne.lib.users.formatData(getLastPositions(results.BeaconID, results.interval));
+	results.users = $.b1sa.beaconsOne.lib.aux.formatData(getLastPositions(results.BeaconID, results.interval));
 
 	connection.close();
 

@@ -65,7 +65,7 @@ function callServiceLayer(path, method, body, sessionID, routeID) {
 		$.trace.debug("call Service Layer Done! - " + JSON.stringify(response.body));
 		return response;
 	} catch (e) {
-		$.trace.error("Call Service Layer Exception: " +  JSON.stringify(e.message));
+		$.trace.error("Call Service Layer Exception: " + JSON.stringify(e.message));
 
 		if (job != true) {
 			$.response.contentType = "application/json";
@@ -81,7 +81,45 @@ function SLLogin(body, sessionID, routeID) {
 	return callServiceLayer(path, $.net.http.POST, body, sessionID, routeID);
 }
 
+function SLEasyLogin() {
+
+	// SL credentials
+	var loginInfo = {};
+	loginInfo.UserName = $.b1sa.beaconsOne.lib.constants.getB1User();
+	loginInfo.Password = $.b1sa.beaconsOne.lib.constants.getB1Password();
+	loginInfo.CompanyDB = $.b1sa.beaconsOne.lib.constants.getB1Company();
+
+	var response = SLLogin(JSON.stringify(loginInfo), null, null);
+
+	var output = {};
+	// B1SESSION and ROUTEID cookies returned by Login
+	for (var j in response.cookies) {
+		if (response.cookies[j].name === "B1SESSION") {
+			output.SessionID = response.cookies[j].value;
+		} else if (response.cookies[j].name === "ROUTEID") {
+			output.NodeID = response.cookies[j].value;
+		}
+	}
+
+	return output;
+}
+
 function PostOrder(body, sessionID, routeID) {
 	var path = B1SLAddress + "Orders";
 	return callServiceLayer(path, $.net.http.POST, body, sessionID, routeID);
+}
+
+function GetItemsPictures(body, sessionID, routeID) {
+	//Expect a body with a JSON of ItemCodes
+	var filter = "$select=Itemcode,Properties" + $.b1sa.beaconsOne.lib.constants.getPicProperty();
+	filter += "&$filter=";
+
+	for (var i = 0; i < body.length; i++) {
+		filter += "ItemCode eq '" + body[i].ItemCode + "'";
+		if (i !== body.length - 1) {
+			filter += " or ";
+		}
+	}
+	var path = B1SLAddress + "Items" + "?" + filter;
+	return callServiceLayer(path, $.net.http.GET, null, sessionID, routeID);
 }

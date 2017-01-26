@@ -2,9 +2,6 @@
 
 var output = {};
 $.response.contentType = "application/json";
-
-$.import("b1sa.beaconsOne.lib", "constants");
-$.import("b1sa.beaconsOne.lib", "users");
 $.import("b1sa.beaconsOne.lib", "B1XAFLogic");
 
 function getItemRecommendation(user) {

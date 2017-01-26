@@ -5,7 +5,7 @@ var output = {};
 var job = 0;
 
 $.import("b1sa.beaconsOne.lib", "constants");
-$.import("b1sa.beaconsOne.lib", "users");
+$.import("b1sa.beaconsOne.lib", "aux");
 
 function run() {
 	try {
@@ -24,7 +24,7 @@ function run() {
 		output.Interval = $.b1sa.beaconsOne.lib.constants.getUserInterval();
 
 		//Call Procedures to retrieve not active users
-		var notActiveUsers = $.b1sa.beaconsOne.lib.users.formatData(
+		var notActiveUsers = $.b1sa.beaconsOne.lib.aux.formatData(
 			getNotActiveUsers(output.Interval));
 
 		//Set each user as left
@@ -49,7 +49,7 @@ function run() {
 			$.response.setBody(JSON.stringify(output));
 		}
 	} catch (e) {
-		$.trace.error("Find Users Left Exception: " + e.message);
+		$.trace.error("Find Users Left Exception: " + JSON.stringify(e.message));
 		if (job != true) {
 			$.response.contentType = "application/json";
 			$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
