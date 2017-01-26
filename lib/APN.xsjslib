@@ -22,7 +22,7 @@ function callHCPPush(path, method, body) {
         }
         
         req.headers.set("Content-Type:","application/json");
-        req.headers.set("Authorization:", "basic Basic RDA1Mjc1ODpJMDEzMjc5JA==");
+        req.headers.set("Authorization:", "Basic RDA1Mjc1ODpJMDEzMjc5JQ==");
 
 /*
         req.headers.set("Content-Type:application/json");
