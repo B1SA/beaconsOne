@@ -7,13 +7,13 @@ var b1User = "manager";
 var b1Pass = "1234";
 var b1Comp = "SBODEMOUS";
 
-var picProperty = 1; // Item property to retrieve the Item img URL
+var picProperty = 'User_Text'; // Item property to retrieve the Item img URL
 
 //Application Constants
 var entraceBeaconId = "55606";
 
 //Interval for a user to be considered Active
-var userInterval = 36000; // 5 minutes
+var userInterval = 300; // 5 minutes
 
 //Interval near a beacon in order to a user receive an Item Recommendation
 var recomInterval= 10; // 2 minutes
