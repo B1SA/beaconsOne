@@ -59,8 +59,7 @@ function run() {
 			}
 
 			//Get the Item Picture for each Recommendaed Item
-			var test = 	$.b1sa.beaconsOne.lib.aux.formatOfferWithPics(welcOffer.Offer.resultSet);
-			//welcOffer.Offer = test
+			welcOffer.Offer.resultSet = $.b1sa.beaconsOne.lib.aux.formatOfferWithPics(welcOffer.Offer.resultSet);
 			
 			//Update user status (ReceivedWelcomeOffer = true)
 			setUserWelcOffer(welcOffer.UserId, welcOffer.Date);

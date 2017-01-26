@@ -2,6 +2,7 @@ var B1SLAddress = "/b1s/v1/";
 
 var job = 0;
 $.import("b1sa.beaconsOne.lib", "constants");
+$.import("b1sa.beaconsOne.lib", "aux");
 
 function callServiceLayer(path, method, body, sessionID, routeID) {
 	try {
@@ -111,13 +112,13 @@ function PostOrder(body, sessionID, routeID) {
 
 function GetItemsPictures(body, sessionID, routeID) {
 	//Expect a body with a JSON of ItemCodes
-	var filter = "$select=Itemcode,Properties" + $.b1sa.beaconsOne.lib.constants.getPicProperty();
+	var filter = "$select=ItemCode," + $.b1sa.beaconsOne.lib.constants.getPicProperty();
 	filter += "&$filter=";
 
 	for (var i = 0; i < body.length; i++) {
-		filter += "ItemCode eq '" + body[i].ItemCode + "'";
+		filter += "%20ItemCode"+ $.b1sa.beaconsOne.lib.aux.op('eq') + $.b1sa.beaconsOne.lib.aux.quotes(body[i].ItemCode);
 		if (i !== body.length - 1) {
-			filter += " or ";
+			filter += $.b1sa.beaconsOne.lib.aux.op('or');;
 		}
 	}
 	var path = B1SLAddress + "Items" + "?" + filter;
