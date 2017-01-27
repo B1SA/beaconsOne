@@ -1,4 +1,4 @@
-host = "https://hcpms-d052758trial.hanatrial.ondemand.com";
+host = "hcpms-d052758trial.hanatrial.ondemand.com";
 port = 443;
 pathPrefix = "/restnotification/application/com.sap.B1.InnovationSummit2017";
 proxyType = none;
