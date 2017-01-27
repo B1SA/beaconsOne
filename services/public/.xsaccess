@@ -1,0 +1,18 @@
+{
+     "exposed" : true,  
+                  
+     "authentication" :  null,
+  
+     "cache_control" : "must-revalidate", 
+
+     "cors" :                      
+            {
+             "enabled" : true
+            }, 
+                     
+     "enable_etags" : false,
+
+     "force_ssl" : false,
+     
+     "prevent_xsrf" : false
+}
