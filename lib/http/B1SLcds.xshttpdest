@@ -1,0 +1,6 @@
+description = "B1 Assistant SL http connection";
+host = "sapb1cloud.biz";
+port = 443;
+authType = none;
+useSSL = true;
+timeout = 0;
