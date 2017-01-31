@@ -1,0 +1,8 @@
+host = "mobilepreview-ada8016be.hana.ondemand.com";
+port = 443;
+pathPrefix = "";
+authType = basic;
+useSSL = true;
+timeout = 30000;
+sslHostCheck = true;
+sslAuth = client;
