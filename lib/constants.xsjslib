@@ -2,10 +2,19 @@
     This library provide hardcoded constants
 */
 
-//B1 Constants
+//B1 Constants 
+/*
 var b1User = "manager";
 var b1Pass = "1234";
 var b1Comp = "SBODEMOUS";
+*/
+
+// B1 CDS
+
+var b1User = "I830656";
+var b1Pass = "Passw0rd1";
+var b1Comp = "DEMO_LPE";
+
 
 var picProperty = 'User_Text'; // Item property to retrieve the Item img URL
 

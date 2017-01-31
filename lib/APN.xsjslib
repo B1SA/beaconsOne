@@ -6,7 +6,7 @@ function callHCPPush(path, method, body) {
 
         //B1SL.xshttpdest
 //        var destination = $.net.http.readDestination("RO_WSRD.ServiceLayer", "B1SL");
-        var destination = $.net.http.readDestination("b1sa.beaconsOne.lib","pushRest");
+        var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http","pushRest");
         var client = new $.net.http.Client();
 
         var header = "";

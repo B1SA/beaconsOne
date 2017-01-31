@@ -1,0 +1,6 @@
+description = "B1 Xapp Framework https connection";
+host = "u04xs.sapb1cloud.biz";
+port = 443;
+authType = basic;
+useSSL = true;
+timeout = 0;
