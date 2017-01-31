@@ -1,9 +1,0 @@
-host = "hcpms-d052758trial.hanatrial.ondemand.com";
-port = 443;
-pathPrefix = "/restnotification/application/com.sap.B1.InnovationSummit2017";
-proxyType = none;
-proxyHost = "proxy";
-proxyPort = 8080;
-authType = none;
-useSSL = true;
-timeout = 30000;
