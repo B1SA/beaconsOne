@@ -18,7 +18,7 @@ var beaconList = [
 	{
 		"beaconId": "56127",
 		"shelfId": "UL89",
-		"ShelfTitle": "Cheese(BeaconId: 56127) <p>A00004 - A00007</p>",
+		"ShelfTitle": "Wines(BeaconId: 56128) <p>A00004 - A00006</p>",
 		"XPosition": 380,
 		"MaxPointsCount": 5,
 		"image": "cheese_shelf.jpg",
@@ -32,7 +32,7 @@ var beaconList = [
 	{
 		"beaconId": "56128",
 		"shelfId": "UL101",
-		"ShelfTitle": "Wines(BeaconId: 56128) <p>A00008 - A00011</p>",
+		"ShelfTitle": "Cheese(BeaconId: 56127) <p>A00007 - A00009</p>",
 		"XPosition": 510,
 		"MaxPointsCount": 5,
 		"image": "wine_shelf.jpg",

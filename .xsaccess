@@ -3,19 +3,19 @@
                   
      "authentication" :                                            
             {
-               "method": "Form"   
+               "method": "Basic"   
             },
   
      "cache_control" : "must-revalidate", 
 
      "cors" :                      
             {
-             "enabled" : false
+             "enabled" : true
             }, 
                      
      "enable_etags" : false,
 
      "force_ssl" : false,
      
-     "prevent_xsrf" : true
+     "prevent_xsrf" : false
 }

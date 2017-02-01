@@ -20,9 +20,11 @@ var picProperty = 'User_Text'; // Item property to retrieve the Item img URL
 
 //Application Constants
 var entraceBeaconId = "55606";
+var APNPath= "/restnotification/application/com.sap.B1.InnovationSummit2017";
+
 
 //Interval for a user to be considered Active
-var userInterval = 300; // 5 minutes
+var userInterval = 30000000; // 5 minutes
 
 //Interval near a beacon in order to a user receive an Item Recommendation
 var recomInterval= 10; // 2 minutes
@@ -69,4 +71,8 @@ function shouldCommit() {
 // Prepare service outputs according to XSJOB prerequisites
 function jobsActivaded() {
 	return jobsActive;
+}
+
+function getAPNPath(){
+    return APNPath;
 }

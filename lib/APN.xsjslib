@@ -1,78 +1,83 @@
 /*Library to send Apple Push Notifications*/
+
+$.import("b1sa.beaconsOne.lib", "constants");
+
 function callHCPPush(path, method, body) {
-    try {
-        //$.trace.debug("callServiceLayer (path: " + path + ", method: " + method + ", body: " + body + ", sessionID: " + sessionID + ", routeID: " + routeID + ")");
-        $.trace.debug("callServiceLayer (path: " + path + ", method: " + method + ", body: " + body);
+	try {
+		//$.trace.debug("callServiceLayer (path: " + path + ", method: " + method + ", body: " + body + ", sessionID: " + sessionID + ", routeID: " + routeID + ")");
+		$.trace.debug("callServiceLayer (path: " + path + ", method: " + method + ", body: " + body);
 
-        //B1SL.xshttpdest
-//        var destination = $.net.http.readDestination("RO_WSRD.ServiceLayer", "B1SL");
-        var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http","pushRest");
-        var client = new $.net.http.Client();
+		//B1SL.xshttpdest
+		//        var destination = $.net.http.readDestination("RO_WSRD.ServiceLayer", "B1SL");
+		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "pushRest");
+		var client = new $.net.http.Client();
 
-        var header = "";
-        if (method === $.net.http.PATCH) {
-            method = $.net.http.POST;
-            header = "X-HTTP-Method-Override: PATCH";
-        }
+		var header = "";
+		if (method === $.net.http.PATCH) {
+			method = $.net.http.POST;
+			header = "X-HTTP-Method-Override: PATCH";
+		}
 
-        var req = new $.web.WebRequest(method,path);
+		var req = new $.web.WebRequest(method, path);
 
-        if (header !== "") {
-            req.headers.set("X-HTTP-Method-Override", "PATCH");
-        }
-        
-        req.headers.set("Content-Type:","application/json");
-        req.headers.set("Authorization:", "Basic RDA1Mjc1ODpJMDEzMjc5JQ==");
+		if (header !== "") {
+			req.headers.set("X-HTTP-Method-Override", "PATCH");
+		}
 
-/*
+		req.headers.set("Content-Type", "application/json");
+		req.headers.set("Authorization", "Basic RDA1Mjc1ODpJMDEzMjc5JQ==");
+
+		/*
         req.headers.set("Content-Type:application/json");
         req.headers.set("Authorization: basic Basic RDA1Mjc1ODpJMDEzMjc5JA==");
 */
-        if (body) {
-            req.setBody(body);
-        }
+		if (body) {
+			req.setBody(body);
+		}
 
-       client.request(req, destination);
+		client.request(req, destination);
 
-        var response = client.getResponse();
+		var response = client.getResponse();
 
-        //The rest of the file (attached) is just a default forward of the response  
-        var myCookies = [],
-            myHeader = [],
-            myBody = null;
+		//The rest of the file (attached) is just a default forward of the response  
+		var myCookies = [],
+			myHeader = [],
+			myBody = null;
 
-        //Cookies  
-        for (var c in response.cookies) {
-            myCookies.push(response.cookies[c]);
-        }
-        //Headers  
-        for (var h in response.headers) {
-            myHeader.push(response.headers[h]);
-        }
-        //Body  
-        if (response.body)
-            try {
-                myBody = JSON.parse(response.body.asString());
-            } catch (e) {
-            myBody = response.body.asString();
-        }
+		//Cookies  
+		for (var c in response.cookies) {
+			myCookies.push(response.cookies[c]);
+		}
+		//Headers  
+		for (var h in response.headers) {
+			myHeader.push(response.headers[h]);
+		}
+		//Body  
+		if (response.body)
+			try {
+				myBody = JSON.parse(response.body.asString());
+			} catch (e) {
+				myBody = response.body.asString();
+			}
 
-
-        $.trace.debug("callServiceLayer response status: " + $.response.status);
-        return response;
-    } catch (e) {
-        $.trace.warning("callServiceLayer Exception: " + e.message);
-        $.response.contentType = "application/json";
-        $.response.setBody(JSON.stringify({
-            "error": e.message
-        }));
-    }
-}
-function sendWelcomeOffer(json){
-    
+		$.trace.debug("callServiceLayer response status: " + $.response.status);
+		return response;
+	} catch (e) {
+		$.trace.warning("callServiceLayer Exception: " + e.message);
+		$.response.contentType = "application/json";
+		$.response.setBody(JSON.stringify({
+			"error": e.message
+		}));
+	}
 }
 
-function sendItemRecom(json){
-    
+function sendWelcomeOffer(json) {
+	/** Handle Json **/
+	var notifContent = {};
+
+	callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, json)
 }
-    
+
+function sendItemRecom(json) {
+	callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, json);
+}
