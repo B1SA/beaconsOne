@@ -73,19 +73,19 @@ function callHCPPush(path, method, body) {
 
 function sendWelcomeOffer(json) {
 	/** Handle Json **/
-//	var notifContent = {};
-	
+
+   var inComing = JSON.stringify(json.Offer.resultSet);
+   
+   var apnBody ="{ \"alert\": \"Now add more content to your with data line Push Notifications!\", \"customParameters\": { \"apns.category\": \"WelcomeOffer\" }, ";
+   apnBody = apnBody +  "\n\"badge\": 5,\n";
+   //apnBody = apnBody + "\"data\":{\"B1XAF\": {\"SessionID\": \"ABCD\",\"NodeID\": {\"named\": \"xsID1234\"}},";
+   apnBody = apnBody + " \"data\": \"B1XAF\", ";
+   apnBody = apnBody + "\n\"sound\": \"soundval\""; 
+   apnBody = apnBody + inComing;
+      	
 
 
-    for (var i = 0; i < json.length;i++)
-    {
-       var welcomeDetails = {};
-       welcomeDetails.CardCode = json[i].Offer.resultSet[i].CardCode;
-       welcomeDetails.Currency = json[i].Offer.resultSet[i].Currency;
-       welcomeDetails.itemName = json[i].Offer.resultSet[i].itemName;
-       welcomeDetails.itemCode = json[i].Offer.resultSet[i].itemCoded;
-        
-    }
+
     
 	callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, json);
 }

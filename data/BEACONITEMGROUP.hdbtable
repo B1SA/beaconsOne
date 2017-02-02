@@ -1,0 +1,9 @@
+//Users inside the Shop table
+table.schemaName = "BEACONSONE";
+table.tableType = COLUMNSTORE;
+table.columns = [
+        {name = "BeaconId";    sqlType = NVARCHAR; nullable = false; length = 25;},
+        {name = "ItemsGroupCode";    sqlType = INTEGER; nullable = false;}
+     ]; 
+table.primaryKey.pkcolumns = ["BeaconId"];
+table.indexes =  [{name = "ITEMGROUP"; unique = true; indexColumns = ["ItemsGroupCode","BeaconId"];}];   

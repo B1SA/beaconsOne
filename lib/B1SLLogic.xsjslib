@@ -12,7 +12,7 @@ function callServiceLayer(path, method, body, sessionID, routeID) {
 			routeID + ")");
 
 		//B1SL.xshttpdest
-		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1SL");
+		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1SLcds");
 		var client = new $.net.http.Client();
 
 		var header = "";
@@ -121,6 +121,16 @@ function GetItemsPictures(body, sessionID, routeID) {
 			filter += $.b1sa.beaconsOne.lib.aux.op('or');;
 		}
 	}
+	var path = B1SLAddress + "Items" + "?" + filter;
+	return callServiceLayer(path, $.net.http.GET, null, sessionID, routeID);
+}
+
+function getItemsbyGroup(ItemsGroupCode, sessionID, routeID) {
+	//Expect a body with a JSON of ItemCodes
+	var filter = "$select=ItemCode,ItemName," + $.b1sa.beaconsOne.lib.constants.getPicProperty();
+	filter += "&$filter=";
+	filter += "%20ItemsGroupCode"+ $.b1sa.beaconsOne.lib.aux.op('eq') + ItemsGroupCode;
+
 	var path = B1SLAddress + "Items" + "?" + filter;
 	return callServiceLayer(path, $.net.http.GET, null, sessionID, routeID);
 }

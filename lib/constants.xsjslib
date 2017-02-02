@@ -3,28 +3,28 @@
 */
 
 //B1 Constants 
-
+/*
 var b1User = "manager";
 var b1Pass = "1234";
 var b1Comp = "SBODEMOUS";
-
+*/
 
 // B1 CDS
-/*
+
 var b1User = "I830656";
 var b1Pass = "Passw0rd1";
 var b1Comp = "DEMO_LPE";
-*/
+
 
 var picProperty = 'User_Text'; // Item property to retrieve the Item img URL
 
 //Application Constants
-var entraceBeaconId = "55606";
+var entraceBeaconId = "65485";
 var APNPath= "/restnotification/application/com.sap.B1.InnovationSummit2017";
 
 
 //Interval for a user to be considered Active
-var userInterval = 30000000; // 5 minutes
+var userInterval = 3600; // 1 hour
 
 //Interval near a beacon in order to a user receive an Item Recommendation
 var recomInterval= 10; // 2 minutes
