@@ -62,7 +62,7 @@ function run() {
 			welcOffer.Offer.resultSet = $.b1sa.beaconsOne.lib.aux.formatOfferWithPics(welcOffer.Offer.resultSet);
 			
 			//Update user status (ReceivedWelcomeOffer = true)
-			setUserWelcOffer(welcOffer.UserId, welcOffer.Date);
+			//setUserWelcOffer(welcOffer.UserId, welcOffer.Date);
 
 			APN.push(welcOffer);
 		}
