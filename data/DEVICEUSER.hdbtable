@@ -1,0 +1,9 @@
+//Users inside the Shop table
+table.schemaName = "BEACONSONE";
+table.tableType = COLUMNSTORE;
+table.columns = [
+        {name = "DeviceToken";    sqlType = NVARCHAR; nullable = false; length = 100;},
+        {name = "UserId";    sqlType = NVARCHAR; nullable = false; length = 20;}]; 
+
+table.primaryKey.pkcolumns = ["DeviceToken","UserId"];
+table.indexes =  [{name = "USER"; unique = true; indexColumns = ["UserId","DeviceToken"];}];  

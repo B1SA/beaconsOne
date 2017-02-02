@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAP_CA_DEVICEUSER" applyPrivilegeType="ANALYTIC_PRIVILEGE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="2.3" defaultClient="$$client$$" visibility="internal" outputViewType="Projection" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="SAP_CA_DEVICEUSER"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="b1sa.beaconsOne.data::DEVICEUSER" type="DATA_BASE_TABLE">
+    <viewAttributes allViewAttributes="true"/>
+    <columnObject schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::DEVICEUSER"/>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="b1sa.beaconsOne.data::DEVICEUSER">
+  <attributes>
+    <attribute id="DeviceToken" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DeviceToken"/>
+      <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::DEVICEUSER" columnName="DeviceToken"/>
+    </attribute>
+    <attribute id="UserId" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UserId"/>
+      <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::DEVICEUSER" columnName="UserId"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
