@@ -1,0 +1,9 @@
+service{
+   "_SYS_BIC"."b1sa.beaconsOne.models.mobile/SAP_CA_USERBP"
+                        as "UserByBP" keys ("UserId");
+                        
+  "_SYS_BIC"."b1sa.beaconsOne.models.mobile/SAP_CA_DEVICEUSER"
+                        as "DeviceByUser" keys ("DeviceToken");
+
+
+}

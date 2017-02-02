@@ -1,5 +1,5 @@
 PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures.mobile::setDevice" ( in  DeviceToken NVARCHAR(100),
-                                                                        out inserError  INTEGER)
+                                                                        in  UserId NVARCHAR(20))
 
 LANGUAGE SQLSCRIPT AS
 BEGIN
@@ -7,20 +7,17 @@ BEGIN
     declare recordExists    integer;
     
     recordExists = 0;
-    inserError = 0;
     
-    /**f this user was here in between the date or and the past (-interval)
-    t is not a new user **/
     select  count ("DeviceToken") into recordExists 
     from "_SYS_BIC"."b1sa.beaconsOne.models.mobile/SAP_CA_DEVICEUSER"
     where "DeviceToken" = :DeviceToken;
     
-    
     if (:recordExists = 0) then
         insert into "BEACONSONE"."b1sa.beaconsOne.data::DEVICEUSER" 
-        values (:DeviceToken,'');
+        values (:DeviceToken,:UserId);
     else 
-        inserError = 1; 
+        update "BEACONSONE"."b1sa.beaconsOne.data::DEVICEUSER"
+        set "UserId" =  :UserId
+        where "DeviceToken" = :DeviceToken;
     end if;
-    
 END;

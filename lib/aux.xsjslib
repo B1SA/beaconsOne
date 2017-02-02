@@ -2,7 +2,7 @@
 $.import("b1sa.beaconsOne.lib", "B1SLLogic");
 
 function formatData(json) {
-	//Convert a set of Users to an Array of Users
+	//Conver    t a set of Users to an Array of Users
 	var newUsers = [];
 	for (var i = 0; i < Object.keys(json['USERS']).length; i++) {
 		var user = json['USERS'][i];
@@ -12,7 +12,30 @@ function formatData(json) {
 }
 
 function getUserCardCode(userId) {
-	return 'C20000';
+	//Initate SQL connection
+	var connection = $.hdb.getConnection();
+
+	//List of Users to receive a Welcome Offer
+	var getUserBP = connection.loadProcedure("BEACONSONE",
+		"b1sa.beaconsOne.procedures.mobile::getUserBP");
+
+	var CardCode = getUserBP(userId);
+	connection.close();
+
+	return CardCode.CARDCODE;
+}
+
+function getUserDeviceToken(userId) {
+	//Initate SQL connection
+	var connection = $.hdb.getConnection();
+	
+	var getUserDevice = connection.loadProcedure("BEACONSONE",
+		"b1sa.beaconsOne.procedures.mobile::getUserDevice");
+	
+	var DeviceToken = getUserDevice(userId);
+	connection.close();
+	
+	return DeviceToken.DEVICETOKEN;
 }
 
 function getBeaconItem(beaconId) {
@@ -29,7 +52,7 @@ function formatOfferWithPics(body) {
 	var images = $.b1sa.beaconsOne.lib.B1SLLogic.GetItemsPictures(body, SESSIONID, NODEID);
 	images = JSON.parse(images.body.asString());
 	images = images.value;
-	
+
 	for (var i = 0; i < body.length; i++) {
 		for (var j = 0; j < images.length; j++) {
 			if (body[i].ItemCode === images[j].ItemCode) {
@@ -38,7 +61,7 @@ function formatOfferWithPics(body) {
 			}
 		}
 	}
-	
+
 	return body;
 }
 

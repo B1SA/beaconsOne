@@ -1,0 +1,12 @@
+PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures::getBeaconItem" (
+                                                            in  BeaconId      NVARCHAR(20),
+                                                            out ItemsGroupCode    NVARCHAR(50))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   SELECT   "ItemsGroupCode" into ItemsGroupCode
+   FROM     "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_BEACONITEMGROUP"
+   WHERE    "BeaconId" = :BeaconId;
+END
