@@ -1,0 +1,10 @@
+//Users inside the Shop table
+table.schemaName = "BEACONSONE";
+table.tableType = COLUMNSTORE;
+table.columns = [
+        {name = "UserId";    sqlType = NVARCHAR; nullable = false; length = 20;},
+        {name = "CardCode";    sqlType = NVARCHAR; nullable = false; length = 50;}
+     ]; 
+table.primaryKey.pkcolumns = ["UserId", "CardCode"];
+
+table.indexes =  [{name = "CARDCODE"; unique = true; indexColumns = ["CardCode", "UserId"];}]; 

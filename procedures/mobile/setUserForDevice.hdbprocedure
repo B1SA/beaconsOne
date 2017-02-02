@@ -1,0 +1,24 @@
+PROCEDURE "BEACONSONE"."b1sa.beaconsOne.procedures.mobile::setUserForDevice" ( in  DeviceToken NVARCHAR(100),
+                                                                        in  UserId NVARCHAR(20),
+                                                                        out inserError  INTEGER)
+LANGUAGE SQLSCRIPT AS
+BEGIN
+
+    declare recordExists    integer;
+    
+    recordExists = 0;
+    inserError = 0;
+    
+    
+    select  count ("DeviceToken") into recordExists 
+    from "_SYS_BIC"."b1sa.beaconsOne.models.mobile/SAP_CA_DEVICEUSER"
+    where "DeviceToken" = :DeviceToken;
+    
+    if (:recordExists != 0) then
+        update "BEACONSONE"."b1sa.beaconsOne.data::DEVICEUSER" 
+        set "UserId" = :UserId
+        where "DeviceToken" = :DeviceToken;
+    else 
+        inserError = 1; 
+    end if;
+END;
