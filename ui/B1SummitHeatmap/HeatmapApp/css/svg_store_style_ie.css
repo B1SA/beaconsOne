@@ -1,0 +1,248 @@
+
+header, footer, nav, section, article { display: block; }
+
+body { 
+	background:#eee; 
+	margin:0; 
+	padding: 0; 
+	font-family: Trebuchet MS1, sans-serif;  
+    font-weight: normal;   
+	line-height: 1.1;
+	}
+
+header{
+	background:#eee;
+	margin-left: 5px;
+	margin-top: 10px;
+	width: 70%;
+	float: left;
+}
+
+footer{
+	position: absolute;
+	top: 600px;
+	margin-bottom: 5px;
+	text-indent: 10px;
+}
+
+a{
+	text-decoration: none;
+	outline: none;
+}
+
+a img{
+	outline: none;
+}
+
+img {border : 0;}
+
+footer a:link{
+	text-decoration: none;
+	color: #005A8C;
+}
+
+footer a:visited{
+	text-decoration: none;
+	color: #005A8C;
+}
+
+footer a:active{
+	text-decoration: none;
+	color: #CC6600;
+}
+
+footer a:hover{
+	text-decoration: none;
+	color: #CC6600;
+}
+
+#innerhead{
+	background: #fff;
+	margin-left: 5px;
+	border:1px solid #ccc;
+	padding: 5px 10px;
+}
+
+#Floor_select{
+	float: right;
+	margin-top: 40px;
+	margin-right: 5px;
+	vertical-align: 
+}
+
+.floor_divider{
+	vertical-align: 2px;
+}
+
+#Floor_select b{
+	font-size: 1.5em;
+	vertical-align: 
+}
+
+#Floor_select a{
+	font-size: 0.9em;
+	vertical-align: 2px;
+}
+
+#Floor_select a:link{
+	text-decoration: none;
+	color: #005A8C;
+}
+
+#Floor_select a:visited{
+	text-decoration: none;
+	color: #005A8C;
+}
+
+#Floor_select a:active{
+	text-decoration: none;
+	color: #CC6600;
+}
+
+#Floor_select a:hover{
+	text-decoration: none;
+	color: #CC6600;
+}
+
+#right_header{
+	float: left;
+	width: 280px;
+	height: 53px;
+	background: #fff;
+	border:1px solid #ccc;
+	margin-left: 10px;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+#content_wrapper{
+	width: 100%;
+}
+	
+#map_section{
+	padding-left: 10px;
+}	
+
+#room_info{
+	border:1px solid #ccc; 
+	width: 280px; /*Width of right column in pixels*/
+	background: #fff;
+	height: 450px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+svg {
+	  border:1px solid #ccc; 
+      width:70%; height: 500px; background:#fff;
+	  float: left;
+	  margin-top: 10px;
+    }
+
+.room{
+	fill: #FF0000;
+	fill-opacity: 0.2;
+	stroke:#000;
+	stroke-width: 1;
+}
+
+.room:hover{
+	fill-opacity: 1.0;
+}
+
+.room:target{
+	fill-opacity: 1.0;
+}
+
+.room2{
+	fill: #FECCCC;
+	fill-opacity: 1.0;
+	stroke:#000;
+	stroke-width: 1;
+}
+
+.room2:hover{
+	fill: #FF0000;
+}
+
+.room2:target{
+	fill: #FF0000;
+}
+
+.helpdesk{
+	fill: #00FF00;
+	fill-opacity: 0.2;
+	stroke:#000;
+	stroke-width: 1;
+}
+
+.helpdesk:hover{
+	fill-opacity: 1.0;
+}
+
+.helpdesk:target{
+	fill-opacity: 1.0;
+}
+
+.utilroom path, .utilroom rect, .utilroom polygon{
+	fill: #AAAAAA;
+	stroke:#000;
+	stroke-width: 1;
+}
+
+.location{
+	fill: #0000FF;
+	fill-opacity: 0.2;
+	stroke:#000;
+	stroke-width: 1;
+}
+
+.location:hover{
+	fill-opacity: 1.0;
+}
+
+.location:target{
+	fill-opacity: 1.0;
+}
+
+.inactive{
+
+}
+
+text{
+	opacity: 0.6;
+	stroke: none;
+	fill: #000000;
+}
+
+/* Style for Upcoming Hours */
+#calendarTitle{
+	display: none;
+}
+
+#events table{
+	margin: auto;
+	margin-top: 0px;
+	border-collapse: separate;
+	border-spacing: 2px;
+	color: #052F53;
+	border: 1px solid #052F53;
+}
+
+#events tr td, tr th {
+	margin: 0px;
+	padding: 0px;
+	padding-right: 5px;
+}
+
+#events tr:first-child  td{
+	background-color: #F0AF03;
+	padding: 3px 4px;
+}
+
+#events tr:first-child + tr td{
+	background-color: #EDD595;
+	padding: 3px 4px;
+}

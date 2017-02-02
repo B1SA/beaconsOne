@@ -73,9 +73,21 @@ function callHCPPush(path, method, body) {
 
 function sendWelcomeOffer(json) {
 	/** Handle Json **/
-	var notifContent = {};
+//	var notifContent = {};
+	
 
-	callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, json)
+
+    for (var i = 0; i < json.length;i++)
+    {
+       var welcomeDetails = {};
+       welcomeDetails.CardCode = json[i].Offer.resultSet[i].CardCode;
+       welcomeDetails.Currency = json[i].Offer.resultSet[i].Currency;
+       welcomeDetails.itemName = json[i].Offer.resultSet[i].itemName;
+       welcomeDetails.itemCode = json[i].Offer.resultSet[i].itemCoded;
+        
+    }
+    
+	callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, json);
 }
 
 function sendItemRecom(json) {
