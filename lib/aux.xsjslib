@@ -20,16 +20,19 @@ function getUserCardCode(userId) {
 	//List of Users to receive a Welcome Offer
 	var getUserBP = connection.loadProcedure("BEACONSONE",
 		"b1sa.beaconsOne.procedures.mobile::getUserBP");
-
-	var CardCode = getUserBP(userId);
+    
+    var CardCode;
+    
+	try{
+	    CardCode = getUserBP(userId);
+	    CardCode = CardCode.CARDCODE
+	}
+	catch(e){
+	    CardCode = $.b1sa.beaconsOne.lib.constants.getGenCardCode();
+	}
 	connection.close();
     
-    //Return Generic CardCode if customer is not mapped
-    if(!CardCode.CARDCODE){
-        return $.b1sa.beaconsOne.lib.constants.getGenCardCode();
-    }
-
-	return CardCode.CARDCODE;
+	return CardCode;
 }
 
 function getUserDeviceToken(userId) {
