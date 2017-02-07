@@ -2,12 +2,12 @@ var heatmap;
 var dataPoints;
 var beaconList = [
 	{
-		"beaconId": "56126",
+		"beaconId": "65483",
 		"shelfId": "UL77",
 		"XPosition": 205,
 		"MaxPointsCount": 5,
 		"image": "chocolate_shelf.jpg",
-		"ShelfTitle": "Chocolate(BeaconId: 56126) <p>A00001 - A00003</p>",
+		"ShelfTitle": "Chocolate(BeaconId: 65483) <p>A00001 - A00003</p>",
 		"area": {
 			"x1": 190,
 			"y1": 186,
@@ -16,12 +16,12 @@ var beaconList = [
 		}
     },
 	{
-		"beaconId": "56127",
+		"beaconId": "65473",
 		"shelfId": "UL89",
-		"ShelfTitle": "Wines(BeaconId: 56128) <p>A00004 - A00006</p>",
+		"ShelfTitle": "Wines(BeaconId: 65473) <p>A00004 - A00006</p>",
 		"XPosition": 380,
 		"MaxPointsCount": 5,
-		"image": "cheese_shelf.jpg",
+		"image": "wine_shelf.jpg",
 		"area": {
 			"x1": 365,
 			"y1": 186,
@@ -30,12 +30,12 @@ var beaconList = [
 		}
     },
 	{
-		"beaconId": "56128",
+		"beaconId": "65484",
 		"shelfId": "UL101",
-		"ShelfTitle": "Cheese(BeaconId: 56127) <p>A00007 - A00009</p>",
+		"ShelfTitle": "Cheese(BeaconId: 65484) <p>A00007 - A00009</p>",
 		"XPosition": 510,
 		"MaxPointsCount": 5,
-		"image": "wine_shelf.jpg",
+		"image": "cheese_shelf.jpg",
 		"area": {
 			"x1": 495,
 			"y1": 186,
@@ -44,9 +44,9 @@ var beaconList = [
 		}
     },
     {
-		"beaconId": "55606",
+		"beaconId": "65485",
 		"shelfId": "UL103",
-		"ShelfTitle": "Entrance(BeaconId: 55606)",
+		"ShelfTitle": "Entrance(BeaconId: 65485)",
 		"XPosition": 895,
 		"MaxPointsCount": 5,
 		"image": "entrance_gate.jpg",

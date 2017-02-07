@@ -1,5 +1,7 @@
 //Auxiliar functions for data manipulation
 $.import("b1sa.beaconsOne.lib", "B1SLLogic");
+$.import("b1sa.beaconsOne.lib", "constants");
+
 
 function formatData(json) {
 	//Conver    t a set of Users to an Array of Users
@@ -21,6 +23,11 @@ function getUserCardCode(userId) {
 
 	var CardCode = getUserBP(userId);
 	connection.close();
+    
+    //Return Generic CardCode if customer is not mapped
+    if(!CardCode.CARDCODE){
+        return $.b1sa.beaconsOne.lib.constants.getGenCardCode();
+    }
 
 	return CardCode.CARDCODE;
 }

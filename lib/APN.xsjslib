@@ -74,20 +74,31 @@ function callHCPPush(path, method, body) {
 function sendWelcomeOffer(json) {
 	/** Handle Json **/
 
-   var inComing = JSON.stringify(json.Offer.resultSet);
    
-   var apnBody ="{ \"alert\": \"Now add more content to your with data line Push Notifications!\", \"customParameters\": { \"apns.category\": \"WelcomeOffer\" }, ";
+//   var inComing = JSON.stringify(json.Offer.resultSet);
+   
+   var apnBody;
+    /*   apnBody ="{ \"alert\": \"Now add more content to your with data line Push Notifications!\", \"customParameters\": { \"apns.category\": \"WelcomeOffer\" }, ";
    apnBody = apnBody +  "\n\"badge\": 5,\n";
    //apnBody = apnBody + "\"data\":{\"B1XAF\": {\"SessionID\": \"ABCD\",\"NodeID\": {\"named\": \"xsID1234\"}},";
    apnBody = apnBody + " \"data\": \"B1XAF\", ";
    apnBody = apnBody + "\n\"sound\": \"soundval\""; 
-   apnBody = apnBody + inComing;
+   apnBody = apnBody + inComing; */
       	
-
-
-
+   
+   for (var i = 0; i<json.length; i++){
+        apnBody = {};
+        apnBody.alert = 'With CardCode ';
+        apnBody.customParameters = {"apns.category": "WelcomeOffer"};
+        apnBody.badge = 5;
+        //apnBody.data = json[i].Offer.resultSet[0].CardCode;
+        apnBody.data = json[i].Offer.resultSet;
+        apnBody.sound = 'soundval';
+        callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, JSON.stringify(apnBody));
+   }
+   
     
-	callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, json);
+	
 }
 
 function sendItemRecom(json) {
