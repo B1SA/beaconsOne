@@ -18,7 +18,8 @@ var genCardCode = 'C99998'; // Generic CardCode
 
 /****************APPLICATION CONSTANTS*******************/
 var entraceBeaconId = "65485";
-var APNPath= "/restnotification/application/APNSB1BeaconsDemo";
+//var APNPath= "/restnotification/application/APNSB1BeaconsDemo";
+var APNPath = "/restnotification/application/com.sap.B1.InnovationSummit2017";
 
 //Interval for a user to be considered Active
 var userInterval = 600; // 10 minutes

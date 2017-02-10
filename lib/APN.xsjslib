@@ -1,14 +1,13 @@
 /*Library to send Apple Push Notifications*/
 
 $.import("b1sa.beaconsOne.lib", "constants");
+$.import("b1sa.beaconsOne.lib","aux");
 
-function callHCPPush(path, method, body) {
+function callHCPPush(path, method, body, data) {
 	try {
-		//$.trace.debug("callServiceLayer (path: " + path + ", method: " + method + ", body: " + body + ", sessionID: " + sessionID + ", routeID: " + routeID + ")");
-		$.trace.debug("callServiceLayer (path: " + path + ", method: " + method + ", body: " + body);
 
-		//B1SL.xshttpdest
-		//        var destination = $.net.http.readDestination("RO_WSRD.ServiceLayer", "B1SL");
+		$.trace.debug("callHCPPush (path: " + path + ", method: " + method + ", body: " + body);
+
 		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "pushRest");
 		var client = new $.net.http.Client();
 
@@ -32,6 +31,9 @@ function callHCPPush(path, method, body) {
         req.headers.set("Authorization: basic Basic RDA1Mjc1ODpJMDEzMjc5JA==");
 */
 		if (body) {
+			//		    body = JSON.stringify(body);
+			body = body + data;
+			body = body + ",sound = soundval,}";
 			req.setBody(body);
 		}
 
@@ -60,10 +62,10 @@ function callHCPPush(path, method, body) {
 				myBody = response.body.asString();
 			}
 
-		$.trace.debug("callServiceLayer response status: " + $.response.status);
+		$.trace.debug("callHCPPush response status: " + $.response.status);
 		return response;
 	} catch (e) {
-		$.trace.warning("callServiceLayer Exception: " + e.message);
+		$.trace.warning("callHCPPush Exception: " + e.message);
 		$.response.contentType = "application/json";
 		$.response.setBody(JSON.stringify({
 			"error": e.message
@@ -71,36 +73,81 @@ function callHCPPush(path, method, body) {
 	}
 }
 
+function DebugAPNCall() {
+	/*
+     * Hardcoded test function to confirm APN is working should only be called when troubleshooting
+     * Values to pass ot APN
+     {
+        "customParameters": {
+            "apns.category": "WelcomeOffer"
+        },
+	"alert":  "Now add more content to your Push Notifications!", 
+         "badge": 1, 
+         "data": "[{\"ItemCode\":\"I00008\",\"ItemName\":\"Rainbow Nuance Ink 6-Pack and Photo Paper Kit\",\"CardCode\":\"C99998\",\"Price\":39,\"Currency\":\"$\",\"Probability\":2.457943925233645,\"PictureURL\":\"http://i.imgur.com/BDkbtor.jpg\"},{\"ItemCode\":\"I00007\",\"ItemName\":\"Rainbow Printer 9.5 Inkjet Cartridge\",\"CardCode\":\"C99998\",\"Price\":28,\"Currency\":\"$\",\"Probability\":2.4375,\"PictureURL\":\"http://i.imgur.com/BDkbtor.jpg\"}]",
+         "sound": "soundval"
+}
+ */
+	var apnBody = {};
+	apnBody.customParameters = {
+		"apns.category": "WelcomeOffer"
+	};
+	apnBody.alert = 'Your Welcome Offer ';
+	apnBody.badge = 5;
+	apnBody.data = "[{";
+	apnBody.data = apnBody.data +
+		"\"ItemCode\":\"I00008\",\"ItemName\":Rainbow Nuance Ink 6-Pack and Photo Paper Kit\",\"CardCode\":\"C99998\",\"Price\":39,\"Currency\":\"$\",\"Probability\":2.457943925233645,\"PictureURL\":\"http://i.imgur.com/BDkbtor.jpg\"},{\"ItemCode\":\"I00007\",\"ItemName\":\"Rainbow Printer 9.5 Inkjet Cartridge\",\"CardCode\":\"C99998\",\"Price\":28,\"Currency\":\"$\",\"Probability\":2.4375,\"PictureURL\":\"http://i.imgur.com/BDkbtor.jpg\"";
+	apnBody.data = apnBody.data + "}]";
+	apnBody.sound = 'soundval';
+	callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, JSON.stringify(apnBody));
+
+}
+
+function addslashes(str) {
+	return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+}
+
+function EscapeSequence(data) {
+
+	var updatedData = addslashes(JSON.stringify(data));
+	return updatedData;
+
+}
+
 function sendWelcomeOffer(json) {
 	/** Handle Json **/
 
-   
-//   var inComing = JSON.stringify(json.Offer.resultSet);
-   
-   var apnBody;
-    /*   apnBody ="{ \"alert\": \"Now add more content to your with data line Push Notifications!\", \"customParameters\": { \"apns.category\": \"WelcomeOffer\" }, ";
-   apnBody = apnBody +  "\n\"badge\": 5,\n";
-   //apnBody = apnBody + "\"data\":{\"B1XAF\": {\"SessionID\": \"ABCD\",\"NodeID\": {\"named\": \"xsID1234\"}},";
-   apnBody = apnBody + " \"data\": \"B1XAF\", ";
-   apnBody = apnBody + "\n\"sound\": \"soundval\""; 
-   apnBody = apnBody + inComing; */
-      	
-   
-   for (var i = 0; i<json.length; i++){
+	/*
+ * function below used to prove APNs can be sent from HCP
+   DebugAPNCall(); 
+  */
+
+	var apnBody;
+	 for (var i = 0; i<json.length; i++){
+//	    var deviceToken = $.b1sa.beaconsOne.lib.aux.getUserDeviceToken(json[i].UserId);
         apnBody = {};
-        apnBody.alert = 'With CardCode ';
         apnBody.customParameters = {"apns.category": "WelcomeOffer"};
+        apnBody.alert = 'Your Welcome Offer'; //+ json[i].UserId;
         apnBody.badge = 5;
         //apnBody.data = json[i].Offer.resultSet[0].CardCode;
-        apnBody.data = json[i].Offer.resultSet;
-        apnBody.sound = 'soundval';
-        callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, JSON.stringify(apnBody));
+        var RS = EscapeSequence(json[i].Offer.resultSet);
+        callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, JSON.stringify(apnBody), RS);
    }
-   
-    
-	
-}
+ 
+
+}//sendWelcomeOffer
 
 function sendItemRecom(json) {
-	callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, json);
+//	callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, json);
+    var apnBody;
+	 for (var i = 0; i<json.length; i++){
+        apnBody = {};
+        apnBody.customParameters = {"apns.category": "WelcomeOffer"};
+        apnBody.alert = 'Your Welcome Offer'; //+ json[i].UserId;
+        apnBody.badge = 5;
+        //apnBody.data = json[i].Offer.resultSet[0].CardCode;
+        var RS = EscapeSequence(json[i].Offer.resultSet);
+        callHCPPush($.b1sa.beaconsOne.lib.constants.getAPNPath(), $.net.http.POST, JSON.stringify(apnBody), RS);
+   }
+
+    
 }
