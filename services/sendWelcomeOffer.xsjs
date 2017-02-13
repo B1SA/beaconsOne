@@ -44,7 +44,7 @@ function run() {
 		for (var i = 0; i < toWelcUsers.length; i++) {
 			var recom =
 				$.b1sa.beaconsOne.lib.B1XAFLogic.SaleRecommend(
-					toWelcUsers[i].UserId,
+					$.b1sa.beaconsOne.lib.aux.getUserCardCode(toWelcUsers[i].UserId),
 					b1XappCon.SessionID,
 					b1XappCon.NodeID);
 
@@ -62,11 +62,11 @@ function run() {
 			welcOffer.Offer.resultSet = $.b1sa.beaconsOne.lib.aux.formatOfferWithPics(welcOffer.Offer.resultSet);
 			
 			//Update user status (ReceivedWelcomeOffer = true)
-			//setUserWelcOffer(welcOffer.UserId, welcOffer.Date);
+			setUserWelcOffer(welcOffer.UserId, welcOffer.Date);
 
 			APN.push(welcOffer);
 		}
-
+		
 		//Send APN 
 		$.b1sa.beaconsOne.lib.APN.sendWelcomeOffer(APN);
 

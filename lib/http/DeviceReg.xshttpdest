@@ -1,0 +1,6 @@
+description = "HANA Connection to XSJS to register devices";
+host = "xs01ada8016be.hana.ondemand.com";
+port = 443;
+authType = none;
+useSSL = true;
+timeout = 0;

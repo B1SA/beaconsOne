@@ -3,7 +3,9 @@ table.schemaName = "BEACONSONE";
 table.tableType = COLUMNSTORE;
 table.columns = [
         {name = "BeaconId";    sqlType = NVARCHAR; nullable = false; length = 25;},
-        {name = "ItemsGroupCode";    sqlType = INTEGER; nullable = false;}
+        {name = "ItemsGroupCode";    sqlType = INTEGER; nullable = false;},
+        {name = "ItemCode";    sqlType = NVARCHAR; nullable = false; length = 50;}
+
      ]; 
 table.primaryKey.pkcolumns = ["BeaconId"];
-table.indexes =  [{name = "ITEMGROUP"; unique = true; indexColumns = ["ItemsGroupCode","BeaconId"];}];   
+table.indexes =  [{name = "ITEMGROUP"; unique = true; indexColumns = ["ItemsGroupCode","BeaconId","ItemCode"];}];

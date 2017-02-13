@@ -16,12 +16,12 @@ $(document).ready(function() {
 
 	function hashTag() {
 		var hashTag, hash2;
-
+        
 		hashTag = location.hash;
 		hashTag = hashTag.replace(/#*/, '');
 
 		if (hashTag.length > 0) {
-			for (i = 0; i < json.rooms.length; i++) {
+			for (var i = 0; i < json.rooms.length; i++) {
 				if (json.rooms[i].roomId === hashTag) {
 					document.getElementById('room_info').innerHTML = '<img src="images/' + json.rooms[i].image + '" /><h4>' + json.rooms[i].name +
 						'</h4>' + json.rooms[i].HTMLdescrip;
@@ -35,7 +35,7 @@ $(document).ready(function() {
 	}
 
 	function setHTML() {
-		for (i = 0; i < json.rooms.length; i++) {
+		for (var i = 0; i < json.rooms.length; i++) {
 			if (json.rooms[i].roomId === this.id) {
 				document.getElementById('room_info').innerHTML = '<img src="images/' + json.rooms[i].image + '" /><h4>' + json.rooms[i].name +
 					'</h4>' + json.rooms[i].HTMLdescrip;

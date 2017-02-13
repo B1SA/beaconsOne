@@ -20,6 +20,11 @@
       <descriptions defaultDescription="ItemsGroupCode"/>
       <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::BEACONITEMGROUP" columnName="ItemsGroupCode"/>
     </attribute>
+  
+    <attribute id="ItemCode" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ItemCode"/>
+      <keyMapping schemaName="BEACONSONE" columnObjectName="b1sa.beaconsOne.data::BEACONITEMGROUP" columnName="ItemCode"/>
+    </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures/>

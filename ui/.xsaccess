@@ -1,0 +1,21 @@
+{
+     "exposed" : true,  
+                  
+     "authentication" :                                            
+            {
+               "method": "Form"   
+            },
+  
+     "cache_control" : "must-revalidate", 
+
+     "cors" :                      
+            {
+             "enabled" : true
+            }, 
+                     
+     "enable_etags" : false,
+
+     "force_ssl" : false,
+     
+     "prevent_xsrf" : false
+}

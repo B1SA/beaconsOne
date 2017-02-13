@@ -10,7 +10,7 @@ function callB1XAF(path, method, body, sessionID, routeID) {
 			routeID + ")");
 
 		//B1SL.xshttpdest
-		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1XAF");
+		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1XAFcds");
 		var client = new $.net.http.Client();
 
 		var req = new $.web.WebRequest(method, path);
@@ -88,7 +88,8 @@ function loginCookies(body) { /* Return only the login cookies */
 	var loginInfo = {};
 	loginInfo.username = $.b1sa.beaconsOne.lib.constants.getB1User();
 	loginInfo.password = $.b1sa.beaconsOne.lib.constants.getB1Password();
-	loginInfo.company = $.b1sa.beaconsOne.lib.constants.getB1Company();
+	//loginInfo.company = $.b1sa.beaconsOne.lib.constants.getB1Company();
+	loginInfo.company = 'SBODEMOUS';
 
 	var output = {};
 	var NODEID = {};
@@ -111,7 +112,6 @@ function loginCookies(body) { /* Return only the login cookies */
 }
 
 function SaleRecommend(cardCode, sessionID, routeID) {
-	cardCode = 'C20000';
 	var path = B1XAddress +
 		"pervasive/IMCC/srv/pa/service/sale_recommend" +
 		"?cardcode=" + cardCode;

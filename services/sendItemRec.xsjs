@@ -1,14 +1,14 @@
 /** To be called via XSJOB **/
 /** Send Welcome Offer for each new user that have not 
 received it yet, based on the amount of time spent near a beacon
-the via Apple Push Notification (APN) **/
+ via Apple Push Notification (APN) **/
 
 var durations = [];
 var output = {};
 var job = 0;
 
 $.import("b1sa.beaconsOne.lib", "constants");
-$.import("b1sa.beaconsOne.lib", "users");
+$.import("b1sa.beaconsOne.lib", "aux");
 $.import("b1sa.beaconsOne.lib", "B1XAFLogic");
 $.import("b1sa.beaconsOne.lib", "APN");
 
@@ -74,7 +74,7 @@ function run() {
 
 		//For each user in the Shop that have not received an Item Recommendation
 		for (var i = 0; i < Object.keys(toItemRecUsers).length; i++) {
-			var userDuration = $.b1sa.beaconsOne.lib.users.formatData(
+			var userDuration = $.b1sa.beaconsOne.lib.aux.formatData(
 				getUserDuration(
 					toItemRecUsers[i].UserId));
 
@@ -95,8 +95,8 @@ function run() {
 			if (durations[maxBeaconId].Duration >= $.b1sa.beaconsOne.lib.constants.getRecomIntervall()) {
 				// Send Item recommendation of this beacon to this user
 				var body = {};
-				body.CardCode = $.b1sa.beaconsOne.lib.users.getUserCardCode(toItemRecUsers[i].UserId);
-				body.ItemCode = $.b1sa.beaconsOne.lib.users.getUserCardCode(durations[maxBeaconId].BeaconId);
+				body.CardCode = $.b1sa.beaconsOne.lib.aux.getUserCardCode(toItemRecUsers[i].UserId);
+				body.ItemCode = $.b1sa.beaconsOne.lib.aux.getBeaconItemCode(durations[maxBeaconId].BeaconId);
 
 				var recom = $.b1sa.beaconsOne.lib.B1XAFLogic.ItemRecommend(body,
 					b1XappCon.SessionID, b1XappCon.NodeID);
@@ -117,7 +117,7 @@ function run() {
 				};
 
 				//Update user status (Received Item Recom = true)
-				//setUserItemRec(ItemRec.UserId, ItemRec.Date);
+				setUserItemRec(ItemRec.UserId, ItemRec.Date);
 
 				APN.push(ItemRec);
 			}
@@ -137,7 +137,6 @@ function run() {
 
 		//Build the response
 		if (job != false) {
-
 			$.response.contentType = "application/json";
 			$.response.status = $.net.http.OK;
 			$.response.setBody(JSON.stringify(output));

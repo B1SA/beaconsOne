@@ -1,5 +1,7 @@
 //Auxiliar functions for data manipulation
 $.import("b1sa.beaconsOne.lib", "B1SLLogic");
+$.import("b1sa.beaconsOne.lib", "constants");
+
 
 function formatData(json) {
 	//Conver    t a set of Users to an Array of Users
@@ -18,11 +20,19 @@ function getUserCardCode(userId) {
 	//List of Users to receive a Welcome Offer
 	var getUserBP = connection.loadProcedure("BEACONSONE",
 		"b1sa.beaconsOne.procedures.mobile::getUserBP");
-
-	var CardCode = getUserBP(userId);
+    
+    var CardCode;
+    
+	try{
+	    CardCode = getUserBP(userId);
+	    CardCode = CardCode.CARDCODE
+	}
+	catch(e){
+	    CardCode = $.b1sa.beaconsOne.lib.constants.getGenCardCode();
+	}
 	connection.close();
-
-	return CardCode.CARDCODE;
+    
+	return CardCode;
 }
 
 function getUserDeviceToken(userId) {
@@ -32,14 +42,37 @@ function getUserDeviceToken(userId) {
 	var getUserDevice = connection.loadProcedure("BEACONSONE",
 		"b1sa.beaconsOne.procedures.mobile::getUserDevice");
 	
-	var DeviceToken = getUserDevice(userId);
+	var DeviceToken
+	try{
+	    DeviceToken = getUserDevice(userId);
+	    DeviceToken = DeviceToken.DEVICETOKEN
+	}
+	catch(e){
+	    DeviceToken = "";
+	}
 	connection.close();
-	
-	return DeviceToken.DEVICETOKEN;
+
+	return DeviceToken;
 }
 
-function getBeaconItem(beaconId) {
-	return 'I00005';
+function getBeaconItemCode(beaconId) {
+	//Initate SQL connection
+	var connection = $.hdb.getConnection();
+	
+	var getBeaconItem = connection.loadProcedure("BEACONSONE",
+		"b1sa.beaconsOne.procedures.mobile::getBeaconItemCode");
+	
+	var ItemCode
+	try{
+	    ItemCode = getBeaconItem(getBeaconItemCode);
+	    ItemCode = ItemCode.ITEMCODE
+	}
+	catch(e){
+	    ItemCode = "";
+	}
+	connection.close();
+
+	return ItemCode;
 }
 
 function formatOfferWithPics(body) {
