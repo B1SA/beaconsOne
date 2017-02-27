@@ -127,9 +127,10 @@ function GetItemsPictures(body, sessionID, routeID) {
 
 function getItemsbyGroup(ItemsGroupCode, sessionID, routeID) {
 	//Expect a body with a JSON of ItemCodes
-	var filter = "$select=ItemCode,ItemName," + $.b1sa.beaconsOne.lib.constants.getPicProperty();
+	var filter = "$select=ItemCode,ItemName,QuantityOnStock," + $.b1sa.beaconsOne.lib.constants.getPicProperty();
 	filter += "&$filter=";
 	filter += "%20ItemsGroupCode"+ $.b1sa.beaconsOne.lib.aux.op('eq') + ItemsGroupCode;
+	filter += "&$orderby=ItemCode asc";
 
 	var path = B1SLAddress + "Items" + "?" + filter;
 	return callServiceLayer(path, $.net.http.GET, null, sessionID, routeID);

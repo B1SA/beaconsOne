@@ -18,34 +18,34 @@
 
 #heatmapContainer_chocolate {
     position: absolute;
-    left: 180px; 
-    top: 184px;
+    left: 177px; 
+    top: 182px;
     width: 30px; 
-    height: 222px;
+    height: 218px;
 }
 /**delta x=156**/
 #heatmapContainer_wine {
     position: absolute;
-    left: 353px; 
-    top: -38px;
+    left: 347px; 
+    top: -37px;
     width: 30px; 
-    height: 222px;
+    height: 218px;
 }
 
 #heatmapContainer_cheese {
     position: absolute;
-    left: 484px; 
-    top: -260px;
+    left: 471px; 
+    top: -256px;
     width: 30px; 
-    height: 222px;
+    height: 218px;
 }
 
 #heatmapContainer_entrance {
     position: absolute;
-    left: 900px; 
-    top: -480px;
+    left: 879px; 
+    top: -470px;
     width: 30px; 
-    height: 220px;
+    height: 218px;
 }
 
 #svgHeatmapContainer {

@@ -1,5 +1,8 @@
 /** Register a Mobile devide Token and User **/
+$.import("b1sa.beaconsOne.lib", "aux");
 $.import("b1sa.beaconsOne.lib", "constants");
+$.import("b1sa.beaconsOne.lib", "APN");
+
 
 var output = {};
 $.response.contentType = "application/json";
@@ -12,15 +15,30 @@ function run(body) {
 		var connection = $.hdb.getConnection();
 		var setDevice = connection.loadProcedure("BEACONSONE", "b1sa.beaconsOne.procedures.mobile::setDevice");
 
-		//Retrieve Info
-		var resp = setDevice(body.DeviceToken, body.UserId);
+		//Store User/DeviceToken on HCP Table
+		var respInsert = setDevice(body.DeviceToken, body.UserId);
+		
+		//Register DeviceToken on HCP Mobile Services:
+		var userAppId = $.b1sa.beaconsOne.lib.constants.getMobileAppNameWSep() + body.DeviceToken;
+
+		
+		var respHCPMobile = $.b1sa.beaconsOne.lib.APN.registerHCPMobileService(body, userAppId);
+	    
+	    
+	    try {
+			respHCPMobile = JSON.parse(respHCPMobile);
+		} catch (e) {
+		    respHCPMobile = respHCPMobile.body.asString();
+		};
+
 
 		if ($.b1sa.beaconsOne.lib.constants.shouldCommit()) {
 			connection.commit();
 		}
 
 		//Build the response
-		output.retInsert = resp;
+		output.retInsert = respInsert;
+		output.retHCPMobile = respHCPMobile;
 		connection.close();
 		$.response.status = $.net.http.OK;
 		$.response.setBody(JSON.stringify(output));
@@ -33,8 +51,7 @@ function run(body) {
 	}
 }
 
-var reqBody;
-/*{UserId:"trm7", DeviceToken: "19281ud1982je1982ej1928her191"}*/
+var reqBody;// = {UserId:"trm7_1", DeviceToken: "19223sjafjaisfa242181ud1982jesss1982ej1928her191"};
 reqBody = $.request.body.asString();
 reqBody = JSON.parse(reqBody);
 run(reqBody);

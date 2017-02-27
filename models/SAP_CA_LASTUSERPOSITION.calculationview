@@ -10,20 +10,25 @@
       <viewAttribute id="UserId" datatype="NVARCHAR" length="20"/>
       <viewAttribute id="BeaconId" datatype="NVARCHAR" length="20"/>
       <viewAttribute id="Date" datatype="TIMESTAMP"/>
+    
+      <viewAttribute id="CardCode" datatype="NVARCHAR" length="50" hidden="true"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <definition>/********* Begin Procedure Script ************/ 
 BEGIN 
     /*Retrieve the last location of each user*/
     var_out = 
-        SELECT DISTINCT &quot;UserId&quot;,&quot;BeaconId&quot;,&quot;Date&quot;
-        FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot; s1
+        SELECT DISTINCT s1.&quot;UserId&quot;,&quot;BeaconId&quot;,&quot;Date&quot;, s3.&quot;CardCode&quot;
+        FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot; as s1
+        LEFT OUTER JOIN  &quot;BEACONSONE&quot;.&quot;b1sa.beaconsOne.data::USERBP&quot; as s3
+        ON  s3.&quot;UserId&quot; = s1.&quot;UserId&quot;
         WHERE &quot;Date&quot; = (
                 SELECT MAX(&quot;Date&quot;) 
-                FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot; s2 
+                FROM &quot;_SYS_BIC&quot;.&quot;b1sa.beaconsOne.models/SAP_CA_BEACONSLOG&quot; as s2 
                 WHERE s1.&quot;UserId&quot; = s2.&quot;UserId&quot;
-            );
-END;
+            ); 
+        
+END; 
 /********* End Procedure Script ************/</definition>
   </calculationView>
 </calculationViews>
@@ -36,6 +41,11 @@ END;
     <attribute id="BeaconId" key="true" order="2">
       <descriptions defaultDescription="BeaconId"/>
       <keyMapping columnObjectName="Script_View" columnName="BeaconId"/>
+    </attribute>
+  
+    <attribute id="CardCode" hidden="true" order="4">
+      <descriptions defaultDescription="UserId"/>
+      <keyMapping columnObjectName="Script_View" columnName="CardCode"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>

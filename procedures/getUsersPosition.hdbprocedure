@@ -10,14 +10,14 @@ AS
 BEGIN
 
 	IF (:beaconId is null ) THEN
-        users = SELECT "UserId", "BeaconId", "Date"
+        users = SELECT "UserId", "BeaconId", "Date", "CardCode"
 				FROM "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_LASTUSERPOSITION"
 				WHERE "Date" <= current_timestamp
 				AND "Date" > ADD_SECONDS(current_timestamp, - (:interval));		
 				
 	ELSE
 	    -- Specifi Beacon
-        users = SELECT "UserId", "BeaconId", "Date"
+        users = SELECT "UserId", "BeaconId", "Date", "CardCode"
 				FROM "_SYS_BIC"."b1sa.beaconsOne.models/SAP_CA_LASTUSERPOSITION"
 				WHERE "Date" <= current_timestamp
 				AND "Date" > ADD_SECONDS(current_timestamp, - (:interval))

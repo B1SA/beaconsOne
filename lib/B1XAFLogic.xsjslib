@@ -10,7 +10,7 @@ function callB1XAF(path, method, body, sessionID, routeID) {
 			routeID + ")");
 
 		//B1SL.xshttpdest
-		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1XAF");
+		var destination = $.net.http.readDestination("b1sa.beaconsOne.lib.http", "B1XAFcds");
 		var client = new $.net.http.Client();
 
 		var req = new $.web.WebRequest(method, path);
@@ -121,9 +121,6 @@ function SaleRecommend(cardCode, sessionID, routeID) {
 
 function ItemRecommend(body, sessionID, routeID) {
 	//Temporary
-	body.CardCode = 'C20000';
-	body.ItemCode = 'I00005';
-
 	var path = B1XAddress +
 		"pervasive/IMCC/srv/pa/service/sale_related" +
 		"?cardcode=" + body.CardCode +

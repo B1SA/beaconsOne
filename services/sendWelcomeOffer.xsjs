@@ -62,7 +62,7 @@ function run() {
 			welcOffer.Offer.resultSet = $.b1sa.beaconsOne.lib.aux.formatOfferWithPics(welcOffer.Offer.resultSet);
 			
 			//Update user status (ReceivedWelcomeOffer = true)
-			//setUserWelcOffer(welcOffer.UserId, welcOffer.Date);
+			setUserWelcOffer(welcOffer.UserId, welcOffer.Date);
 
 			APN.push(welcOffer);
 		}
@@ -88,7 +88,7 @@ function run() {
 		}
 	} catch (e) {
 		$.trace.error("Send Welcome offer Exception: " + JSON.stringify(e.message));
-		if (job != true) {
+		if (job != false) {
 			$.response.contentType = "application/json";
 			$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 			$.response.setBody(JSON.stringify({

@@ -1,7 +1,7 @@
 /** To be called via XSJOB **/
 /** Send Welcome Offer for each new user that have not 
 received it yet, based on the amount of time spent near a beacon
-the via Apple Push Notification (APN) **/
+ via Apple Push Notification (APN) **/
 
 var durations = [];
 var output = {};
@@ -88,18 +88,29 @@ function run() {
 						addDuration(userDuration[j].BeaconIdFrom, userDuration[j].Duration);
 						prevBeacon = userDuration[j].BeaconIdFrom;
 					}
+				} else if (j == Object.keys(userDuration).length - 1) {
+					//this is the last user position. There is no "entrance time"
+					//on a next beacon. Therefore we need to calculate the duration here.
+					var startDate = userDuration[j].DateFrom;
+					var endDate = new Date();
+					var lastDuration = (endDate.getTime() - startDate.getTime()) / 1000;
+
+					addDuration(userDuration[j].BeaconIdFrom, lastDuration);
+
 				}
+
 			}
+
 			var maxBeaconId = getMaxDurationBeacon();
 
 			if (durations[maxBeaconId].Duration >= $.b1sa.beaconsOne.lib.constants.getRecomIntervall()) {
 				// Send Item recommendation of this beacon to this user
 				var body = {};
 				body.CardCode = $.b1sa.beaconsOne.lib.aux.getUserCardCode(toItemRecUsers[i].UserId);
-				body.ItemCode = $.b1sa.beaconsOne.lib.aux.getUserCardCode(durations[maxBeaconId].BeaconId);
 
-				var recom = $.b1sa.beaconsOne.lib.B1XAFLogic.ItemRecommend(body,
-					b1XappCon.SessionID, b1XappCon.NodeID);
+				body.ItemCode = $.b1sa.beaconsOne.lib.aux.getBeaconItemCode(durations[maxBeaconId].BeaconId);
+
+				var recom = $.b1sa.beaconsOne.lib.B1XAFLogic.ItemRecommend(body, b1XappCon.SessionID, b1XappCon.NodeID);
 
 				var ItemRec = {
 					UserId: toItemRecUsers[i].UserId,
@@ -108,16 +119,21 @@ function run() {
 					Duration: durations[maxBeaconId].Duration,
 					CardCode: body.CardCode,
 					ItemCode: body.ItemCode
+					
+					
 				};
 
 				try {
-					ItemRec.Recom = JSON.parse(recom.body.asString());
+					ItemRec.Offer = JSON.parse(recom.body.asString());
 				} catch (e) {
-					ItemRec.Recom = recom.body.asString();
-				};
+					ItemRec.Offer = recom.body.asString();
+				}
 
+                //Get the Item Picture for each Recommendaed Item
+			    ItemRec.Offer.resultSet = $.b1sa.beaconsOne.lib.aux.formatOfferWithPics(ItemRec.Offer.resultSet);
+				
 				//Update user status (Received Item Recom = true)
-				//setUserItemRec(ItemRec.UserId, ItemRec.Date);
+				setUserItemRec(ItemRec.UserId, ItemRec.Date);
 
 				APN.push(ItemRec);
 			}

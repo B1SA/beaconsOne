@@ -1,248 +1,221 @@
-
-header, footer, nav, section, article { display: block; }
-
-body { 
-	background:#eee; 
-	margin:0; 
-	padding: 0; 
-	font-family: Trebuchet MS1, sans-serif;  
-    font-weight: normal;   
+header,
+footer,
+nav,
+section,
+article {
+	display: block;
+}
+body {
+	background: #eee;
+	margin: 0;
+	padding: 0;
+	font-family: Trebuchet MS1, sans-serif;
+	font-weight: normal;
 	line-height: 1.1;
-	}
-
-header{
-	background:#eee;
+}
+header {
+	background: #eee;
 	margin-left: 5px;
 	margin-top: 10px;
 	width: 70%;
 	float: left;
 }
-
-footer{
-	position: absolute;
-	top: 600px;
-	margin-bottom: 5px;
-	text-indent: 10px;
+footer {
+	margin: 10px;
+	float: left;
+	text-indent: 50px;
 }
-
-a{
-	text-decoration: none;
-	outline: none;
-}
-
-a img{
-	outline: none;
-}
-
-img {border : 0;}
-
-footer a:link{
+footer a:link {
 	text-decoration: none;
 	color: #005A8C;
 }
-
-footer a:visited{
+footer a:visited {
 	text-decoration: none;
 	color: #005A8C;
 }
-
-footer a:active{
+footer a:active {
 	text-decoration: none;
 	color: #CC6600;
 }
-
-footer a:hover{
+footer a:hover {
 	text-decoration: none;
 	color: #CC6600;
 }
+/************
+//it doesn't help, it is a overlay problem of heatmap convas and svg
+svg {
+  pointer-events: visiblePainted;
+}
+*************/
 
-#innerhead{
+#innerhead {
 	background: #fff;
 	margin-left: 5px;
-	border:1px solid #ccc;
+	border: 1px solid #ccc;
 	padding: 5px 10px;
 }
-
-#Floor_select{
+#Floor_select {
 	float: right;
 	margin-top: 40px;
 	margin-right: 5px;
-	vertical-align: 
 }
-
-.floor_divider{
+.floor_divider {
 	vertical-align: 2px;
 }
-
-#Floor_select b{
+#Floor_select b {
 	font-size: 1.5em;
-	vertical-align: 
 }
-
-#Floor_select a{
+#Floor_select a {
 	font-size: 0.9em;
 	vertical-align: 2px;
 }
-
-#Floor_select a:link{
+#Floor_select a:link {
 	text-decoration: none;
 	color: #005A8C;
 }
-
-#Floor_select a:visited{
+#Floor_select a:visited {
 	text-decoration: none;
 	color: #005A8C;
 }
-
-#Floor_select a:active{
+#Floor_select a:active {
 	text-decoration: none;
 	color: #CC6600;
 }
-
-#Floor_select a:hover{
+#Floor_select a:hover {
 	text-decoration: none;
 	color: #CC6600;
 }
-
-#right_header{
+#right_header {
 	float: left;
-	width: 280px;
-	height: 53px;
+	width: 285px;
+	height: 51px;
 	background: #fff;
-	border:1px solid #ccc;
+	border: 1px solid #ccc;
 	margin-left: 10px;
 	margin-top: 10px;
 	padding: 10px;
 }
-
-#content_wrapper{
+#content_wrapper {
 	width: 100%;
+	min-width: 1060px;
 }
-	
-#map_section{
+#map_section {
 	padding-left: 10px;
-}	
-
-#room_info{
-	border:1px solid #ccc; 
-	width: 280px; /*Width of right column in pixels*/
+	margin-top: 10px;
+}
+#room_info {
+	border: 1px solid #ccc;
+	position: absolute;
+	top: 95px;
+	left: 990px;
+	width: 285px;
+	/*height: 450px;*/
+	height: 533px;
+	/*Width of right column in pixels*/
 	background: #fff;
-	height: 450px;
 	float: left;
 	margin-left: 10px;
 	margin-top: 10px;
 	padding: 10px;
 }
-
 svg {
-	  border:1px solid #ccc; 
-      width:70%; height: 500px; background:#fff;
-	  float: left;
-	  margin-top: 10px;
-    }
-
-.room{
+	border: 1px solid #ccc;
+	width: 70%;
+	height: 75%;
+	background: #fff;
+	float: left;
+	margin-top: 10px;
+	/*z-index: 2;*/
+}
+.room {
 	fill: #FF0000;
 	fill-opacity: 0.2;
-	stroke:#000;
+	stroke: #000;
 	stroke-width: 1;
 }
-
-.room:hover{
-	fill-opacity: 1.0;
+.room:hover {
+	fill-opacity: 0.8;
 }
-
-.room:target{
-	fill-opacity: 1.0;
+.room:target {
+	fill-opacity: 0.8;
 }
-
-.room2{
+.room2 {
 	fill: #FECCCC;
 	fill-opacity: 1.0;
-	stroke:#000;
+	stroke: #000;
 	stroke-width: 1;
 }
-
-.room2:hover{
+.room2:hover {
 	fill: #FF0000;
 }
-
-.room2:target{
+.room2:target {
 	fill: #FF0000;
 }
-
-.helpdesk{
+.helpdesk {
 	fill: #00FF00;
 	fill-opacity: 0.2;
-	stroke:#000;
+	stroke: #000;
 	stroke-width: 1;
 }
-
-.helpdesk:hover{
-	fill-opacity: 1.0;
+.helpdesk:hover {
+	fill-opacity: 0.8;
 }
-
-.helpdesk:target{
-	fill-opacity: 1.0;
+.helpdesk:target {
+	fill-opacity: 0.8;
 }
-
-.utilroom path, .utilroom rect, .utilroom polygon{
+.utilroom path,
+.utilroom rect,
+.utilroom polygon {
 	fill: #AAAAAA;
-	stroke:#000;
+	stroke: #000;
 	stroke-width: 1;
 }
-
-.location{
+.location {
 	fill: #0000FF;
 	fill-opacity: 0.2;
-	stroke:#000;
+	stroke: #000;
 	stroke-width: 1;
 }
-
-.location:hover{
-	fill-opacity: 1.0;
+.location:hover {
+	fill-opacity: 0.8;
 }
-
-.location:target{
-	fill-opacity: 1.0;
+.location:target {
+	fill-opacity: 0.8;
 }
-
-.inactive{
-
+.inactive {
+	fill: #FFFFFF;
+	stroke: #000;
+	stroke-width: 1;
 }
-
-text{
-	opacity: 0.6;
+text {
+	opacity: 1.0;
 	stroke: none;
-	fill: #000000;
+	fill: #333333;
+	cursor: default;
 }
 
-/* Style for Upcoming Hours */
-#calendarTitle{
-	display: none;
+table.DetailTable {
+	display: table;
+	width: 100%;
 }
-
-#events table{
-	margin: auto;
-	margin-top: 0px;
-	border-collapse: separate;
-	border-spacing: 2px;
-	color: #052F53;
-	border: 1px solid #052F53;
+table.DetailTable tbody {
+	float: left;
+	width: 100%;
+	overflow-y: scroll;
+	max-height: 238px;
 }
-
-#events tr td, tr th {
-	margin: 0px;
-	padding: 0px;
-	padding-right: 5px;
+table.DetailTable tr {
+	width: 100%;
+	display: table;
+	text-align: left;
 }
-
-#events tr:first-child  td{
-	background-color: #F0AF03;
-	padding: 3px 4px;
+    
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
 }
-
-#events tr:first-child + tr td{
-	background-color: #EDD595;
-	padding: 3px 4px;
+th, td {
+    padding: 4px;
+    width: 50%;
 }

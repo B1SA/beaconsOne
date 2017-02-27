@@ -4,29 +4,46 @@
 
 /******************* B1 CONSTANTS *********************/
 var b1User = "manager";
-var b1Pass = "abc123";
+var b1Pass = "1234";
 var b1Comp = "SBODEMOUS";
 
 var picProperty = 'User_Text'; // Item property to retrieve the Item img URL
-var genCardCode = 'C99998'; // Generic CardCode
+var genCardCode = 'C20000'; // Generic CardCode
 
 /****************APPLICATION CONSTANTS*******************/
 //Beacon ID placed on the Shop Entrance
-var entraceBeaconId = "65485";
+var entraceBeaconId = "EntryBeacon";
 
-//var APNPath= "/restnotification/application/APNSB1BeaconsDemo";
-var APNPath = "/restnotification/application/com.sap.B1.InnovationSummit2017";
+/*
+ * APNSB1BeaconsDemo app constants
+ */
+// this sends to all users on below  send to one but must provide X-SMP-APPCID var APNPath= "/restnotification/application/APNSB1BeaconsDemo";
+var APNPath= "/restnotification/registration/";
+var hcpDeviceRegPath = "/odata/applications/v4/APNSB1BeaconsDemo/Connections";
+
+
+/*
+ * com.sap.B1.InnovationSummit2017 (Duncan's test app) constants
+ */
+// this sends to all users on below  send to one but must provide X-SMP-APPCID var APNPath = "/restnotification/application/com.sap.B1.InnovationSummit2017";
+
+
+/*var APNPath = "/restnotification/registration/";
+var hcpDeviceRegPath = "/odata/applications/v4/com.sap.B1.InnovationSummit2017/Connections";
+
 var deviceRegPath = "/b1sa/beaconsOne/services/mobile/registerDevice.xsjs";
+*/
+var iOSDeviceType = "iPhone";
 
 //Interval for a user to be considered Active
-var userInterval = 600; // 10 minutes
+var userInterval = 300; // 10 minutes
 
 //Interval near a beacon in order to a user receive an Item Recommendation
 var recomInterval= 10;
 
 //Used on the Mobile Services Platform
-var mobileAppName = "APNSB1BeaconsDemo"
-var mobileAppSep = "-"
+var mobileAppName = "APNSB1BeaconsDemo";
+var mobileAppSep = ".";
 
 /***************** DEBUG CONSTANTS *********************/
 var doCommit = true; //commit data to user tables
@@ -78,6 +95,16 @@ function getAPNPath(){
 function getDeviceRegPath()
 {
     return deviceRegPath;   
+}
+
+function getHCPDeviceRegPath()
+{
+    return hcpDeviceRegPath;
+}
+
+function getiOSDeviceType()
+{
+    return iOSDeviceType;
 }
 
 function getGenCardCode(){
