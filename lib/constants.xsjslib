@@ -8,7 +8,7 @@ var b1Pass = "1234";
 var b1Comp = "SBODEMOUS";
 
 var picProperty = 'User_Text'; // Item property to retrieve the Item img URL
-var genCardCode = 'C20000'; // Generic CardCode
+var genCardCode = 'C99998'; // Generic CardCode
 
 /****************APPLICATION CONSTANTS*******************/
 //Beacon ID placed on the Shop Entrance

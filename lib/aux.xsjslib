@@ -28,6 +28,7 @@ function getUserCardCode(userId) {
 	    CardCode = CardCode.CARDCODE
 	}
 	catch(e){
+        $.trace.error("No CardCode found for UserId: " + userId);
 	    CardCode = $.b1sa.beaconsOne.lib.constants.getGenCardCode();
 	}
 	connection.close();
@@ -48,7 +49,8 @@ function getUserDeviceToken(userId) {
 	    DeviceToken = DeviceToken.DEVICETOKEN
 	}
 	catch(e){
-	    DeviceToken = "";
+	   $.trace.error("No devide token found for user: " + userId);
+	   DeviceToken = "";
 	}
 	connection.close();
 
@@ -83,6 +85,7 @@ function getBeaconItemCode(beaconId) {
 	    ItemCode = ItemCode.ITEMCODE
 	}
 	catch(e){
+        $.trace.error("No ItemCode found for beaconId: " + beaconId);
 	    ItemCode = "";
 	}
 	connection.close();

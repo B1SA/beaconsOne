@@ -1,6 +1,8 @@
 /** Create a Sales Order using Service Layer **/
 $.import("b1sa.beaconsOne.lib", "constants");
 $.import("b1sa.beaconsOne.lib", "B1SLLogic");
+$.import("b1sa.beaconsOne.lib", "aux");
+
 
 var output = {};
 
@@ -35,6 +37,7 @@ function run(body) {
                                 + ('0' +  d.getDate()).slice(-2); 
                                 
 		body.DocDueDate = DocDueDate;
+		body.CardCode = $.b1sa.beaconsOne.lib.aux.getUserCardCode(body.UserId);
 		output.RecOder = body;
 
 		response = $.b1sa.beaconsOne.lib.B1SLLogic.PostOrder(JSON.stringify(body), SESSIONID, NODEID);
@@ -82,7 +85,7 @@ if (reqBody === undefined || reqBody === null) {
 	**/
 	/** Only for Testing **/
 	reqBody = {
-		"CardCode": 'C20000',
+		"CardCode": $.b1sa.beaconsOne.lib.constants.getGenCardCode(),
 		"DocDueDate": "2017-01-90",
 		"Comments": "Test Order is ON"
 	};

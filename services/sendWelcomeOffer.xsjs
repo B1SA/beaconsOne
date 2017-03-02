@@ -38,7 +38,7 @@ function run() {
 		output.B1XAF = b1XappCon;
 
 		//Array of offers to be sent via Apple Push Notification
-		var APN = []
+		var APN = [];
 
 		//Get B1 Item Recommendations for each user
 		for (var i = 0; i < toWelcUsers.length; i++) {
@@ -51,7 +51,8 @@ function run() {
 			var welcOffer = {
 				UserId: toWelcUsers[i].UserId,
 				Date: toWelcUsers[i].Date
-			}
+			};
+
 			try {
 				welcOffer.Offer = JSON.parse(recom.body.asString());
 			} catch (e) {
@@ -60,13 +61,13 @@ function run() {
 
 			//Get the Item Picture for each Recommendaed Item
 			welcOffer.Offer.resultSet = $.b1sa.beaconsOne.lib.aux.formatOfferWithPics(welcOffer.Offer.resultSet);
-			
+
 			//Update user status (ReceivedWelcomeOffer = true)
 			setUserWelcOffer(welcOffer.UserId, welcOffer.Date);
 
 			APN.push(welcOffer);
 		}
-		
+
 		//Send APN 
 		$.b1sa.beaconsOne.lib.APN.sendWelcomeOffer(APN);
 
@@ -80,22 +81,22 @@ function run() {
 		connection.close();
 
 		//Build the response
-        $.trace.debug("Send Welcome offer Done! " + JSON.stringify(output));
-		if (job != true) {
+		$.trace.debug("Send Welcome offer Done! " + JSON.stringify(output));
+		if (job !== false) {
 			$.response.contentType = "application/json";
 			$.response.status = $.net.http.OK;
 			$.response.setBody(JSON.stringify(output));
 		}
 	} catch (e) {
 		$.trace.error("Send Welcome offer Exception: " + JSON.stringify(e.message));
-		if (job != false) {
+		if (job !== false) {
 			$.response.contentType = "application/json";
 			$.response.status = $.net.http.INTERNAL_SERVER_ERROR;
 			$.response.setBody(JSON.stringify({
 				"error": e.message
 			}));
 		}
-		
+
 	}
 }
 run();
