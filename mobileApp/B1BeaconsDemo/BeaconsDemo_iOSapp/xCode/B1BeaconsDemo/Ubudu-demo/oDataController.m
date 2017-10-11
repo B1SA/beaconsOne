@@ -49,7 +49,7 @@
                                                 {
                                                     NSError *errorMsg = nil;
                                                     NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&errorMsg];
-                                                    NSLog(@"%@", [response objectForKey:@"msg"]);
+                                                    NSLog(@"registerDevice response %@", [response objectForKey:@"retHCPMobile"]);
                                                 }
                                             }];
     [task resume];
@@ -76,6 +76,8 @@
         
         // Set the body
         NSString *msg = [NSString stringWithFormat:@"{\"mode\":\"sync\",\"messageType\":\"%@\",\"messages\":[{\"dev_id\":\"%@\",\"beacon_id\":\"%@\",\"user_id\":\"%@\",\"timestamp\":%@}]}", iotMsgType, device_id, beacon_id, gUbuduUser, timestamp];
+        
+        msg = [NSString stringWithFormat:@"%@]}", msg];
         
         NSData *requestBodyData = [msg dataUsingEncoding: NSUTF8StringEncoding];
         request.HTTPBody = requestBodyData;
@@ -107,7 +109,7 @@
         [task resume];
     } @catch (NSException *exception) {
         NSLog(@"CATCH: %@",exception.reason);
-        [self sendNotifTest:exception.reason];
+        //[self sendNotifTest:exception.reason];
     } @finally {
         NSLog(@"FINALLY: after sending msg to IoT");
     }
@@ -189,8 +191,6 @@
                                                 {
                                                     NSError *errorMsg = nil;
                                                     
-                                                    NSString * convertedStr =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                                                    
                                                     NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&errorMsg];
                                                     NSLog(@"%@", [response objectForKey:@"StatusCode"]);
                                                     
@@ -199,13 +199,13 @@
                                                     NSString *msg = @"";
                                                     
                                                     if ([statusCode  isEqual: @"201"]) {
-                                                        title = @"B1 Order confirmation";
+                                                        title = @"SAP Business One Order confirmation";
                                                         NSString *docNum = [response objectForKey:@"DocNum"];
-                                                        msg = [NSString stringWithFormat:@"Your order with DocNum %@ has been successfuly created in B1!", docNum];
+                                                        msg = [NSString stringWithFormat:@"Your order with DocNum %@ has been successfuly created in SAP Business One!", docNum];
                                                     }
                                                     else {
-                                                        title = @"B1 Order confirmation";
-                                                        msg = [NSString stringWithFormat:@"Ups, an error occurred B1: %@", statusCode];
+                                                        title = @"SAP Business One Order confirmation";
+                                                        msg = [NSString stringWithFormat:@"An error occurred while trying to access SAP Business One, please check your system is up and running."];
                                                     }
                                                     
                                                     //Send the alert

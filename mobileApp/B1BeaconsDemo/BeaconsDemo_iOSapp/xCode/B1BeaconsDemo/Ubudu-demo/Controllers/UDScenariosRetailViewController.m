@@ -96,7 +96,7 @@ UINavigationController *mainNavigationController;
     notifContent.title = @"Check our special offers";
     notifContent.body = @"Would you like some recommendations based on your current location?";
     notifContent.categoryIdentifier = @"RecoOffer";
-    NSString * offersJSON = @"{\"data\": [{\"ItemCode\": \"A00001\",\"ItemName\": \"White Chocolate\",\"CardCode\": \"C30000\",\"Price\": 40,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/gkMT1ID.jpg\",\"Probability\": 2.3}, {\"ItemCode\": \"A00002\",\"ItemName\": \"Milk Chocolate\",\"CardCode\": \"C99998\",\"Price\": 25,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/jUPRyiH.jpg\",\"Probability\": 2},{\"ItemCode\": \"I00004\",\"ItemName\": \"Colby Cheese\",\"CardCode\": \"C30000\",\"Price\": 30,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/aUcGMBF.jpg\",\"Probability\": 1.3},{\"ItemCode\": \"I00006\",\"ItemName\": \"Roquefort\",\"CardCode\": \"C30000\",\"Price\": 80,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/XRdgdRb.png\",\"Probability\": 2},{\"ItemCode\": \"LM4029\",\"ItemName\": \"Pule Cheese\",\"CardCode\": \"C30000\",\"Price\": 240,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/hQdl3wt.png\",\"Probability\": 1.3}]}";
+    NSString * offersJSON = @"{\"data\": [{\"ItemCode\": \"C00003\",\"ItemName\": \"Vegan Chocolate\",\"CardCode\": \"C30000\",\"Price\": 42,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/fz5pCij.png\",\"Probability\": 2.6},{\"ItemCode\": \"A00003\",\"ItemName\": \"Dark Chocolate\",\"CardCode\": \"C30000\",\"Price\": 30,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/A2ZoWbu.jpg\",\"Probability\": 2.5}, {\"ItemCode\": \"A00001\",\"ItemName\": \"White Chocolate\",\"CardCode\": \"C30000\",\"Price\": 40,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/gkMT1ID.jpg\",\"Probability\": 2.3}, {\"ItemCode\": \"A00002\",\"ItemName\": \"Milk Chocolate\",\"CardCode\": \"C99998\",\"Price\": 25,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/jUPRyiH.jpg\",\"Probability\": 2}, {\"ItemCode\": \"A00006\",\"ItemName\": \"Chocolate a la taza\",\"CardCode\": \"C30000\",\"Price\": 22,\"Currency\": \"$\",\"PictureURL\": \"http://i.imgur.com/XtS1qVF.png\",\"Probability\": 1.3}]}";
 
     NSData* offersJSONdata = [offersJSON dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -162,6 +162,8 @@ UINavigationController *mainNavigationController;
                              // Store user name into Ububdu framework
                              // version 1.22.0 [[UbuduSDK sharedInstance] setUser:[[UbuduUser alloc] initWithID:gUbuduUser withProperties:nil]];
                              // version 1.23.1
+                             // TODO Check latest version API
+                             // Exception: Thread 1:EXC_BAD_ACCESS(code=1,address=0x10)
                              [[UbuduSDK sharedInstance] setUser:[[UbuduUser alloc] initWithID:gUbuduUser withProperties:nil] success:nil failure:nil];
                              
                              // Save user in NSUserDefaults (to be kept after stopping app)
